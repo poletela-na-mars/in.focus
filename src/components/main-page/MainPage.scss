@@ -1,3 +1,6 @@
+$font-stack: Geometria, sans-serif;
+$orange-color: #FF7A00;
+
 .main-page-block {
   display: flex;
   flex-direction: column;
@@ -6,10 +9,8 @@
 }
 
 p {
-  font-family: Geometria, sans-serif;
+  font-family: $font-stack;
   font-size: 32px;
-  color: #FF7A00;
+  color: $orange-color;
   margin: 0;
 }
-
-/*# sourceMappingURL=MainPage.css.map */
