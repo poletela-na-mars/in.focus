@@ -3,13 +3,68 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 90vh; /* Fallback for browsers that do not support Custom Properties */
+  width: 100vw;
 }
 
-p {
-  font-family: Geometria, sans-serif;
-  font-size: 32px;
+.main-text, .start-link, .logo {
+  margin: 30px;
+}
+
+.main-text {
+  text-align: center;
+  font-size: 30px;
   color: #FF7A00;
-  margin: 0;
+}
+
+.start-button {
+  height: 58px;
+  width: 184px;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1); /*For webkit browsers*/
+  -moz-box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1); /*For Firefox*/
+  font-size: 20px;
+  cursor: pointer;
+  color: #FFFFFF;
+  background-color: #8613E0;
+  transition: background-color 0.5s ease;
+}
+
+.start-button:hover {
+  background-color: #FF7A00;
+}
+
+.sign-in-button-container {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.sign-in-button {
+  font-size: 18px;
+  width: 130px;
+  height: 40px;
+  border-radius: 50px;
+  border: 2px solid #8613E0;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  color: #8613E0;
+  transition: background-color 0.5s ease;
+}
+
+.sign-in-button:hover {
+  background-color: #8613E0;
+  color: #FFFFFF;
+}
+
+.sign-in-link {
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 10%;
 }
 
 /*# sourceMappingURL=MainPage.css.map */

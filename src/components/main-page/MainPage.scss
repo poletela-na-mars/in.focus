@@ -1,16 +1,71 @@
-$font-stack: Geometria, sans-serif;
-$orange-color: #FF7A00;
+@import "./../../vars";
 
 .main-page-block {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 90vh; /* Fallback for browsers that do not support Custom Properties */
+  //height: calc(var(--vh, 1vh) * 100);
+  width: 100vw;
 }
 
-p {
-  font-family: $font-stack;
-  font-size: 32px;
+.main-text, .start-link, .logo {
+  margin: 30px;
+}
+
+.main-text {
+  text-align: center;
+  font-size: 30px;
   color: $orange-color;
-  margin: 0;
+}
+
+.start-button {
+  height: 58px;
+  width: 184px;
+  border-radius: 50px;
+  border: none;
+  box-shadow: $button-box-shadow;
+  -webkit-box-shadow: $button-box-shadow; /*For webkit browsers*/
+  -moz-box-shadow: $button-box-shadow;   /*For Firefox*/
+  font-size: 20px;
+  cursor: pointer;
+  color: $white-color;
+  background-color: $violet-color;
+  transition: $transition;
+}
+
+.start-button:hover {
+  background-color: $orange-color;
+}
+
+.sign-in-button-container {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.sign-in-button {
+  font-size: 18px;
+  width: 130px;
+  height: 40px;
+  border-radius: 50px;
+  border: $violet-border;
+  cursor: pointer;
+  background-color: $white-color;
+  color: $violet-color;
+  transition: $transition;
+}
+
+.sign-in-button:hover {
+  background-color: $violet-color;
+  color: $white-color;
+}
+
+.sign-in-link {
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 10%;
 }

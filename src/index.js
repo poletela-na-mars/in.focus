@@ -4,6 +4,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {BrowserRouter} from "react-router-dom";
 
+// const xhr = new XMLHttpRequest()
+// xhr.open('POST', .)
+// xhr.setRequestHeader("X-Frame-Options", "DENY");
+// xhr.setRequestHeader("Content-Security-Policy", "frame-ancestors 'none'");
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>

@@ -4,19 +4,25 @@ import {Link} from "react-router-dom";
 
 const MainPage = (props) => {
     return (
-        <div className="main-page-block">
-            <Link to={"/"}><LogoSVG height={55} width={240}/></Link>
-            <p>Organize and plan your life with in.focus</p>
-            <Link to={"/"}>Get started  →</Link>
-        </div>
+        <>
+            <div className="sign-in-button-container">
+                <Link to={"/"} className="sign-in-link">
+                    <button className="sign-in-button">Sign in</button>
+                </Link>
+            </div>
+            <div className="main-page-block">
+                <Link to={"/"} className="logo"><LogoSVG height={55} width={240}/></Link>
+                <p className="main-text">Organize and plan your life with in.focus</p>
+                <Link to={"/"} className="start-link">
+                    <button className="start-button">Get started →</button>
+                </Link>
+            </div>
+        </>
     );
 };
 
 //TODO:
 //      -добавить в background анимацию
 //      -начальная марщрутизация
-//      -add normalize in main.css
-//      -кнопки
-//      -отступы
 
 export default MainPage;
