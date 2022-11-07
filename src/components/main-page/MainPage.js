@@ -37,5 +37,7 @@ const MainPage = (props) => {
 
 //TODO:
 //      -марщрутизация
+//      -ESLint config
+//      -npm update
 
 export default MainPage;

@@ -17,10 +17,21 @@ const {
     editNote
 } = require("./APIs/notes");
 
+const {
+    loginUser,
+    signUpUser,
+    uploadProfilePhoto
+} = require("./APIs/users")
+
+const auth = require('./utils/auth');
+
 app.get("/notes", getAllNotes);
-app.post('/note', postOneNote);
-app.delete('/note/:noteId', deleteNote);
-app.put('/note/:noteId', editNote);
+app.post("/note", postOneNote);
+app.delete("/note/:noteId", deleteNote);
+app.put("/note/:noteId", editNote);
+app.post("/login", loginUser);
+app.post("/signup", signUpUser);
+app.post('/user/image', auth, uploadProfilePhoto);
 
 exports.api = functions.https.onRequest(app);
 
