@@ -46,7 +46,7 @@ exports.signUpUser = (request, response) => {
         username: request.body.username
     };
 
-    const { valid, errors } = validateSignUpData(newUser);
+    const {valid, errors} = validateSignUpData(newUser);
 
     if (!valid) return response.status(400).json(errors);
 
@@ -56,7 +56,7 @@ exports.signUpUser = (request, response) => {
         .get()
         .then((doc) => {
             if (doc.exists) {
-                return response.status(400).json({ username: 'this username is already taken' });
+                return response.status(400).json({username: 'this username is already taken'});
             } else {
                 return firebase
                     .auth()
@@ -86,15 +86,15 @@ exports.signUpUser = (request, response) => {
                 .doc(`/users/${newUser.username}`)
                 .set(userCredentials);
         })
-        .then(()=>{
-            return response.status(201).json({ token });
+        .then(() => {
+            return response.status(201).json({token});
         })
         .catch((err) => {
             console.error(err);
             if (err.code === 'auth/email-already-in-use') {
-                return response.status(400).json({ email: 'Email already in use' });
+                return response.status(400).json({email: 'Email already in use'});
             } else {
-                return response.status(500).json({ general: 'Something went wrong, please try again' });
+                return response.status(500).json({general: 'Something went wrong, please try again'});
             }
         });
 }
@@ -104,12 +104,10 @@ const deleteImage = (imageName) => {
     const path = `${imageName}`
     return bucket.file(path).delete()
         .then(() => {
-            return
         })
         .catch((error) => {
-            return
         })
-}
+};
 
 // Upload profile picture
 exports.uploadProfilePhoto = (request, response) => {
@@ -117,22 +115,35 @@ exports.uploadProfilePhoto = (request, response) => {
     const path = require('path');
     const os = require('os');
     const fs = require('fs');
-    const busboy = new Busboy({ headers: request.headers });
+    // const busboy = new Busboy({headers: request.headers});
+    const busboy = new Busboy({headers: request.headers, limits: {files: 1, fileSize: 10000000}});
 
     let imageFileName;
     let imageToBeUploaded = {};
+    let filePath;
+    let limitReach = false;
+    const limitReachErr = "You have attached more than one file or your file is too large";
 
-    busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
+    busboy.on('file', (fieldName, file, fileName, encoding, mimetype) => {
         if (mimetype !== 'image/png' && mimetype !== 'image/jpeg') {
-            return response.status(400).json({ error: 'Wrong file type submited' });
+            return response.status(400).json({error: 'Wrong file type submitted'});
         }
-        const imageExtension = filename.split('.')[filename.split('.').length - 1];
+        const imageExtension = fileName.split('.')[fileName.split('.').length - 1];
         imageFileName = `${request.user.username}.${imageExtension}`;
-        const filePath = path.join(os.tmpdir(), imageFileName);
-        imageToBeUploaded = { filePath, mimetype };
+        filePath = path.join(os.tmpdir(), imageFileName);
+        imageToBeUploaded = {filePath, mimetype};
         file.pipe(fs.createWriteStream(filePath));
     });
-    deleteImage(imageFileName);
+    deleteImage(imageFileName).catch((error) => {
+        console.error(error);
+        return response.status(500).json({error: error.code});
+    });
+    busboy.on('limit', () => {
+        fs.unlink(filePath, () => {
+            limitReach = true;
+            return response.status(455).send(limitReachErr);
+        })
+    });
     busboy.on('finish', () => {
         admin
             .storage()
@@ -152,11 +163,13 @@ exports.uploadProfilePhoto = (request, response) => {
                 });
             })
             .then(() => {
-                return response.json({ message: 'Image uploaded successfully' });
+                if (!limitReach) {
+                    return response.json({message: 'Image uploaded successfully'});
+                }
             })
             .catch((error) => {
                 console.error(error);
-                return response.status(500).json({ error: error.code });
+                return response.status(500).json({error: error.code});
             });
     });
     busboy.end(request.rawBody);
