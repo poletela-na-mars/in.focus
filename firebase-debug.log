@@ -4283,3 +4283,1065 @@ Require stack:
 [info] >      at C:\Users\user\WebstormProjects\in.focus\functions\utils\auth.js:21:20 {"user":"    at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\utils\\auth.js:21:20","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\utils\\auth.js:21:20"}}
 [info] >      at processTicksAndRejections (node:internal/process/task_queues:96:5) {"user":"    at processTicksAndRejections (node:internal/process/task_queues:96:5)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)"}}
 [info] i  functions: Finished "api" in 1631.7341999999999ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 1631.7341999999999ms"}}
+[debug] [2022-11-08T22:03:06.634Z] ----------------------------------------------------------------------
+[debug] [2022-11-08T22:03:06.638Z] Command:       H:\nodeJS\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2022-11-08T22:03:06.639Z] CLI Version:   11.15.0
+[debug] [2022-11-08T22:03:06.639Z] Platform:      win32
+[debug] [2022-11-08T22:03:06.639Z] Node Version:  v16.17.0
+[debug] [2022-11-08T22:03:06.641Z] Time:          Wed Nov 09 2022 01:03:06 GMT+0300 (Москва, стандартное время)
+[debug] [2022-11-08T22:03:06.641Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-11-08T22:03:06.749Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-11-08T22:03:06.750Z] > authorizing via signed-in user (postylyakova84@gmail.com)
+[debug] [2022-11-08T22:03:06.750Z] [iam] checking project in-focus-16151 for permissions ["firebase.projects.get"]
+[debug] [2022-11-08T22:03:06.753Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/in-focus-16151:testIamPermissions [none]
+[debug] [2022-11-08T22:03:06.753Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/in-focus-16151:testIamPermissions x-goog-quota-user=projects/in-focus-16151
+[debug] [2022-11-08T22:03:06.753Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/in-focus-16151:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-11-08T22:03:07.628Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/in-focus-16151:testIamPermissions 200
+[debug] [2022-11-08T22:03:07.628Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/in-focus-16151:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-11-08T22:03:07.630Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/in-focus-16151 [none]
+[debug] [2022-11-08T22:03:07.910Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/in-focus-16151 200
+[debug] [2022-11-08T22:03:07.911Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/in-focus-16151 {"projectId":"in-focus-16151","projectNumber":"625163953243","displayName":"in-focus","name":"projects/in-focus-16151","resources":{"hostingSite":"in-focus-16151","storageBucket":"in-focus-16151.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_5bb4e753-2cf2-4a29-aa5c-8ba89bf80ee9"}
+[info] 
+[info] === Serving from 'C:\Users\user\WebstormProjects\in.focus'...
+[info] 
+[info] +  functions: Using node@16 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Using node@16 from host."}}
+[debug] [2022-11-08T22:03:07.957Z] defaultcredentials: writing to file C:\Users\user\AppData\Roaming\firebase\postylyakova84_gmail_com_application_default_credentials.json
+[debug] [2022-11-08T22:03:07.959Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/in-focus-16151/sites 
+[debug] [2022-11-08T22:03:07.963Z] Setting GAC to C:\Users\user\AppData\Roaming\firebase\postylyakova84_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\user\\AppData\\Roaming\\firebase\\postylyakova84_gmail_com_application_default_credentials.json"}}
+[debug] [2022-11-08T22:03:07.964Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/in-focus-16151/adminSdkConfig [none]
+[debug] [2022-11-08T22:03:08.207Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/in-focus-16151/adminSdkConfig 200
+[debug] [2022-11-08T22:03:08.207Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/in-focus-16151/adminSdkConfig {"projectId":"in-focus-16151","storageBucket":"in-focus-16151.appspot.com","locationId":"us-central"}
+[debug] [2022-11-08T22:03:09.014Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/in-focus-16151/sites 200
+[debug] [2022-11-08T22:03:09.014Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/in-focus-16151/sites {"sites":[{"name":"projects/in-focus-16151/sites/in-focus-16151","defaultUrl":"https://in-focus-16151.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2022-11-08T22:03:09.014Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/in-focus-16151/webApps/-/config [none]
+[debug] [2022-11-08T22:03:09.826Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/in-focus-16151/webApps/-/config 200
+[debug] [2022-11-08T22:03:09.826Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/in-focus-16151/webApps/-/config {"projectId":"in-focus-16151","appId":"1:625163953243:web:ff161a72607c07c60acb7e","storageBucket":"in-focus-16151.appspot.com","locationId":"us-central","apiKey":"AIzaSyDEOwRFfMFuxNYn2wckQJJsq1iapJ-1Ez8","authDomain":"in-focus-16151.firebaseapp.com","messagingSenderId":"625163953243","measurementId":"G-D0D0L7Z383"}
+[debug] [2022-11-08T22:03:09.835Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/in-focus-16151 [none]
+[debug] [2022-11-08T22:03:10.057Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/in-focus-16151 200
+[debug] [2022-11-08T22:03:10.057Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/in-focus-16151 {"projectId":"in-focus-16151","projectNumber":"625163953243","displayName":"in-focus","name":"projects/in-focus-16151","resources":{"hostingSite":"in-focus-16151","storageBucket":"in-focus-16151.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_5bb4e753-2cf2-4a29-aa5c-8ba89bf80ee9"}
+[info] i  functions: Watching "C:\Users\user\WebstormProjects\in.focus\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\" for Cloud Functions..."}}
+[info] i  hosting[in-focus-16151]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] +  hosting[in-focus-16151]: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[debug] [2022-11-08T22:03:10.082Z] Validating nodejs source
+[debug] [2022-11-08T22:03:12.600Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:03:12.600Z] Building nodejs source
+[debug] [2022-11-08T22:03:12.600Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:03:12.601Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:03:12.838Z] Serving at port 9005
+
+[debug] [2022-11-08T22:03:13.175Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:03:13.182Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[info] +  functions[us-central1-api]: http function initialized (http://localhost:5001/in-focus-16151/us-central1/api). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5001/in-focus-16151/us-central1/api)."}}
+[debug] [2022-11-08T22:03:16.443Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:03:16.443Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:03:16.444Z] Accepted request GET /in-focus-16151/us-central1/api --> us-central1-api
+[debug] [2022-11-08T22:03:16.444Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:03:16.445Z] [functions] Got req.url=/in-focus-16151/us-central1/api, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api, mapping to path=/"}}
+[debug] [2022-11-08T22:03:16.456Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2022-11-08T22:03:16.456Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[debug] [2022-11-08T22:03:18.402Z] [runtime-status] [18956] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [18956] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:03:18.406Z] [runtime-status] [18956] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [18956] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:03:18.406Z] [runtime-status] [18956] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [18956] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2022-11-08T22:03:18.408Z] [runtime-status] [18956] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [18956] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:03:18.661Z] [runtime-status] [18956] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [18956] Checked functions.config() {\"config\":{}}"}}
+[debug] [2022-11-08T22:03:18.662Z] [runtime-status] [18956] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [18956] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:03:18.663Z] [runtime-status] [18956] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [18956] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:03:18.665Z] [runtime-status] [18956] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [18956] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:03:18.667Z] [runtime-status] [18956] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [18956] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:03:18.668Z] [runtime-status] [18956] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [18956] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:03:18.799Z] [runtime-status] [18956] initializeApp(DEFAULT) {"storageBucket":"in-focus-16151.appspot.com","projectId":"in-focus-16151"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [18956] initializeApp(DEFAULT) {\"storageBucket\":\"in-focus-16151.appspot.com\",\"projectId\":\"in-focus-16151\"}"}}
+[warn] !  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"The Cloud Firestore emulator is not running, so calls to Firestore will affect production."}}
+[debug] [2022-11-08T22:03:18.904Z] [runtime-status] [18956] Functions runtime initialized. {"cwd":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions","node_version":"16.17.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [18956] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\",\"node_version\":\"16.17.0\"}"}}
+[debug] [2022-11-08T22:03:18.906Z] [runtime-status] [18956] Listening to port: \\?\pipe\fire_emu_1304c31781f84128 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [18956] Listening to port: \\\\?\\pipe\\fire_emu_1304c31781f84128"}}
+[debug] [2022-11-08T22:03:18.976Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:03:18.976Z] [worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[debug] [2022-11-08T22:03:18.984Z] [worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: IDLE"}}
+[debug] [2022-11-08T22:03:18.985Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 3.7087ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 3.7087ms"}}
+[debug] [2022-11-08T22:03:50.217Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:03:50.217Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:03:50.217Z] Accepted request POST /in-focus-16151/us-central1/api/login --> us-central1-api
+[debug] [2022-11-08T22:03:50.218Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:03:50.218Z] [functions] Got req.url=/in-focus-16151/us-central1/api/login, mapping to path=/login {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/login, mapping to path=/login"}}
+[debug] [2022-11-08T22:03:50.219Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:03:50.219Z] [worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[warn] !  Google API requested!
+   - URL: "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDEOwRFfMFuxNYn2wckQJJsq1iapJ-1Ez8"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDEOwRFfMFuxNYn2wckQJJsq1iapJ-1Ez8\"\n   - Be careful, this may be a production service."}}
+[warn] !  Google API requested!
+   - URL: "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyDEOwRFfMFuxNYn2wckQJJsq1iapJ-1Ez8"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyDEOwRFfMFuxNYn2wckQJJsq1iapJ-1Ez8\"\n   - Be careful, this may be a production service."}}
+[debug] [2022-11-08T22:03:51.196Z] [worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: IDLE"}}
+[debug] [2022-11-08T22:03:51.197Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 965.2384ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 965.2384ms"}}
+[debug] [2022-11-08T22:04:14.315Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:04:14.315Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:04:14.315Z] Accepted request POST /in-focus-16151/us-central1/api/user/image --> us-central1-api
+[debug] [2022-11-08T22:04:14.316Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:04:14.316Z] [functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image"}}
+[debug] [2022-11-08T22:04:14.316Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:04:14.316Z] [worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[warn] !  functions: The Firebase Authentication emulator is not running, so calls to Firebase Authentication will affect production. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"The Firebase Authentication emulator is not running, so calls to Firebase Authentication will affect production."}}
+[warn] !  Google API requested!
+   - URL: "https://oauth2.googleapis.com/token"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://oauth2.googleapis.com/token\"\n   - Be careful, this may be a production service."}}
+[debug] [2022-11-08T22:04:15.748Z] [worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: IDLE"}}
+[debug] [2022-11-08T22:04:15.748Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] >  TypeError: Missing Content-Type-header. {"user":"TypeError: Missing Content-Type-header.","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m TypeError: Missing Content-Type-header."}}
+[info] >      at new Busboy (C:\Users\user\WebstormProjects\in.focus\node_modules\@fastify\busboy\lib\main.js:19:11) {"user":"    at new Busboy (C:\\Users\\user\\WebstormProjects\\in.focus\\node_modules\\@fastify\\busboy\\lib\\main.js:19:11)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at new Busboy (C:\\Users\\user\\WebstormProjects\\in.focus\\node_modules\\@fastify\\busboy\\lib\\main.js:19:11)"}}
+[info] >      at exports.uploadProfilePhoto (C:\Users\user\WebstormProjects\in.focus\functions\APIs\users.js:120:20) {"user":"    at exports.uploadProfilePhoto (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\users.js:120:20)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at exports.uploadProfilePhoto (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\users.js:120:20)"}}
+[info] >      at Layer.handle [as handle_request] (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\express\lib\router\layer.js:95:5) {"user":"    at Layer.handle [as handle_request] (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\express\\lib\\router\\layer.js:95:5)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at Layer.handle [as handle_request] (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\express\\lib\\router\\layer.js:95:5)"}}
+[info] >      at next (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\express\lib\router\route.js:144:13) {"user":"    at next (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\express\\lib\\router\\route.js:144:13)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at next (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\express\\lib\\router\\route.js:144:13)"}}
+[info] >      at C:\Users\user\WebstormProjects\in.focus\functions\utils\auth.js:21:20 {"user":"    at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\utils\\auth.js:21:20","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\utils\\auth.js:21:20"}}
+[info] >      at processTicksAndRejections (node:internal/process/task_queues:96:5) {"user":"    at processTicksAndRejections (node:internal/process/task_queues:96:5)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)"}}
+[info] i  functions: Finished "api" in 1430.6368ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 1430.6368ms"}}
+[debug] [2022-11-08T22:04:59.701Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:04:59.701Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:04:59.701Z] Accepted request POST /in-focus-16151/us-central1/api/user/image --> us-central1-api
+[debug] [2022-11-08T22:04:59.702Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:04:59.702Z] [functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image"}}
+[debug] [2022-11-08T22:04:59.703Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:04:59.703Z] [worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[warn] !  functions: The Firebase Storage emulator is not running, so calls to Firebase Storage will affect production. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"The Firebase Storage emulator is not running, so calls to Firebase Storage will affect production."}}
+[warn] !  Google API requested!
+   - URL: "https://storage.googleapis.com/storage/v1/b/in-focus-16151.appspot.com/o/undefined?"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://storage.googleapis.com/storage/v1/b/in-focus-16151.appspot.com/o/undefined?\"\n   - Be careful, this may be a production service."}}
+[warn] !  Google API requested!
+   - URL: "https://storage.googleapis.com/upload/storage/v1/b/in-focus-16151.appspot.com/o?uploadType=multipart&name=polina-super.jpg"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://storage.googleapis.com/upload/storage/v1/b/in-focus-16151.appspot.com/o?uploadType=multipart&name=polina-super.jpg\"\n   - Be careful, this may be a production service."}}
+[debug] [2022-11-08T22:05:00.885Z] [worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: IDLE"}}
+[debug] [2022-11-08T22:05:00.885Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 1178.7364ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 1178.7364ms"}}
+[debug] [2022-11-08T22:10:39.954Z] File C:\Users\user\WebstormProjects\in.focus\functions\APIs\users.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\users.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:10:40.966Z] Validating nodejs source
+[debug] [2022-11-08T22:10:43.905Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:10:43.905Z] Building nodejs source
+[debug] [2022-11-08T22:10:43.905Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:10:43.906Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:10:44.178Z] Serving at port 9005
+
+[debug] [2022-11-08T22:10:44.509Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:10:44.517Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:10:44.530Z] [worker-pool] Shutting down IDLE worker (us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-api)"}}
+[debug] [2022-11-08T22:10:44.531Z] [worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: FINISHING"}}
+[debug] [2022-11-08T22:10:44.540Z] [worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: exited"}}
+[debug] [2022-11-08T22:10:44.540Z] [worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-1fae4a93-a8fa-4837-9177-c6fb169ec226]: FINISHED"}}
+[debug] [2022-11-08T22:11:25.956Z] File C:\Users\user\WebstormProjects\in.focus\functions\APIs\users.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\users.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:11:26.967Z] Validating nodejs source
+[debug] [2022-11-08T22:11:29.705Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:11:29.705Z] Building nodejs source
+[debug] [2022-11-08T22:11:29.705Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:11:29.706Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:11:29.978Z] Serving at port 9005
+
+[debug] [2022-11-08T22:11:30.302Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:11:30.309Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:12:02.705Z] File C:\Users\user\WebstormProjects\in.focus\functions\APIs\users.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\users.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:12:03.722Z] Validating nodejs source
+[debug] [2022-11-08T22:12:06.262Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:12:06.262Z] Building nodejs source
+[debug] [2022-11-08T22:12:06.262Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:12:06.263Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:12:06.548Z] Serving at port 9005
+
+[debug] [2022-11-08T22:12:06.885Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:12:06.892Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:13:18.458Z] File C:\Users\user\WebstormProjects\in.focus\functions\APIs\users.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\users.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:13:19.474Z] Validating nodejs source
+[debug] [2022-11-08T22:13:21.999Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:13:21.999Z] Building nodejs source
+[debug] [2022-11-08T22:13:21.999Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:13:21.999Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:13:22.249Z] Serving at port 9005
+
+[debug] [2022-11-08T22:13:22.572Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:13:22.579Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:14:14.294Z] File C:\Users\user\WebstormProjects\in.focus\functions\APIs\users.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\users.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:14:15.300Z] Validating nodejs source
+[debug] [2022-11-08T22:14:17.764Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:14:17.764Z] Building nodejs source
+[debug] [2022-11-08T22:14:17.764Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:14:17.764Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:14:18.024Z] Serving at port 9005
+
+[debug] [2022-11-08T22:14:18.351Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:14:18.357Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:14:22.789Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:14:22.789Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:14:22.789Z] Accepted request POST /in-focus-16151/us-central1/api/user/image --> us-central1-api
+[debug] [2022-11-08T22:14:22.790Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:14:22.790Z] [functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image"}}
+[debug] [2022-11-08T22:14:22.790Z] [worker-pool] Cleaned up workers for us-central1-api: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-api: 1 --> 0"}}
+[debug] [2022-11-08T22:14:22.797Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2022-11-08T22:14:22.797Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[debug] [2022-11-08T22:14:24.129Z] [runtime-status] [8448] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8448] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:14:24.131Z] [runtime-status] [8448] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8448] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:14:24.132Z] [runtime-status] [8448] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8448] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2022-11-08T22:14:24.133Z] [runtime-status] [8448] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8448] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:14:24.367Z] [runtime-status] [8448] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8448] Checked functions.config() {\"config\":{}}"}}
+[debug] [2022-11-08T22:14:24.367Z] [runtime-status] [8448] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8448] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:14:24.368Z] [runtime-status] [8448] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8448] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:14:24.371Z] [runtime-status] [8448] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8448] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:14:24.374Z] [runtime-status] [8448] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8448] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:14:24.375Z] [runtime-status] [8448] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8448] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:14:24.489Z] [runtime-status] [8448] initializeApp(DEFAULT) {"storageBucket":"in-focus-16151.appspot.com","projectId":"in-focus-16151"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8448] initializeApp(DEFAULT) {\"storageBucket\":\"in-focus-16151.appspot.com\",\"projectId\":\"in-focus-16151\"}"}}
+[debug] [2022-11-08T22:14:24.553Z] [runtime-status] [8448] Functions runtime initialized. {"cwd":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions","node_version":"16.17.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8448] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\",\"node_version\":\"16.17.0\"}"}}
+[debug] [2022-11-08T22:14:24.554Z] [runtime-status] [8448] Listening to port: \\?\pipe\fire_emu_318bc79cc589b490 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8448] Listening to port: \\\\?\\pipe\\fire_emu_318bc79cc589b490"}}
+[debug] [2022-11-08T22:14:24.567Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:14:24.567Z] [worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[warn] !  Google API requested!
+   - URL: "https://oauth2.googleapis.com/token"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://oauth2.googleapis.com/token\"\n   - Be careful, this may be a production service."}}
+[warn] !  Google API requested!
+   - URL: "https://storage.googleapis.com/storage/v1/b/in-focus-16151.appspot.com/o/undefined?"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://storage.googleapis.com/storage/v1/b/in-focus-16151.appspot.com/o/undefined?\"\n   - Be careful, this may be a production service."}}
+[warn] !  Google API requested!
+   - URL: "https://storage.googleapis.com/upload/storage/v1/b/in-focus-16151.appspot.com/o?uploadType=multipart&name=polina-super.jpeg"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://storage.googleapis.com/upload/storage/v1/b/in-focus-16151.appspot.com/o?uploadType=multipart&name=polina-super.jpeg\"\n   - Be careful, this may be a production service."}}
+[debug] [2022-11-08T22:14:26.155Z] [worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: IDLE"}}
+[debug] [2022-11-08T22:14:26.156Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 1578.8987ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 1578.8987ms"}}
+[debug] [2022-11-08T22:15:00.172Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:15:00.172Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:15:00.172Z] Accepted request POST /in-focus-16151/us-central1/api/user/image --> us-central1-api
+[debug] [2022-11-08T22:15:00.173Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:15:00.173Z] [functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image"}}
+[debug] [2022-11-08T22:15:00.173Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:15:00.173Z] [worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[debug] [2022-11-08T22:15:01.132Z] [worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: IDLE"}}
+[debug] [2022-11-08T22:15:01.133Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 956.3296ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 956.3296ms"}}
+[debug] [2022-11-08T22:15:48.755Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:15:48.755Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:15:48.755Z] Accepted request POST /in-focus-16151/us-central1/api/user/image --> us-central1-api
+[debug] [2022-11-08T22:15:48.756Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:15:48.756Z] [functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image"}}
+[debug] [2022-11-08T22:15:48.756Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:15:48.756Z] [worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[debug] [2022-11-08T22:15:49.655Z] [worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: IDLE"}}
+[debug] [2022-11-08T22:15:49.655Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 896.3439ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 896.3439ms"}}
+[debug] [2022-11-08T22:18:20.408Z] File C:\Users\user\WebstormProjects\in.focus\functions\APIs\users.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\users.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:18:21.412Z] Validating nodejs source
+[debug] [2022-11-08T22:18:24.748Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:18:24.748Z] Building nodejs source
+[debug] [2022-11-08T22:18:24.748Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:18:24.749Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:18:25.010Z] Serving at port 9005
+
+[debug] [2022-11-08T22:18:25.334Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:18:25.341Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:18:25.352Z] [worker-pool] Shutting down IDLE worker (us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-api)"}}
+[debug] [2022-11-08T22:18:25.352Z] [worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: FINISHING"}}
+[debug] [2022-11-08T22:18:25.366Z] [worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: exited"}}
+[debug] [2022-11-08T22:18:25.366Z] [worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-afb7f9bf-ea1a-418d-a825-77c3f8348555]: FINISHED"}}
+[debug] [2022-11-08T22:18:29.872Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:18:29.872Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:18:29.872Z] Accepted request POST /in-focus-16151/us-central1/api/user/image --> us-central1-api
+[debug] [2022-11-08T22:18:29.873Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:18:29.873Z] [functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image"}}
+[debug] [2022-11-08T22:18:29.873Z] [worker-pool] Cleaned up workers for us-central1-api: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-api: 1 --> 0"}}
+[debug] [2022-11-08T22:18:29.879Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2022-11-08T22:18:29.880Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[debug] [2022-11-08T22:18:31.300Z] [runtime-status] [17528] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [17528] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:18:31.302Z] [runtime-status] [17528] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [17528] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:18:31.303Z] [runtime-status] [17528] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [17528] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2022-11-08T22:18:31.304Z] [runtime-status] [17528] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [17528] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:18:31.543Z] [runtime-status] [17528] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [17528] Checked functions.config() {\"config\":{}}"}}
+[debug] [2022-11-08T22:18:31.543Z] [runtime-status] [17528] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [17528] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:18:31.545Z] [runtime-status] [17528] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [17528] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:18:31.547Z] [runtime-status] [17528] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [17528] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:18:31.549Z] [runtime-status] [17528] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [17528] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:18:31.549Z] [runtime-status] [17528] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [17528] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:18:31.659Z] [runtime-status] [17528] initializeApp(DEFAULT) {"storageBucket":"in-focus-16151.appspot.com","projectId":"in-focus-16151"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [17528] initializeApp(DEFAULT) {\"storageBucket\":\"in-focus-16151.appspot.com\",\"projectId\":\"in-focus-16151\"}"}}
+[debug] [2022-11-08T22:18:31.723Z] [runtime-status] [17528] Functions runtime initialized. {"cwd":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions","node_version":"16.17.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [17528] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\",\"node_version\":\"16.17.0\"}"}}
+[debug] [2022-11-08T22:18:31.724Z] [runtime-status] [17528] Listening to port: \\?\pipe\fire_emu_a49c709ab55fd692 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [17528] Listening to port: \\\\?\\pipe\\fire_emu_a49c709ab55fd692"}}
+[debug] [2022-11-08T22:18:31.740Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:18:31.740Z] [worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[warn] !  Google API requested!
+   - URL: "https://oauth2.googleapis.com/token"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://oauth2.googleapis.com/token\"\n   - Be careful, this may be a production service."}}
+[warn] !  Google API requested!
+   - URL: "https://storage.googleapis.com/storage/v1/b/in-focus-16151.appspot.com/o/undefined?"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://storage.googleapis.com/storage/v1/b/in-focus-16151.appspot.com/o/undefined?\"\n   - Be careful, this may be a production service."}}
+[warn] !  Google API requested!
+   - URL: "https://storage.googleapis.com/upload/storage/v1/b/in-focus-16151.appspot.com/o?uploadType=multipart&name=polina-super.jpeg"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://storage.googleapis.com/upload/storage/v1/b/in-focus-16151.appspot.com/o?uploadType=multipart&name=polina-super.jpeg\"\n   - Be careful, this may be a production service."}}
+[debug] [2022-11-08T22:18:34.221Z] [worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: IDLE"}}
+[debug] [2022-11-08T22:18:34.221Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 2472.7967ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 2472.7967ms"}}
+[debug] [2022-11-08T22:22:54.151Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:22:54.151Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:22:54.151Z] Accepted request POST /in-focus-16151/us-central1/api/user/image --> us-central1-api
+[debug] [2022-11-08T22:22:54.152Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:22:54.152Z] [functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/user/image, mapping to path=/user/image"}}
+[debug] [2022-11-08T22:22:54.152Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:22:54.152Z] [worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[debug] [2022-11-08T22:22:55.397Z] [worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: IDLE"}}
+[debug] [2022-11-08T22:22:55.398Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 1242.6618ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 1242.6618ms"}}
+[debug] [2022-11-08T22:28:41.471Z] File C:\Users\user\WebstormProjects\in.focus\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:28:42.487Z] Validating nodejs source
+[debug] [2022-11-08T22:28:45.489Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:28:45.489Z] Building nodejs source
+[debug] [2022-11-08T22:28:45.489Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:28:45.490Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:28:45.749Z] Serving at port 9005
+
+[debug] [2022-11-08T22:28:46.089Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:28:46.096Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:28:46.106Z] [worker-pool] Shutting down IDLE worker (us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-api)"}}
+[debug] [2022-11-08T22:28:46.107Z] [worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: FINISHING"}}
+[debug] [2022-11-08T22:28:46.115Z] [worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: exited"}}
+[debug] [2022-11-08T22:28:46.116Z] [worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-71ddc5e0-4fc3-4375-a359-0ba008b72bf7]: FINISHED"}}
+[debug] [2022-11-08T22:29:14.271Z] File C:\Users\user\WebstormProjects\in.focus\functions\APIs\users.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\users.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:29:15.278Z] Validating nodejs source
+[debug] [2022-11-08T22:29:17.769Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:29:17.769Z] Building nodejs source
+[debug] [2022-11-08T22:29:17.769Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:29:17.771Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:29:18.038Z] Serving at port 9005
+
+[debug] [2022-11-08T22:29:18.356Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:29:18.362Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:31:13.581Z] File C:\Users\user\WebstormProjects\in.focus\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:31:14.587Z] Validating nodejs source
+[debug] [2022-11-08T22:31:17.184Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:31:17.184Z] Building nodejs source
+[debug] [2022-11-08T22:31:17.184Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:31:17.185Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:31:17.422Z] Serving at port 9005
+
+[debug] [2022-11-08T22:31:17.734Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:31:17.740Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:32:44.607Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:32:44.607Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:32:44.607Z] Accepted request GET /in-focus-16151/us-central1/api/user --> us-central1-api
+[debug] [2022-11-08T22:32:44.608Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:32:44.608Z] [functions] Got req.url=/in-focus-16151/us-central1/api/user, mapping to path=/user {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/user, mapping to path=/user"}}
+[debug] [2022-11-08T22:32:44.608Z] [worker-pool] Cleaned up workers for us-central1-api: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-api: 1 --> 0"}}
+[debug] [2022-11-08T22:32:44.615Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2022-11-08T22:32:44.615Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[debug] [2022-11-08T22:32:46.000Z] [runtime-status] [5396] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5396] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:32:46.002Z] [runtime-status] [5396] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5396] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:32:46.003Z] [runtime-status] [5396] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5396] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2022-11-08T22:32:46.004Z] [runtime-status] [5396] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5396] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:32:46.243Z] [runtime-status] [5396] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5396] Checked functions.config() {\"config\":{}}"}}
+[debug] [2022-11-08T22:32:46.243Z] [runtime-status] [5396] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5396] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:32:46.244Z] [runtime-status] [5396] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5396] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:32:46.246Z] [runtime-status] [5396] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5396] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:32:46.249Z] [runtime-status] [5396] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5396] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:32:46.250Z] [runtime-status] [5396] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5396] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:32:46.358Z] [runtime-status] [5396] initializeApp(DEFAULT) {"storageBucket":"in-focus-16151.appspot.com","projectId":"in-focus-16151"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5396] initializeApp(DEFAULT) {\"storageBucket\":\"in-focus-16151.appspot.com\",\"projectId\":\"in-focus-16151\"}"}}
+[debug] [2022-11-08T22:32:46.424Z] [runtime-status] [5396] Functions runtime initialized. {"cwd":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions","node_version":"16.17.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5396] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\",\"node_version\":\"16.17.0\"}"}}
+[debug] [2022-11-08T22:32:46.425Z] [runtime-status] [5396] Listening to port: \\?\pipe\fire_emu_9c5b95db4160d99e {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5396] Listening to port: \\\\?\\pipe\\fire_emu_9c5b95db4160d99e"}}
+[debug] [2022-11-08T22:32:46.472Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:32:46.472Z] [worker-us-central1-api-be45916f-f3da-4037-aecb-babbea4c2111]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-be45916f-f3da-4037-aecb-babbea4c2111]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[warn] !  Google API requested!
+   - URL: "https://oauth2.googleapis.com/token"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://oauth2.googleapis.com/token\"\n   - Be careful, this may be a production service."}}
+[debug] [2022-11-08T22:32:48.111Z] [worker-us-central1-api-be45916f-f3da-4037-aecb-babbea4c2111]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-be45916f-f3da-4037-aecb-babbea4c2111]: IDLE"}}
+[debug] [2022-11-08T22:32:48.112Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 1642.6203ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 1642.6203ms"}}
+[debug] [2022-11-08T22:33:17.394Z] File C:\Users\user\WebstormProjects\in.focus\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:33:18.403Z] Validating nodejs source
+[debug] [2022-11-08T22:33:21.034Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:33:21.034Z] Building nodejs source
+[debug] [2022-11-08T22:33:21.034Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:33:21.035Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:33:21.296Z] Serving at port 9005
+
+[debug] [2022-11-08T22:33:21.627Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:33:21.634Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:33:21.645Z] [worker-pool] Shutting down IDLE worker (us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-api)"}}
+[debug] [2022-11-08T22:33:21.645Z] [worker-us-central1-api-be45916f-f3da-4037-aecb-babbea4c2111]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-be45916f-f3da-4037-aecb-babbea4c2111]: FINISHING"}}
+[debug] [2022-11-08T22:33:21.656Z] [worker-us-central1-api-be45916f-f3da-4037-aecb-babbea4c2111]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-be45916f-f3da-4037-aecb-babbea4c2111]: exited"}}
+[debug] [2022-11-08T22:33:21.656Z] [worker-us-central1-api-be45916f-f3da-4037-aecb-babbea4c2111]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-be45916f-f3da-4037-aecb-babbea4c2111]: FINISHED"}}
+[debug] [2022-11-08T22:33:57.723Z] File C:\Users\user\WebstormProjects\in.focus\functions\APIs\users.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\users.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:33:57.749Z] File C:\Users\user\WebstormProjects\in.focus\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:33:58.756Z] Validating nodejs source
+[debug] [2022-11-08T22:34:02.172Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:34:02.173Z] Building nodejs source
+[debug] [2022-11-08T22:34:02.173Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:34:02.173Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:34:02.416Z] Serving at port 9005
+
+[debug] [2022-11-08T22:34:02.784Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:34:02.791Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:34:06.141Z] File C:\Users\user\WebstormProjects\in.focus\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:34:07.149Z] Validating nodejs source
+[debug] [2022-11-08T22:34:09.680Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:34:09.680Z] Building nodejs source
+[debug] [2022-11-08T22:34:09.680Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:34:09.681Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:34:09.925Z] Serving at port 9005
+
+[debug] [2022-11-08T22:34:10.302Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:34:10.308Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:35:46.398Z] File C:\Users\user\WebstormProjects\in.focus\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:35:47.411Z] Validating nodejs source
+[debug] [2022-11-08T22:35:49.995Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:35:49.995Z] Building nodejs source
+[debug] [2022-11-08T22:35:49.995Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:35:49.996Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:35:50.290Z] Serving at port 9005
+
+[debug] [2022-11-08T22:35:50.676Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:35:50.682Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:38:22.390Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:38:22.390Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:38:22.390Z] Accepted request PUT /in-focus-16151/us-central1/api/user --> us-central1-api
+[debug] [2022-11-08T22:38:22.391Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:38:22.392Z] [functions] Got req.url=/in-focus-16151/us-central1/api/user, mapping to path=/user {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/user, mapping to path=/user"}}
+[debug] [2022-11-08T22:38:22.392Z] [worker-pool] Cleaned up workers for us-central1-api: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-api: 1 --> 0"}}
+[debug] [2022-11-08T22:38:22.397Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2022-11-08T22:38:22.397Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[debug] [2022-11-08T22:38:23.734Z] [runtime-status] [15380] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [15380] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:38:23.736Z] [runtime-status] [15380] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [15380] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:38:23.736Z] [runtime-status] [15380] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [15380] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2022-11-08T22:38:23.737Z] [runtime-status] [15380] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [15380] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:38:23.994Z] [runtime-status] [15380] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [15380] Checked functions.config() {\"config\":{}}"}}
+[debug] [2022-11-08T22:38:23.994Z] [runtime-status] [15380] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [15380] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:38:23.995Z] [runtime-status] [15380] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [15380] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:38:23.997Z] [runtime-status] [15380] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [15380] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:38:23.999Z] [runtime-status] [15380] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [15380] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:38:23.999Z] [runtime-status] [15380] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [15380] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:38:24.106Z] [runtime-status] [15380] initializeApp(DEFAULT) {"storageBucket":"in-focus-16151.appspot.com","projectId":"in-focus-16151"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [15380] initializeApp(DEFAULT) {\"storageBucket\":\"in-focus-16151.appspot.com\",\"projectId\":\"in-focus-16151\"}"}}
+[debug] [2022-11-08T22:38:24.171Z] [runtime-status] [15380] Functions runtime initialized. {"cwd":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions","node_version":"16.17.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [15380] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\",\"node_version\":\"16.17.0\"}"}}
+[debug] [2022-11-08T22:38:24.171Z] [runtime-status] [15380] Listening to port: \\?\pipe\fire_emu_2faeae00016ff354 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [15380] Listening to port: \\\\?\\pipe\\fire_emu_2faeae00016ff354"}}
+[debug] [2022-11-08T22:38:24.274Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:38:24.274Z] [worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[info] >  No token found {"user":"No token found","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m No token found"}}
+[debug] [2022-11-08T22:38:24.295Z] [worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: IDLE"}}
+[debug] [2022-11-08T22:38:24.295Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 5.5733ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 5.5733ms"}}
+[debug] [2022-11-08T22:40:29.296Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:40:29.296Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:40:29.296Z] Accepted request PUT /in-focus-16151/us-central1/api/user --> us-central1-api
+[debug] [2022-11-08T22:40:29.297Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:40:29.297Z] [functions] Got req.url=/in-focus-16151/us-central1/api/user, mapping to path=/user {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/user, mapping to path=/user"}}
+[debug] [2022-11-08T22:40:29.297Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:40:29.297Z] [worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[warn] !  Google API requested!
+   - URL: "https://oauth2.googleapis.com/token"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://oauth2.googleapis.com/token\"\n   - Be careful, this may be a production service."}}
+[debug] [2022-11-08T22:40:31.168Z] [worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: IDLE"}}
+[debug] [2022-11-08T22:40:31.169Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 1868.2736ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 1868.2736ms"}}
+[debug] [2022-11-08T22:40:37.544Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:40:37.544Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:40:37.544Z] Accepted request GET /in-focus-16151/us-central1/api/user --> us-central1-api
+[debug] [2022-11-08T22:40:37.545Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:40:37.545Z] [functions] Got req.url=/in-focus-16151/us-central1/api/user, mapping to path=/user {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/user, mapping to path=/user"}}
+[debug] [2022-11-08T22:40:37.545Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:40:37.545Z] [worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[debug] [2022-11-08T22:40:38.364Z] [worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: IDLE"}}
+[debug] [2022-11-08T22:40:38.365Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 819.5468ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 819.5468ms"}}
+[debug] [2022-11-08T22:41:59.397Z] File C:\Users\user\WebstormProjects\in.focus\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\index.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:42:00.401Z] Validating nodejs source
+[debug] [2022-11-08T22:42:03.824Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:42:03.824Z] Building nodejs source
+[debug] [2022-11-08T22:42:03.824Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:42:03.825Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:42:04.148Z] Serving at port 9005
+
+[debug] [2022-11-08T22:42:04.544Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:42:04.551Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:42:04.564Z] [worker-pool] Shutting down IDLE worker (us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-api)"}}
+[debug] [2022-11-08T22:42:04.564Z] [worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: FINISHING"}}
+[debug] [2022-11-08T22:42:04.574Z] [worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: exited"}}
+[debug] [2022-11-08T22:42:04.575Z] [worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-157f228d-801b-45b8-a466-62a12f32dbaa]: FINISHED"}}
+[debug] [2022-11-08T22:43:20.869Z] File C:\Users\user\WebstormProjects\in.focus\functions\APIs\notes.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\notes.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:43:21.880Z] Validating nodejs source
+[debug] [2022-11-08T22:43:24.383Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:43:24.383Z] Building nodejs source
+[debug] [2022-11-08T22:43:24.384Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:43:24.384Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:43:24.614Z] Serving at port 9005
+
+[debug] [2022-11-08T22:43:25.030Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:43:25.036Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:44:38.513Z] File C:\Users\user\WebstormProjects\in.focus\functions\APIs\notes.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\notes.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:44:39.518Z] Validating nodejs source
+[debug] [2022-11-08T22:44:42.165Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:44:42.165Z] Building nodejs source
+[debug] [2022-11-08T22:44:42.165Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:44:42.165Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:44:42.413Z] Serving at port 9005
+
+[debug] [2022-11-08T22:44:42.736Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:44:42.743Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:47:39.076Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:47:39.076Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:47:39.076Z] Accepted request GET /in-focus-16151/us-central1/api/notes --> us-central1-api
+[debug] [2022-11-08T22:47:39.077Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:47:39.077Z] [functions] Got req.url=/in-focus-16151/us-central1/api/notes, mapping to path=/notes {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/notes, mapping to path=/notes"}}
+[debug] [2022-11-08T22:47:39.077Z] [worker-pool] Cleaned up workers for us-central1-api: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-api: 1 --> 0"}}
+[debug] [2022-11-08T22:47:39.083Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2022-11-08T22:47:39.083Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[debug] [2022-11-08T22:47:40.429Z] [runtime-status] [8632] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8632] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:47:40.431Z] [runtime-status] [8632] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8632] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:47:40.432Z] [runtime-status] [8632] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8632] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2022-11-08T22:47:40.433Z] [runtime-status] [8632] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8632] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:47:40.671Z] [runtime-status] [8632] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8632] Checked functions.config() {\"config\":{}}"}}
+[debug] [2022-11-08T22:47:40.671Z] [runtime-status] [8632] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8632] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:47:40.672Z] [runtime-status] [8632] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8632] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:47:40.673Z] [runtime-status] [8632] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8632] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:47:40.676Z] [runtime-status] [8632] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8632] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:47:40.676Z] [runtime-status] [8632] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8632] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:47:40.784Z] [runtime-status] [8632] initializeApp(DEFAULT) {"storageBucket":"in-focus-16151.appspot.com","projectId":"in-focus-16151"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8632] initializeApp(DEFAULT) {\"storageBucket\":\"in-focus-16151.appspot.com\",\"projectId\":\"in-focus-16151\"}"}}
+[debug] [2022-11-08T22:47:40.854Z] [runtime-status] [8632] Functions runtime initialized. {"cwd":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions","node_version":"16.17.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8632] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\",\"node_version\":\"16.17.0\"}"}}
+[debug] [2022-11-08T22:47:40.855Z] [runtime-status] [8632] Listening to port: \\?\pipe\fire_emu_639d3d0c8ac9cbe2 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [8632] Listening to port: \\\\?\\pipe\\fire_emu_639d3d0c8ac9cbe2"}}
+[debug] [2022-11-08T22:47:40.958Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:47:40.958Z] [worker-us-central1-api-e6e7d7ad-71be-45f1-9c14-6be2e0dfd298]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-e6e7d7ad-71be-45f1-9c14-6be2e0dfd298]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[warn] !  Google API requested!
+   - URL: "https://oauth2.googleapis.com/token"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://oauth2.googleapis.com/token\"\n   - Be careful, this may be a production service."}}
+[info] >  Error: 9 FAILED_PRECONDITION: The query requires an index. You can create it here: https://console.firebase.google.com/v1/r/project/in-focus-16151/firestore/indexes?create_composite=Ckxwcm9qZWN0cy9pbi1mb2N1cy0xNjE1MS9kYXRhYmFzZXMvKGRlZmF1bHQpL2NvbGxlY3Rpb25Hcm91cHMvbm90ZXMvaW5kZXhlcy9fEAEaDAoIdXNlcm5hbWUQARoNCgljcmVhdGVkQXQQAhoMCghfX25hbWVfXxAC {"user":"Error: 9 FAILED_PRECONDITION: The query requires an index. You can create it here: https://console.firebase.google.com/v1/r/project/in-focus-16151/firestore/indexes?create_composite=Ckxwcm9qZWN0cy9pbi1mb2N1cy0xNjE1MS9kYXRhYmFzZXMvKGRlZmF1bHQpL2NvbGxlY3Rpb25Hcm91cHMvbm90ZXMvaW5kZXhlcy9fEAEaDAoIdXNlcm5hbWUQARoNCgljcmVhdGVkQXQQAhoMCghfX25hbWVfXxAC","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Error: 9 FAILED_PRECONDITION: The query requires an index. You can create it here: https://console.firebase.google.com/v1/r/project/in-focus-16151/firestore/indexes?create_composite=Ckxwcm9qZWN0cy9pbi1mb2N1cy0xNjE1MS9kYXRhYmFzZXMvKGRlZmF1bHQpL2NvbGxlY3Rpb25Hcm91cHMvbm90ZXMvaW5kZXhlcy9fEAEaDAoIdXNlcm5hbWUQARoNCgljcmVhdGVkQXQQAhoMCghfX25hbWVfXxAC"}}
+[info] >      at Object.callErrorFromStatus (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\@grpc\grpc-js\build\src\call.js:31:19) {"user":"    at Object.callErrorFromStatus (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@grpc\\grpc-js\\build\\src\\call.js:31:19)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at Object.callErrorFromStatus (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@grpc\\grpc-js\\build\\src\\call.js:31:19)"}}
+[info] >      at Object.onReceiveStatus (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\@grpc\grpc-js\build\src\client.js:352:49) {"user":"    at Object.onReceiveStatus (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@grpc\\grpc-js\\build\\src\\client.js:352:49)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at Object.onReceiveStatus (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@grpc\\grpc-js\\build\\src\\client.js:352:49)"}}
+[info] >      at Object.onReceiveStatus (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\@grpc\grpc-js\build\src\client-interceptors.js:328:181) {"user":"    at Object.onReceiveStatus (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@grpc\\grpc-js\\build\\src\\client-interceptors.js:328:181)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at Object.onReceiveStatus (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@grpc\\grpc-js\\build\\src\\client-interceptors.js:328:181)"}}
+[info] >      at C:\Users\user\WebstormProjects\in.focus\functions\node_modules\@grpc\grpc-js\build\src\call-stream.js:188:78 {"user":"    at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@grpc\\grpc-js\\build\\src\\call-stream.js:188:78","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@grpc\\grpc-js\\build\\src\\call-stream.js:188:78"}}
+[info] >      at processTicksAndRejections (node:internal/process/task_queues:78:11) {"user":"    at processTicksAndRejections (node:internal/process/task_queues:78:11)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at processTicksAndRejections (node:internal/process/task_queues:78:11)"}}
+[info] >  for call at {"user":"for call at","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m for call at"}}
+[info] >      at ServiceClientImpl.makeServerStreamRequest (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\@grpc\grpc-js\build\src\client.js:336:30) {"user":"    at ServiceClientImpl.makeServerStreamRequest (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@grpc\\grpc-js\\build\\src\\client.js:336:30)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at ServiceClientImpl.makeServerStreamRequest (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@grpc\\grpc-js\\build\\src\\client.js:336:30)"}}
+[info] >      at ServiceClientImpl.<anonymous> (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\@grpc\grpc-js\build\src\make-client.js:105:19) {"user":"    at ServiceClientImpl.<anonymous> (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@grpc\\grpc-js\\build\\src\\make-client.js:105:19)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at ServiceClientImpl.<anonymous> (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@grpc\\grpc-js\\build\\src\\make-client.js:105:19)"}}
+[info] >      at C:\Users\user\WebstormProjects\in.focus\functions\node_modules\@google-cloud\firestore\build\src\v1\firestore_client.js:205:29 {"user":"    at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@google-cloud\\firestore\\build\\src\\v1\\firestore_client.js:205:29","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@google-cloud\\firestore\\build\\src\\v1\\firestore_client.js:205:29"}}
+[info] >      at C:\Users\user\WebstormProjects\in.focus\functions\node_modules\google-gax\build\src\streamingCalls\streamingApiCaller.js:38:28 {"user":"    at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\google-gax\\build\\src\\streamingCalls\\streamingApiCaller.js:38:28","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\google-gax\\build\\src\\streamingCalls\\streamingApiCaller.js:38:28"}}
+[info] >      at C:\Users\user\WebstormProjects\in.focus\functions\node_modules\google-gax\build\src\normalCalls\timeout.js:44:16 {"user":"    at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\google-gax\\build\\src\\normalCalls\\timeout.js:44:16","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\google-gax\\build\\src\\normalCalls\\timeout.js:44:16"}}
+[info] >      at Object.request (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\google-gax\build\src\streamingCalls\streaming.js:126:40) {"user":"    at Object.request (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\google-gax\\build\\src\\streamingCalls\\streaming.js:126:40)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at Object.request (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\google-gax\\build\\src\\streamingCalls\\streaming.js:126:40)"}}
+[info] >      at makeRequest (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\retry-request\index.js:139:28) {"user":"    at makeRequest (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\retry-request\\index.js:139:28)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at makeRequest (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\retry-request\\index.js:139:28)"}}
+[info] >      at retryRequest (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\retry-request\index.js:107:5) {"user":"    at retryRequest (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\retry-request\\index.js:107:5)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at retryRequest (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\retry-request\\index.js:107:5)"}}
+[info] >      at StreamProxy.setStream (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\google-gax\build\src\streamingCalls\streaming.js:117:37) {"user":"    at StreamProxy.setStream (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\google-gax\\build\\src\\streamingCalls\\streaming.js:117:37)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at StreamProxy.setStream (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\google-gax\\build\\src\\streamingCalls\\streaming.js:117:37)"}}
+[info] >      at StreamingApiCaller.call (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\google-gax\build\src\streamingCalls\streamingApiCaller.js:54:16) {"user":"    at StreamingApiCaller.call (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\google-gax\\build\\src\\streamingCalls\\streamingApiCaller.js:54:16)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at StreamingApiCaller.call (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\google-gax\\build\\src\\streamingCalls\\streamingApiCaller.js:54:16)"}}
+[info] >  Caused by: Error {"user":"Caused by: Error","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Caused by: Error"}}
+[info] >      at Query._get (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\@google-cloud\firestore\build\src\reference.js:1519:23) {"user":"    at Query._get (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@google-cloud\\firestore\\build\\src\\reference.js:1519:23)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at Query._get (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@google-cloud\\firestore\\build\\src\\reference.js:1519:23)"}}
+[info] >      at Query.get (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\@google-cloud\firestore\build\src\reference.js:1507:21) {"user":"    at Query.get (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@google-cloud\\firestore\\build\\src\\reference.js:1507:21)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at Query.get (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\@google-cloud\\firestore\\build\\src\\reference.js:1507:21)"}}
+[info] >      at exports.getAllNotes (C:\Users\user\WebstormProjects\in.focus\functions\APIs\notes.js:8:10) {"user":"    at exports.getAllNotes (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\notes.js:8:10)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at exports.getAllNotes (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\notes.js:8:10)"}}
+[info] >      at Layer.handle [as handle_request] (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\express\lib\router\layer.js:95:5) {"user":"    at Layer.handle [as handle_request] (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\express\\lib\\router\\layer.js:95:5)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at Layer.handle [as handle_request] (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\express\\lib\\router\\layer.js:95:5)"}}
+[info] >      at next (C:\Users\user\WebstormProjects\in.focus\functions\node_modules\express\lib\router\route.js:144:13) {"user":"    at next (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\express\\lib\\router\\route.js:144:13)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at next (C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\express\\lib\\router\\route.js:144:13)"}}
+[info] >      at C:\Users\user\WebstormProjects\in.focus\functions\utils\auth.js:21:20 {"user":"    at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\utils\\auth.js:21:20","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\utils\\auth.js:21:20"}}
+[info] >      at processTicksAndRejections (node:internal/process/task_queues:96:5) { {"user":"    at processTicksAndRejections (node:internal/process/task_queues:96:5) {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     at processTicksAndRejections (node:internal/process/task_queues:96:5) {"}}
+[info] >    code: 9, {"user":"  code: 9,","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m   code: 9,"}}
+[info] >    details: 'The query requires an index. You can create it here: https://console.firebase.google.com/v1/r/project/in-focus-16151/firestore/indexes?create_composite=Ckxwcm9qZWN0cy9pbi1mb2N1cy0xNjE1MS9kYXRhYmFzZXMvKGRlZmF1bHQpL2NvbGxlY3Rpb25Hcm91cHMvbm90ZXMvaW5kZXhlcy9fEAEaDAoIdXNlcm5hbWUQARoNCgljcmVhdGVkQXQQAhoMCghfX25hbWVfXxAC', {"user":"  details: 'The query requires an index. You can create it here: https://console.firebase.google.com/v1/r/project/in-focus-16151/firestore/indexes?create_composite=Ckxwcm9qZWN0cy9pbi1mb2N1cy0xNjE1MS9kYXRhYmFzZXMvKGRlZmF1bHQpL2NvbGxlY3Rpb25Hcm91cHMvbm90ZXMvaW5kZXhlcy9fEAEaDAoIdXNlcm5hbWUQARoNCgljcmVhdGVkQXQQAhoMCghfX25hbWVfXxAC',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m   details: 'The query requires an index. You can create it here: https://console.firebase.google.com/v1/r/project/in-focus-16151/firestore/indexes?create_composite=Ckxwcm9qZWN0cy9pbi1mb2N1cy0xNjE1MS9kYXRhYmFzZXMvKGRlZmF1bHQpL2NvbGxlY3Rpb25Hcm91cHMvbm90ZXMvaW5kZXhlcy9fEAEaDAoIdXNlcm5hbWUQARoNCgljcmVhdGVkQXQQAhoMCghfX25hbWVfXxAC',"}}
+[info] >    metadata: Metadata { internalRepr: Map(0) {}, options: {} } {"user":"  metadata: Metadata { internalRepr: Map(0) {}, options: {} }","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m   metadata: Metadata { internalRepr: Map(0) {}, options: {} }"}}
+[info] >  } {"user":"}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m }"}}
+[debug] [2022-11-08T22:47:42.531Z] [worker-us-central1-api-e6e7d7ad-71be-45f1-9c14-6be2e0dfd298]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-e6e7d7ad-71be-45f1-9c14-6be2e0dfd298]: IDLE"}}
+[debug] [2022-11-08T22:47:42.531Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 1558.0089ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 1558.0089ms"}}
+[debug] [2022-11-08T22:54:02.186Z] File C:\Users\user\WebstormProjects\in.focus\functions\APIs\notes.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\APIs\\notes.js changed, reloading triggers"}}
+[debug] [2022-11-08T22:54:03.198Z] Validating nodejs source
+[debug] [2022-11-08T22:54:06.808Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-11-08T22:54:06.808Z] Building nodejs source
+[debug] [2022-11-08T22:54:06.808Z] Analyzing nodejs backend spec
+[debug] [2022-11-08T22:54:06.809Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-08T22:54:07.103Z] Serving at port 9005
+
+[debug] [2022-11-08T22:54:07.489Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-08T22:54:07.500Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-11-08T22:54:07.519Z] [worker-pool] Shutting down IDLE worker (us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-api)"}}
+[debug] [2022-11-08T22:54:07.520Z] [worker-us-central1-api-e6e7d7ad-71be-45f1-9c14-6be2e0dfd298]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-e6e7d7ad-71be-45f1-9c14-6be2e0dfd298]: FINISHING"}}
+[debug] [2022-11-08T22:54:07.530Z] [worker-us-central1-api-e6e7d7ad-71be-45f1-9c14-6be2e0dfd298]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-e6e7d7ad-71be-45f1-9c14-6be2e0dfd298]: exited"}}
+[debug] [2022-11-08T22:54:07.530Z] [worker-us-central1-api-e6e7d7ad-71be-45f1-9c14-6be2e0dfd298]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-e6e7d7ad-71be-45f1-9c14-6be2e0dfd298]: FINISHED"}}
+[debug] [2022-11-08T22:54:56.637Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:54:56.637Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:54:56.637Z] Accepted request GET /in-focus-16151/us-central1/api/notes --> us-central1-api
+[debug] [2022-11-08T22:54:56.637Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:54:56.638Z] [functions] Got req.url=/in-focus-16151/us-central1/api/notes, mapping to path=/notes {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/notes, mapping to path=/notes"}}
+[debug] [2022-11-08T22:54:56.638Z] [worker-pool] Cleaned up workers for us-central1-api: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-api: 1 --> 0"}}
+[debug] [2022-11-08T22:54:56.643Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2022-11-08T22:54:56.643Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[debug] [2022-11-08T22:54:57.999Z] [runtime-status] [9168] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [9168] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:54:58.002Z] [runtime-status] [9168] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [9168] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:54:58.002Z] [runtime-status] [9168] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [9168] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2022-11-08T22:54:58.003Z] [runtime-status] [9168] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [9168] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:54:58.243Z] [runtime-status] [9168] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [9168] Checked functions.config() {\"config\":{}}"}}
+[debug] [2022-11-08T22:54:58.243Z] [runtime-status] [9168] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [9168] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:54:58.244Z] [runtime-status] [9168] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [9168] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:54:58.245Z] [runtime-status] [9168] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [9168] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-11-08T22:54:58.248Z] [runtime-status] [9168] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.0.2","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [9168] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.0.2\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2022-11-08T22:54:58.249Z] [runtime-status] [9168] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [9168] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-11-08T22:54:58.357Z] [runtime-status] [9168] initializeApp(DEFAULT) {"storageBucket":"in-focus-16151.appspot.com","projectId":"in-focus-16151"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [9168] initializeApp(DEFAULT) {\"storageBucket\":\"in-focus-16151.appspot.com\",\"projectId\":\"in-focus-16151\"}"}}
+[debug] [2022-11-08T22:54:58.422Z] [runtime-status] [9168] Functions runtime initialized. {"cwd":"C:\\Users\\user\\WebstormProjects\\in.focus\\functions","node_version":"16.17.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [9168] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\user\\\\WebstormProjects\\\\in.focus\\\\functions\",\"node_version\":\"16.17.0\"}"}}
+[debug] [2022-11-08T22:54:58.422Z] [runtime-status] [9168] Listening to port: \\?\pipe\fire_emu_4f8612049c616e78 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [9168] Listening to port: \\\\?\\pipe\\fire_emu_4f8612049c616e78"}}
+[debug] [2022-11-08T22:54:58.500Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:54:58.500Z] [worker-us-central1-api-5a7e9f02-7ad3-4d73-8335-66ac92a63e15]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-5a7e9f02-7ad3-4d73-8335-66ac92a63e15]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[warn] !  Google API requested!
+   - URL: "https://oauth2.googleapis.com/token"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Google API requested!\n   - URL: \"https://oauth2.googleapis.com/token\"\n   - Be careful, this may be a production service."}}
+[debug] [2022-11-08T22:55:00.095Z] [worker-us-central1-api-5a7e9f02-7ad3-4d73-8335-66ac92a63e15]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-5a7e9f02-7ad3-4d73-8335-66ac92a63e15]: IDLE"}}
+[debug] [2022-11-08T22:55:00.095Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 1591.6611ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 1591.6611ms"}}
+[debug] [2022-11-08T22:57:14.540Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:57:14.541Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:57:14.541Z] Accepted request GET /in-focus-16151/us-central1/api/notes --> us-central1-api
+[debug] [2022-11-08T22:57:14.543Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:57:14.544Z] [functions] Got req.url=/in-focus-16151/us-central1/api/notes, mapping to path=/notes {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/notes, mapping to path=/notes"}}
+[debug] [2022-11-08T22:57:14.544Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:57:14.545Z] [worker-us-central1-api-5a7e9f02-7ad3-4d73-8335-66ac92a63e15]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-5a7e9f02-7ad3-4d73-8335-66ac92a63e15]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[info] >  No token found {"user":"No token found","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m No token found"}}
+[debug] [2022-11-08T22:57:14.558Z] [worker-us-central1-api-5a7e9f02-7ad3-4d73-8335-66ac92a63e15]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-5a7e9f02-7ad3-4d73-8335-66ac92a63e15]: IDLE"}}
+[debug] [2022-11-08T22:57:14.559Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 6.645ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 6.645ms"}}
+[debug] [2022-11-08T22:57:14.613Z] Functions emulator received unknown request at path /favicon.ico
+[debug] [2022-11-08T22:57:20.087Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-11-08T22:57:20.087Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-11-08T22:57:20.087Z] Accepted request GET /in-focus-16151/us-central1/api/notes --> us-central1-api
+[debug] [2022-11-08T22:57:20.088Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-11-08T22:57:20.088Z] [functions] Got req.url=/in-focus-16151/us-central1/api/notes, mapping to path=/notes {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/in-focus-16151/us-central1/api/notes, mapping to path=/notes"}}
+[debug] [2022-11-08T22:57:20.088Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[debug] [2022-11-08T22:57:20.088Z] [worker-us-central1-api-5a7e9f02-7ad3-4d73-8335-66ac92a63e15]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-5a7e9f02-7ad3-4d73-8335-66ac92a63e15]: BUSY"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[debug] [2022-11-08T22:57:20.922Z] [worker-us-central1-api-5a7e9f02-7ad3-4d73-8335-66ac92a63e15]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-5a7e9f02-7ad3-4d73-8335-66ac92a63e15]: IDLE"}}
+[debug] [2022-11-08T22:57:20.922Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "api" in 832.4564ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 832.4564ms"}}
