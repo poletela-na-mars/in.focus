@@ -38,5 +38,6 @@ const MainPage = (props) => {
 //TODO:
 //      -марщрутизация
 //      -ESLint config
+//      ----problems in browser with auth, bearer token
 
 export default MainPage;

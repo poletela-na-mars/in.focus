@@ -30,7 +30,7 @@ exports.loginUser = (request, response) => {
         })
         .catch((error) => {
             console.error(error);
-            return response.status(403).json({general: 'wrong credentials, please try again'});
+            return response.status(403).json({general: 'Wrong credentials, please try again'});
         })
 };
 
@@ -56,7 +56,7 @@ exports.signUpUser = (request, response) => {
         .get()
         .then((doc) => {
             if (doc.exists) {
-                return response.status(400).json({username: 'this username is already taken'});
+                return response.status(400).json({username: 'This username is already taken'});
             } else {
                 return firebase
                     .auth()
@@ -70,8 +70,8 @@ exports.signUpUser = (request, response) => {
             userId = data.user.uid;
             return data.user.getIdToken();
         })
-        .then((idtoken) => {
-            token = idtoken;
+        .then((idToken) => {
+            token = idToken;
             const userCredentials = {
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
@@ -89,9 +89,9 @@ exports.signUpUser = (request, response) => {
         .then(() => {
             return response.status(201).json({token});
         })
-        .catch((err) => {
-            console.error(err);
-            if (err.code === 'auth/email-already-in-use') {
+        .catch((error) => {
+            console.error(error);
+            if (error.code === 'auth/email-already-in-use') {
                 return response.status(400).json({email: 'Email already in use'});
             } else {
                 return response.status(500).json({general: 'Something went wrong, please try again'});

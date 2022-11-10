@@ -12,6 +12,7 @@ exports.getAllNotes = (request, response) => {
                 notes.push({
                     noteId: doc.id,
                     title: doc.data().title,
+                    username: doc.data().username,
                     body: doc.data().body,
                     createdAt: doc.data().createdAt,
                 });
@@ -21,6 +22,31 @@ exports.getAllNotes = (request, response) => {
         .catch((err) => {
             console.error(err);
             return response.status(500).json({error: err.code});
+        });
+};
+
+
+exports.getOneNote = (request, response) => {
+    db
+        .doc(`/notes/${request.params.noteId}`)
+        .get()
+        .then((doc) => {
+            if (!doc.exists) {
+                return response.status(404).json(
+                    {
+                        error: 'Note not found'
+                    });
+            }
+            if(doc.data().username !== request.user.username){
+                return response.status(403).json({error:"Unauthorized"})
+            }
+            const NoteData = doc.data();
+            NoteData.noteId = doc.id;
+            return response.json(NoteData);
+        })
+        .catch((err) => {
+            console.error(err);
+            return response.status(500).json({ error: err.code });
         });
 };
 
@@ -85,6 +111,9 @@ exports.editNote = ( request, response ) => {
             response.json({message: 'Edited successfully'});
         })
         .catch((err) => {
+            if(err.code === 5){
+                response.status(404).json({message: 'Not Found'});
+            }
             console.error(err);
             return response.status(500).json({
                 error: err.code

@@ -1,17 +1,10 @@
 const functions = require("firebase-functions");
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
-
 const app = require("express")();
 
 const {
     getAllNotes,
+    getOneNote,
     postOneNote,
     deleteNote,
     editNote
@@ -27,10 +20,15 @@ const {
 
 const auth = require('./utils/auth');
 
+// Notes
 app.get("/notes", auth, getAllNotes);
+app.get('/note/:noteId', auth, getOneNote);
 app.post("/note", auth, postOneNote);
 app.delete("/note/:noteId", auth, deleteNote);
 app.put("/note/:noteId", auth, editNote);
+
+
+// User
 app.post("/login", loginUser);
 app.post("/signup", signUpUser);
 app.post('/user/image', auth, uploadProfilePhoto);
