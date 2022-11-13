@@ -38,6 +38,6 @@ const MainPage = (props) => {
 //TODO:
 //      -марщрутизация
 //      -ESLint config
-//      ----problems in browser with auth, bearer token
+//      -add HTTP headers in axios config for security
 
 export default MainPage;
