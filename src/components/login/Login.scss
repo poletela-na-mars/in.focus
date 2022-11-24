@@ -1,0 +1,31 @@
+@import "./../../vars";
+
+.sign-button_login-signup {
+  @include violet-button;
+  font-size: 18px;
+  width: 130px;
+  height: 40px;
+  margin: 20px;
+}
+
+.sign-switch {
+  font-size: 18px;
+  font-family: $medium-font-family;
+  color: $gray-text-color;
+  //cursor: pointer;
+  text-decoration: none;
+}
+
+.checked-switch {
+  color: $orange-color;
+}
+
+.custom-error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+
+.progress {
+  position: absolute;
+}

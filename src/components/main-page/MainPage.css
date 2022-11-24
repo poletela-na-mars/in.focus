@@ -20,20 +20,26 @@
 .start-button {
   height: 58px;
   width: 184px;
+  font-size: 20px;
+}
+.start-button {
+  font-family: "Geometria Medium", sans-serif;
   border-radius: 50px;
   border: none;
   box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1); /*For webkit browsers*/
-  -moz-box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1); /*For Firefox*/
-  font-size: 20px;
+  -webkit-box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
   cursor: pointer;
   color: #FFFFFF;
   background-color: #8613E0;
   transition: background-color 0.5s ease;
 }
-
 .start-button:hover {
   background-color: #FF7A00;
+}
+.start-button:disabled {
+  background-color: rgb(204, 184, 219);
+  cursor: default;
 }
 
 .sign-in-button-container {
@@ -44,10 +50,13 @@
   align-items: flex-end;
 }
 
-.sign-in-button {
+.sign-in-button_main-page {
   font-size: 18px;
   width: 130px;
   height: 40px;
+}
+.sign-in-button_main-page {
+  font-family: "Geometria Medium", sans-serif;
   border-radius: 50px;
   border: 2px solid #8613E0;
   cursor: pointer;
@@ -55,8 +64,7 @@
   color: #8613E0;
   transition: background-color 0.5s ease;
 }
-
-.sign-in-button:hover {
+.sign-in-button_main-page:hover {
   background-color: #8613E0;
   color: #FFFFFF;
 }

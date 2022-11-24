@@ -21,22 +21,10 @@
 }
 
 .start-button {
+  @include violet-button;
   height: 58px;
   width: 184px;
-  border-radius: 50px;
-  border: none;
-  box-shadow: $button-box-shadow;
-  -webkit-box-shadow: $button-box-shadow; /*For webkit browsers*/
-  -moz-box-shadow: $button-box-shadow;   /*For Firefox*/
   font-size: 20px;
-  cursor: pointer;
-  color: $white-color;
-  background-color: $violet-color;
-  transition: $transition;
-}
-
-.start-button:hover {
-  background-color: $orange-color;
 }
 
 .sign-in-button-container {
@@ -47,21 +35,11 @@
   align-items: flex-end;
 }
 
-.sign-in-button {
+.sign-in-button_main-page {
+  @include white-button;
   font-size: 18px;
   width: 130px;
   height: 40px;
-  border-radius: 50px;
-  border: $violet-border;
-  cursor: pointer;
-  background-color: transparent;
-  color: $violet-color;
-  transition: $transition;
-}
-
-.sign-in-button:hover {
-  background-color: $violet-color;
-  color: $white-color;
 }
 
 .sign-in-link {

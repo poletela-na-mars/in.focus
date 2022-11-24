@@ -5,13 +5,53 @@ $violet-color: #8613E0;
 $black-color: #252525;
 $white-color: #FFFFFF;
 $light-violet-color: rgb(204, 184, 219);
+$gray-text-color: #D9D9D9;
 
 // buttons
 $violet-border: 2px solid $violet-color;
 $button-box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
 
-// fonts
+@mixin violet-button {
+  & {
+    font-family: $medium-font-family;
+    border-radius: 50px;
+    border: none;
+    box-shadow: $button-box-shadow;
+    -webkit-box-shadow: $button-box-shadow;
+    -moz-box-shadow: $button-box-shadow;
+    cursor: pointer;
+    color: $white-color;
+    background-color: $violet-color;
+    transition: $transition;
+  }
+  &:hover {
+    background-color: $orange-color;
+  }
+  &:disabled {
+    background-color: $light-violet-color;
+    cursor: default;
+  }
+}
 
+@mixin white-button {
+  & {
+    font-family: $medium-font-family;
+    border-radius: 50px;
+    border: $violet-border;
+    cursor: pointer;
+    background-color: transparent;
+    color: $violet-color;
+    transition: $transition;
+  }
+  &:hover {
+    background-color: $violet-color;
+    color: $white-color;
+  }
+}
+
+// fonts
+$medium-font-family: "Geometria Medium", sans-serif;
+$light-font-family: "Geometria Light", sans-serif;
 
 // others
 $transition: background-color 0.5s ease;
