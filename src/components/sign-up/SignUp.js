@@ -1,11 +1,19 @@
 import {Component} from "react";
 import axios from "axios";
-import {Box, Button, Container, CssBaseline, Grid, TextField, ThemeProvider, Typography} from "@mui/material";
+import {Autocomplete, Box, Container, CssBaseline, Grid, styled, ThemeProvider, Typography} from "@mui/material";
 import {CustomizedTextField, theme} from "../login/Login";
 import {Link} from "react-router-dom";
 import LogoSVG from "../../LogoSVG";
+import {countries} from "./countries";
 
 import "./../login/Login.scss";
+import {MuiTelInput} from "mui-tel-input";
+
+export const CustomizedMuiTelInput = styled(MuiTelInput)`
+  fieldset {
+    border-radius: 50px;
+  }
+`;
 
 class SignUp extends Component {
     constructor(props) {
@@ -36,6 +44,18 @@ class SignUp extends Component {
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
+        });
+    };
+
+    handleChangeTel = (newValue, info) => {
+        this.setState({
+            phoneNumber: "+" + info.countryCallingCode + newValue
+        });
+    };
+
+    handleChangeCountry = (event, newValue) => {
+        this.setState({
+            country: newValue
         });
     };
 
@@ -73,7 +93,7 @@ class SignUp extends Component {
         const {errors, loading} = this.state;
         return (
             <ThemeProvider theme={theme}>
-                <Container component="main" maxWidth="xs">
+                <Container component="main" maxWidth="sm">
                     <CssBaseline/>
                     <Box
                         sx={{
@@ -143,7 +163,7 @@ class SignUp extends Component {
                                 </Grid>
 
                                 <Grid item xs={12} sm={6}>
-                                    <CustomizedTextField
+                                    <CustomizedMuiTelInput
                                         variant="outlined"
                                         required
                                         fullWidth
@@ -151,10 +171,12 @@ class SignUp extends Component {
                                         label="Phone Number"
                                         name="phoneNumber"
                                         autoComplete="phoneNumber"
-                                        pattern="[7-9]{1}[0-9]{9}"
+                                        defaultCountry="RU"
+                                        splitCallingCode
                                         helperText={errors.phoneNumber}
                                         error={!!errors.phoneNumber}
-                                        onChange={this.handleChange}
+                                        value={this.state.phoneNumber}
+                                        onChange={this.handleChangeTel}
                                     />
                                 </Grid>
 
@@ -174,17 +196,18 @@ class SignUp extends Component {
                                 </Grid>
 
                                 <Grid item xs={12}>
-                                    <CustomizedTextField
-                                        variant="outlined"
-                                        required
-                                        fullWidth
+                                    <Autocomplete
+                                        disablePortal
                                         id="country"
-                                        label="Country"
                                         name="country"
+                                        options={countries}
+                                        renderInput={(params) => <CustomizedTextField {...params}
+                                                                                      fullWidth required
+                                                                                      label="Country"/>}
                                         autoComplete="country"
+                                        onChange={(event, value) => this.handleChangeCountry(event, value)}
                                         helperText={errors.country}
                                         error={!!errors.country}
-                                        onChange={this.handleChange}
                                     />
                                 </Grid>
 

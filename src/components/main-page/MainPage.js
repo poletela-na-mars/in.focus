@@ -36,9 +36,6 @@ const MainPage = (props) => {
 };
 
 //TODO:
-//      -список для стран
-//      -маска для телефона
-//      -ошибки в формах
 //      -Terms of Service and Privacy Policy
 //      -
 //      -вынести 50px для border-radius

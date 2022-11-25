@@ -92,7 +92,7 @@ exports.signUpUser = (request, response) => {
         .catch((error) => {
             console.error(error);
             if (error.code === 'auth/email-already-in-use') {
-                return response.status(400).json({email: 'Email already in use'});
+                return response.status(400).json({email: 'Email is already in use'});
             } else {
                 return response.status(500).json({general: 'Something went wrong, please try again'});
             }
@@ -107,6 +107,7 @@ const deleteImage = (imageName) => {
         })
         .catch((error) => {
         })
+    //TODO -deleting file
 };
 
 // Upload profile picture
