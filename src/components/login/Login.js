@@ -1,6 +1,6 @@
 import "@emotion/react";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {
     Box,
     Container,
@@ -69,6 +69,8 @@ class Login extends Component {
     };
 
     handleSubmit = (event) => {
+        const navigate = useNavigate();
+
         event.preventDefault();
         this.setState({loading: true});
         const userData = {
@@ -82,10 +84,13 @@ class Login extends Component {
                 this.setState({
                     loading: false,
                 });
-                // this.props.history.push('/');
+                //this.props.history.push('/');
+                navigate('/home');
+                console.log('here');
+                // return <Navigate to="/home" />
             })
             .catch((error) => {
-                // console.log(error);
+                console.log(error);
                 this.setState({
                     errors: error.response.data,
                     loading: false

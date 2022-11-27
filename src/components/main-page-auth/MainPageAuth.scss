@@ -1,0 +1,38 @@
+.root {
+  display: flex;
+}
+
+.app-bar {
+  z-index: 1000;
+}
+
+.drawer {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.drawer-paper {
+  width: 240px
+}
+
+.content {
+  flex-grow: 1;
+  //padding: theme.spacing(3)
+}
+
+.avatar {
+  height: 110px;
+  width: 100px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  margin-top: 20px;
+}
+
+.ui-progess {
+  position: fixed;
+  z-index: 1000;
+  height: 31px;
+  width: 31px;
+  left: 50%;
+  top: 35%;
+}
