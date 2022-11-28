@@ -36,8 +36,8 @@ const MainPage = (props) => {
 };
 
 //TODO:
-//      -добавить универсальности в handleChange
-//      -ошибки в Sign Up
+//      -remove duplicates
+//      -You should call navigate() in a React.useEffect(), not when your component is first rendered.
 //      -сделать Account функциональным компонентом
 //      -clean-up
 //      -проверка на загрузку фото: максимальный размер, название, расширение, Content-Type Header, без флага exe,

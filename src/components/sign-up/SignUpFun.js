@@ -1,13 +1,15 @@
-import "../login/Login.scss";
-import "./SignUp.scss";
 import {Autocomplete, Box, Container, CssBaseline, Grid, styled, ThemeProvider, Typography} from "@mui/material";
 import {MuiTelInput} from "mui-tel-input";
 import {useState} from "react";
 import axios from "axios";
 import {CustomizedTextField, theme} from "../login/Login";
 import {Link, useNavigate} from "react-router-dom";
-import LogoSVG from "../../LogoSVG";
+
 import {countries} from "./countries";
+import LogoSVG from "../../LogoSVG";
+
+import "../login/Login.scss";
+import "./SignUp.scss";
 
 export const CustomizedMuiTelInput = styled(MuiTelInput)`
   fieldset {
@@ -29,11 +31,7 @@ const SignUpFun = (props) => {
     const [errors, setErrors] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    //TODO -сделать универсально
     const handleChange = (event) => {
-        // this.setState({
-        //     [event.target.name]: event.target.value
-        // });
         switch (event.target.name) {
             case "firstName":
                 setFirstName(event.target.value);
@@ -41,23 +39,19 @@ const SignUpFun = (props) => {
             case "lastName":
                 setLastName(event.target.value);
                 break;
-            case "userName":
+            case "username":
                 setUsername(event.target.value);
-                break;
-            // case "phoneNumber":
-            //     setPhoneNumber(event.target.value);
-            //     break;
-            // case "country":
-            //     setCountry(event.target.value);
-            //     break;
-            case "confirmPassword":
-                setConfirmPassword(event.target.value);
                 break;
             case "email":
                 setEmail(event.target.value);
                 break;
             case "password":
                 setPassword(event.target.value);
+                break;
+            case "confirmPassword":
+                setConfirmPassword(event.target.value);
+                break;
+            default:
                 break;
         }
     };
@@ -224,10 +218,10 @@ const SignUpFun = (props) => {
                                     renderInput={(params) => <CustomizedTextField {...params}
                                                                                   fullWidth required
                                                                                   label="Country"/>}
-                                    autoComplete="country"
+                                    // autoComplete="country"
                                     onChange={(event, value) => handleChangeCountry(event, value)}
-                                    helperText={errors.country}
-                                    error={!!errors.country}
+                                    // helperText={errors.country}
+                                    // error={!!errors.country}
                                 />
                             </Grid>
 
@@ -256,6 +250,8 @@ const SignUpFun = (props) => {
                                     type="password"
                                     id="confirmPassword"
                                     autoComplete="current-password"
+                                    helperText={errors.confirmPassword}
+                                    error={!!errors.confirmPassword}
                                     onChange={handleChange}
                                 />
                             </Grid>
@@ -284,6 +280,15 @@ const SignUpFun = (props) => {
                                     !username ||
                                     !phoneNumber}
                             >
+                                {/*{console.log(loading,*/}
+                                {/*    email,*/}
+                                {/*    password,*/}
+                                {/*    firstName,*/}
+                                {/*    lastName,*/}
+                                {/*    country,*/}
+                                {/*    username,*/}
+                                {/*    phoneNumber,*/}
+                                {/*    confirmPassword)}*/}
                                 Sign Up
                             </button>
                             {errors.general && (

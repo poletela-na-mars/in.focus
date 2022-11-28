@@ -61,7 +61,11 @@ exports.validateSignUpData = (data) => {
     } else if (isEmpty(data.password)) {
         errors.password = 'Must not be empty';
     }
-    if (data.password !== data.confirmPassword) errors.confirmPassword = 'Passwords must be the same';
+    if (data.password !== data.confirmPassword) {
+        errors.confirmPassword = 'Passwords must be the same';
+    } else if (isEmpty(data.confirmPassword)) {
+        errors.confirmPassword = 'Must not be empty';
+    }
     if (!userNameRegexp.test(data.username)) {
         errors.username = 'Username must have at least 6 characters (letters, numbers). You may also use \'-\' and \'_\'.';
     } else if (isEmpty(data.username)) {

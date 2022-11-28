@@ -54,7 +54,6 @@ const LoginFun = (props) => {
     //     }
     // }, [errors])
 
-    //TODO -сделать по-нормальному универсально
     const handleChange = (event) => {
         // this.setState({
         //     [event.target.name]: event.target.value
@@ -65,6 +64,8 @@ const LoginFun = (props) => {
                 break;
             case "password":
                 setPassword(event.target.value);
+                break;
+            default:
                 break;
         }
     };
@@ -86,9 +87,7 @@ const LoginFun = (props) => {
                 // });
                 setLoading(false);
                 //this.props.history.push('/');
-                console.log('here');
                 navigate('/home');
-                // return <Navigate to="/home" />
             })
             .catch((error) => {
                 console.log(error);

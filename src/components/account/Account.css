@@ -1,0 +1,48 @@
+.content {
+  flex-grow: 1;
+}
+
+.avatar {
+  height: 110px;
+  width: 100px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.location-text {
+  padding-left: 15px;
+}
+
+.button-property {
+  position: absolute;
+  top: 50%;
+}
+
+.ui-progress {
+  position: fixed;
+  z-index: 1000;
+  height: 31px;
+  width: 31px;
+  left: 50%;
+  top: 35%;
+}
+
+.progress {
+  position: absolute;
+}
+
+.upload-button {
+  margin-left: 8px;
+}
+
+.custom-error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+
+.submit-button {
+  margin-top: 10px;
+}
+
+/*# sourceMappingURL=Account.css.map */

@@ -16,6 +16,7 @@ import {
 import Account from "../account/Account";
 import Notes from "../notes/Notes";
 import {useNavigate} from "react-router-dom";
+import AccountFun from "../account/AccountFun";
 
 const MainPageAuthFun = (props) => {
     const [mounted, setMounted] = useState(false);
@@ -23,22 +24,24 @@ const MainPageAuthFun = (props) => {
     const [lastName, setLastName] = useState('');
     const [profilePicture, setProfilePicture] = useState('');
     const [uiLoading, setUiLoading] = useState(true);
-    const [imageLoading, setImageLoding] = useState(false);
+    const [imageLoading, setImageLoading] = useState(false);
     const [render, setRender] = useState(false);
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [country, setCountry] = useState('');
-    const [username, setUserName] = useState('');
+    const [username, setUsername] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
 
     const navigate = useNavigate();
 
     const loadAccountPage = (event) => {
-        this.setState({render: true});
+        // this.setState({render: true});
+        setRender(true);
     };
 
     const loadTodoPage = (event) => {
-        this.setState({render: false});
+        // this.setState({render: false});
+        setRender(false);
     };
 
     const logoutHandler = (event) => {
@@ -62,7 +65,7 @@ const MainPageAuthFun = (props) => {
                 setEmail(response.data.userCredentials.email);
                 setPhoneNumber(response.data.userCredentials.phoneNumber);
                 setCountry(response.data.userCredentials.country);
-                setUserName(response.data.userCredentials.username);
+                setUsername(response.data.userCredentials.username);
                 setUiLoading(false);
                 setProfilePicture(response.data.userCredentials.imageUrl);
                 // this.setState({
@@ -153,7 +156,7 @@ const MainPageAuthFun = (props) => {
                             </List>
                         </Drawer>
 
-                        <div>{render ? <Account/> : <Notes/>}</div>
+                        <div>{render ? <AccountFun/> : <Notes/>}</div>
                     </div>
                 )
             }
