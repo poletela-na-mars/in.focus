@@ -1,3 +1,5 @@
+@import "./../../vars";
+
 .content {
   flex-grow: 1;
   //padding: theme.spacing(3)
@@ -29,14 +31,14 @@
   top: 50%;
 }
 
-.ui-progress {
-  position: fixed;
-  z-index: 1000;
-  height: 31px;
-  width: 31px;
-  left: 50%;
-  top: 35%;
-}
+//.ui-progress {
+//  position: fixed;
+//  z-index: 1000;
+//  height: 31px;
+//  width: 31px;
+//  left: 50%;
+//  top: 35%;
+//}
 
 .progress {
   position: absolute;

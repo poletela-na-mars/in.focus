@@ -1,6 +1,11 @@
-.root {
-  display: flex;
-}
+@import "./../../vars";
+
+//.container {
+//  width: 100vw;
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//}
 
 .app-bar {
   z-index: 1000;
@@ -28,11 +33,13 @@
   margin-top: 20px;
 }
 
-.ui-progess {
-  position: fixed;
-  z-index: 1000;
-  height: 31px;
-  width: 31px;
-  left: 50%;
-  top: 35%;
-}
+//.loader {
+//  //position: fixed;
+//  z-index: 1001;
+//  //right: 80%;
+//  //height: 31px;
+//  //width: 31px;
+//  //left: 50%;
+//  //top: 35%;
+//  //margin: 0 auto;
+//}

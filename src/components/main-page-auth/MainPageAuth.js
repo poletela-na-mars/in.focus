@@ -124,7 +124,7 @@ class MainPageAuth extends Component {
         if (this.state.uiLoading === true) {
             return (
                 <div className="root">
-                    {this.state.uiLoading && <CircularProgress size={150} className="ui-progess" />}
+                    {this.state.uiLoading && <CircularProgress size={150}  />}
                 </div>
             );
         } else {

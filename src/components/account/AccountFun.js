@@ -17,9 +17,9 @@ import {useNavigate} from "react-router-dom";
 
 import "./Account.scss";
 
-function CloudUploadIcon() {
-    return null;
-}
+// function CloudUploadIcon() {
+//     return null;
+// }
 
 const AccountFun = (props) => {
     const navigate = useNavigate();
@@ -36,6 +36,7 @@ const AccountFun = (props) => {
     const [buttonLoading, setButtonLoading] = useState(false);
     const [imageError, setImageError] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
+    const [error403, setError403] = useState(false);
 
     if (!mounted) {
         authMiddleWare(navigate);
@@ -44,7 +45,6 @@ const AccountFun = (props) => {
         axios
             .get('/user')
             .then((response) => {
-                console.log(response.data);
                 setFirstName(response.data.userCredentials.firstName);
                 setLastName(response.data.userCredentials.lastName);
                 setEmail(response.data.userCredentials.email);
@@ -55,24 +55,23 @@ const AccountFun = (props) => {
             })
             .catch((error) => {
                 if (error.response.status === 403) {
-                    // this.props.history.push('/login');
-                    navigate("/login");
+                    setError403(true);
                 }
                 console.log(error);
-                // this.setState({errorMsg: 'Error in retrieving the data'});
                 setErrorMsg('Error in retrieving the data');
             });
     }
 
     useEffect(() => {
-        setMounted(true)
-    }, [])
+        setMounted(true);
+        if (error403) {
+            setTimeout(() => {navigate("/login")}, 0)
+            // navigate("/login");
+        }
+    }, [error403, navigate])
 
-    //TODO - какие точно нужны проверить
+    //TODO - какие точно нужны, проверить
     const handleChange = (event) => {
-        // this.setState({
-        //     [event.target.name]: event.target.value
-        // });
         switch (event.target.name) {
             case "firstName":
                 setFirstName(event.target.value);
@@ -100,9 +99,6 @@ const AccountFun = (props) => {
 
     const profilePictureHandler = (event) => {
         event.preventDefault();
-        // this.setState({
-        //     uiLoading: true
-        // });
         setUiLoading(true);
         authMiddleWare(navigate);
         const authToken = localStorage.getItem('AuthToken');
@@ -121,14 +117,9 @@ const AccountFun = (props) => {
             })
             .catch((error) => {
                 if (error.response.status === 403) {
-                    // this.props.history.push('/login');
                     navigate("/login");
                 }
                 console.log(error);
-                // this.setState({
-                //     uiLoading: false,
-                //     imageError: 'Error in posting the data'
-                // });
                 setUiLoading(false);
                 setImageError('Error in posting the data');
             });
@@ -136,7 +127,6 @@ const AccountFun = (props) => {
 
     const updateFormValues = (event) => {
         event.preventDefault();
-        // this.setState({buttonLoading: true});
         setButtonLoading(true);
         authMiddleWare(navigate);
         const authToken = localStorage.getItem('AuthToken');
@@ -149,27 +139,22 @@ const AccountFun = (props) => {
         axios
             .post('/user', formRequest)
             .then(() => {
-                // this.setState({buttonLoading: false});
                 setButtonLoading(false);
             })
             .catch((error) => {
                 if (error.response.status === 403) {
-                    // this.props.history.push('/login');
                     navigate("/login");
                 }
                 console.log(error);
-                // this.setState({
-                //     buttonLoading: false
-                // });
                 setButtonLoading(false);
             });
     };
 
     // const {classes, ...rest} = this.props;
     return uiLoading === true ? (
-        <main className="content">
-            <div className="toolbar"/>
-            {uiLoading && <CircularProgress size={150} className="ui-progress"/>}
+        <main className="container">
+            {/*<div className="toolbar"/>*/}
+            {uiLoading && <CircularProgress size={100} className="loader"/>}
         </main>
     ) : (
         <main className="content">
@@ -187,7 +172,7 @@ const AccountFun = (props) => {
                                 color="primary"
                                 type="submit"
                                 size="small"
-                                startIcon={<CloudUploadIcon/>}
+                                // startIcon={<CloudUploadIcon/>}
                                 className="upload-button"
                                 onClick={profilePictureHandler}
                             >
@@ -305,7 +290,7 @@ const AccountFun = (props) => {
                 }
             >
                 Save details
-                {buttonLoading && <CircularProgress size={30} className="progress"/>}
+                {buttonLoading && <CircularProgress size={30}/>}
             </Button>
         </main>
     );

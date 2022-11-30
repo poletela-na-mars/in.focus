@@ -1,3 +1,6 @@
+import {useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import axios from "axios";
 import {
     Box,
     Container,
@@ -9,9 +12,7 @@ import {
     ThemeProvider,
     Typography
 } from "@mui/material";
-import {useEffect, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
-import axios from "axios";
+
 import LogoSVG from "../../LogoSVG";
 
 import "./Login.scss";
@@ -48,16 +49,7 @@ const LoginFun = (props) => {
 
     const navigate = useNavigate();
 
-    // useEffect((nextProps) => {
-    //     if (nextProps.UI.errors) {
-    //         setErrors(nextProps.UI.errors);
-    //     }
-    // }, [errors])
-
     const handleChange = (event) => {
-        // this.setState({
-        //     [event.target.name]: event.target.value
-        // });
         switch (event.target.name) {
             case "email":
                 setEmail(event.target.value);
@@ -72,7 +64,6 @@ const LoginFun = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // this.setState({loading: true});
         setLoading(true);
         const userData = {
             email: email,
@@ -82,19 +73,11 @@ const LoginFun = (props) => {
             .post('/login', userData)
             .then((response) => {
                 localStorage.setItem('AuthToken', `Bearer ${response.data.token}`);
-                // this.setState({
-                //     loading: false,
-                // });
                 setLoading(false);
-                //this.props.history.push('/');
                 navigate('/home');
             })
             .catch((error) => {
                 console.log(error);
-                // this.setState({
-                //     errors: error.response.data,
-                //     loading: false
-                // });
                 setErrors(error.response.data);
                 setLoading(false);
             });

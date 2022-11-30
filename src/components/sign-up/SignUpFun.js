@@ -57,22 +57,15 @@ const SignUpFun = (props) => {
     };
 
     const handleChangeTel = (newValue, info) => {
-        // this.setState({
-        //     phoneNumber: "+" + info.countryCallingCode + newValue
-        // });
         setPhoneNumber("+" + info.countryCallingCode + newValue);
     };
 
     const handleChangeCountry = (event, newValue) => {
-        // this.setState({
-        //     country: newValue
-        // });
         setCountry(newValue);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // this.setState({loading: true});
         setLoading(true);
         const newUserData = {
             firstName: firstName,
@@ -88,18 +81,10 @@ const SignUpFun = (props) => {
             .post('/signup', newUserData)
             .then((response) => {
                 localStorage.setItem('AuthToken', `${response.data.token}`);
-                // this.setState({
-                //     loading: false,
-                // });
                 setLoading(false)
-                // this.props.history.push('/');
                 navigate("/home");
             })
             .catch((error) => {
-                // this.setState({
-                //     errors: error.response.data,
-                //     loading: false
-                // });
                 setErrors(error.response.data);
                 setLoading(false);
             });

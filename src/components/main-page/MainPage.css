@@ -1,3 +1,16 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  z-index: 1001;
+  color: #8613E0;
+}
+
 .main-page-block {
   display: flex;
   flex-direction: column;

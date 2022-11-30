@@ -1,5 +1,14 @@
-.root {
+.container {
+  width: 100vw;
+  height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  z-index: 1001;
+  color: #8613E0;
 }
 
 .app-bar {
@@ -25,15 +34,6 @@
   flex-shrink: 0;
   flex-grow: 0;
   margin-top: 20px;
-}
-
-.ui-progess {
-  position: fixed;
-  z-index: 1000;
-  height: 31px;
-  width: 31px;
-  left: 50%;
-  top: 35%;
 }
 
 /*# sourceMappingURL=MainPageAuth.css.map */

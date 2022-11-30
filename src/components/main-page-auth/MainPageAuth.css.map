@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["MainPageAuth.scss"],"names":[],"mappings":"AAAA;EACE;;;AAGF;EACE;;;AAGF;EACE;EACA;;;AAGF;EACE;;;AAGF;EACE;;;AAIF;EACE;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA","file":"MainPageAuth.css"}
+{"version":3,"sourceRoot":"","sources":["../../vars.scss","MainPageAuth.scss"],"names":[],"mappings":"AA0DA;EACE;EACA;EACA;EACA;EACA;;;AAGF;EAEE;EACA,OAlEa;;;ACMf;EACE;;;AAGF;EACE;EACA;;;AAGF;EACE;;;AAGF;EACE;;;AAIF;EACE;EACA;EACA;EACA;EACA","file":"MainPageAuth.css"}

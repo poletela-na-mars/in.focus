@@ -36,17 +36,13 @@ const MainPage = (props) => {
 };
 
 //TODO:
-//      -remove duplicates
-//      -You should call navigate() in a React.useEffect(), not when your component is first rendered.
-//      -сделать Account функциональным компонентом
+//      -сделать изменяемыми телефон, почту и username
+//      -хэширование данных пользователя
 //      -clean-up
-//      -проверка на загрузку фото: максимальный размер, название, расширение, Content-Type Header, без флага exe,
-//      переименовывать файлы при загрузке
-//      -Terms of Service and Privacy Policy
-//      -MainPageAuth - связать вход в аккаунт с главной - если не было входа - возвращть в логин
+//      -!проверка на загрузку фото: максимальный размер, название, расширение, Content-Type Header, без флага exe,
+//      -переименовывать файлы при загрузке
 //      -вынести 50px для border-radius
 //      -медиазапрос для MainPage - поменьше для телефона
-//      -марщрутизация
 //      -ESLint config
 //      -add HTTP headers in axios config for security
 

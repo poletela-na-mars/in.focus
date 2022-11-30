@@ -9,14 +9,19 @@ import {
     Divider,
     Drawer,
     List,
-    ListItem, ListItemIcon, ListItemText,
+    ListItem,
+    ListItemIcon,
+    ListItemText, ThemeProvider,
     Toolbar,
     Typography
 } from "@mui/material";
-import Account from "../account/Account";
-import Notes from "../notes/Notes";
 import {useNavigate} from "react-router-dom";
+
+import Notes from "../notes/Notes";
 import AccountFun from "../account/AccountFun";
+
+import "./MainPageAuth.scss";
+import {theme} from "../login/LoginFun";
 
 const MainPageAuthFun = (props) => {
     const [mounted, setMounted] = useState(false);
@@ -31,35 +36,30 @@ const MainPageAuthFun = (props) => {
     const [country, setCountry] = useState('');
     const [username, setUsername] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
+    const [error403, setError403] = useState(false);
 
     const navigate = useNavigate();
 
-    const loadAccountPage = (event) => {
-        // this.setState({render: true});
+    const loadAccountPage = (evt) => {
         setRender(true);
     };
 
-    const loadTodoPage = (event) => {
-        // this.setState({render: false});
+    const loadTodoPage = (evt) => {
         setRender(false);
     };
 
-    const logoutHandler = (event) => {
+    const logoutHandler = (evt) => {
         localStorage.removeItem('AuthToken');
-        // this.props.history.push('/login');
         navigate("/login");
     };
 
     if (!mounted) {
-        // Code for componentWillMount here
-        // This code is called only one time before intial render
         authMiddleWare(navigate);
         const authToken = localStorage.getItem('AuthToken');
         axios.defaults.headers.common = {Authorization: `${authToken}`};
         axios
             .get('/user')
             .then((response) => {
-                console.log(response.data);
                 setFirstName(response.data.userCredentials.firstName);
                 setLastName(response.data.userCredentials.lastName);
                 setEmail(response.data.userCredentials.email);
@@ -68,41 +68,33 @@ const MainPageAuthFun = (props) => {
                 setUsername(response.data.userCredentials.username);
                 setUiLoading(false);
                 setProfilePicture(response.data.userCredentials.imageUrl);
-                // this.setState({
-                //     firstName: response.data.userCredentials.firstName,
-                //     lastName: response.data.userCredentials.lastName,
-                //     email: response.data.userCredentials.email,
-                //     phoneNumber: response.data.userCredentials.phoneNumber,
-                //     country: response.data.userCredentials.country,
-                //     username: response.data.userCredentials.username,
-                //     uiLoading: false,
-                //     profilePicture: response.data.userCredentials.imageUrl
-                // });
             })
             .catch((error) => {
                 if (error.response.status === 403) {
-                    // this.props.history.push('/login')
-                    navigate("/login");
+                    setError403(true);
                 }
                 console.log(error);
-                // this.setState({errorMsg: 'Error in retrieving the data'});
                 setErrorMsg("Error in retrieving the data");
             });
     }
 
     useEffect(() => {
-        setMounted(true)
-    }, [])
+        setMounted(true);
+        if (error403) {
+            setTimeout(() => {navigate("/login")}, 0)
+            // navigate("/login");
+        }
+    }, [error403, navigate])
 
 
     return (
-        <>
+        <ThemeProvider theme={theme}>
             {(uiLoading === true) ?
-                (<div className="root">
-                    {uiLoading && <CircularProgress size={150} className="ui-progess"/>}
+                (<div className="container">
+                    {uiLoading && <CircularProgress size={100} className="loader"/>}
                 </div>)
                 : (
-                    <div className="root">
+                    <div className="container">
                         <CssBaseline/>
                         <AppBar position="fixed" className="app-bar">
                             <Toolbar>
@@ -160,7 +152,7 @@ const MainPageAuthFun = (props) => {
                     </div>
                 )
             }
-        </>
+        </ThemeProvider>
     );
 };
 
