@@ -9,15 +9,16 @@
 
 .app-bar {
   z-index: 1000;
+  //background: #fff;
 }
 
 .drawer {
-  width: 240px;
+  width: 150px;
   flex-shrink: 0;
 }
 
 .drawer-paper {
-  width: 240px
+  width: 150px
 }
 
 .content {
@@ -31,6 +32,13 @@
   flex-shrink: 0;
   flex-grow: 0;
   margin-top: 20px;
+}
+
+.logo-home {
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
+  margin: 0 auto;
 }
 
 //.loader {

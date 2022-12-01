@@ -7,21 +7,28 @@ import {
     CircularProgress,
     CssBaseline,
     Divider,
-    Drawer,
+    Drawer, IconButton,
     List,
     ListItem,
     ListItemIcon,
-    ListItemText, ThemeProvider,
+    ListItemText, styled, TextField, ThemeProvider,
     Toolbar,
     Typography
 } from "@mui/material";
-import {useNavigate} from "react-router-dom";
+// import MenuIcon from '@mui/icons-material/Menu';
+import {Link, useNavigate} from "react-router-dom";
 
 import Notes from "../notes/Notes";
 import AccountFun from "../account/AccountFun";
 
 import "./MainPageAuth.scss";
 import {theme} from "../login/LoginFun";
+import menu from "./../../img/menu_icon.png";
+import LogoSVG from "../../LogoSVG";
+
+// export const CustomizedAppBar = styled(AppBar)`
+//   color: white;
+// `;
 
 const MainPageAuthFun = (props) => {
     const [mounted, setMounted] = useState(false);
@@ -37,6 +44,7 @@ const MainPageAuthFun = (props) => {
     const [username, setUsername] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
     const [error403, setError403] = useState(false);
+    const [openBar, setOpenBar] = useState(false);
 
     const navigate = useNavigate();
 
@@ -81,11 +89,20 @@ const MainPageAuthFun = (props) => {
     useEffect(() => {
         setMounted(true);
         if (error403) {
-            setTimeout(() => {navigate("/login")}, 0)
+            setTimeout(() => {
+                navigate("/login")
+            }, 0)
             // navigate("/login");
         }
     }, [error403, navigate])
 
+    const handleDrawerOpen = () => {
+        setOpenBar(true);
+    };
+
+    const handleDrawerClose = () => {
+        setOpenBar(false);
+    };
 
     return (
         <ThemeProvider theme={theme}>
@@ -96,16 +113,31 @@ const MainPageAuthFun = (props) => {
                 : (
                     <div className="container">
                         <CssBaseline/>
-                        <AppBar position="fixed" className="app-bar">
+                        <AppBar position="fixed" className="app-bar" open={openBar} style={{background: '#fff'}}>
                             <Toolbar>
-                                <Typography variant="h6" noWrap>
-                                    TodoApp
-                                </Typography>
+                                {/*<Typography variant="h6" noWrap>*/}
+                                {/*    in.focus*/}
+                                {/*</Typography>*/}
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="open drawer"
+                                    onClick={handleDrawerOpen}
+                                    edge="start"
+                                    // sx={{ mr: 2, ...(open && { display: 'none' }) }}
+                                >
+                                    <img src={menu} alt="Menu Icon"/>
+                                </IconButton>
+                                <Link to={"/home"} className="logo-home"><LogoSVG width={122} height={35}
+                                /></Link>
                             </Toolbar>
                         </AppBar>
+                        {/*TODO: добавить поиск*/}
                         <Drawer
                             className="drawer"
-                            variant="permanent"
+                            variant="persistent"
+                            transitionDuration={2}
+                            anchor="left"
+                            open={openBar}
                             // classes={{
                             //     paper: drawer-paper
                             // }}
