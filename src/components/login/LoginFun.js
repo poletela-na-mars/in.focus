@@ -6,7 +6,7 @@ import {
     Container,
     createTheme,
     CssBaseline,
-    Grid,
+    Grid, IconButton, InputAdornment,
     styled,
     TextField,
     ThemeProvider,
@@ -16,6 +16,7 @@ import {
 import LogoSVG from "../../LogoSVG";
 
 import "./Login.scss";
+import {Visibility, VisibilityOff} from "@mui/icons-material";
 
 export const theme = createTheme({
     typography: {
@@ -46,6 +47,7 @@ const LoginFun = (props) => {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
 
@@ -82,6 +84,15 @@ const LoginFun = (props) => {
                 setLoading(false);
             });
     };
+
+    const handleClickShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+    // const handleMouseDownPassword = (evt) => {
+    //     setShowPassword(!showPassword);
+    //     // evt.preventDefault();
+    // };
 
     return (
         <ThemeProvider theme={theme}>
@@ -128,12 +139,25 @@ const LoginFun = (props) => {
                             fullWidth
                             name="password"
                             label="Password"
-                            type="password"
+                            // type="password"
+                            type={showPassword ? 'text' : 'password'}
                             id="password"
                             autoComplete="current-password"
                             helperText={errors.password}
                             error={!!errors.password}
                             onChange={handleChange}
+                            InputProps={{endAdornment:
+                                <InputAdornment position="end" sx={{marginRight: 1}}>
+                                <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={handleClickShowPassword}
+                                // onMouseDown={handleMouseDownPassword}
+                                edge="end"
+                                >
+                            {showPassword ? <VisibilityOff/> : <Visibility/>}
+                                </IconButton>
+                                </InputAdornment>
+                            }}
                         />
                         {/*<FormControlLabel*/}
                         {/*    control={<Checkbox value="remember" color="primary" />}*/}

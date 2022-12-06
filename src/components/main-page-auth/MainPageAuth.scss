@@ -18,7 +18,7 @@
 }
 
 .drawer-paper {
-  width: 150px
+  width: 150px;
 }
 
 .content {
@@ -51,3 +51,14 @@
 //  //top: 35%;
 //  //margin: 0 auto;
 //}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}

@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 }
 
 .loader {
@@ -56,6 +57,11 @@
 
 .progress {
   position: absolute;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
 }
 
 /*# sourceMappingURL=Login.css.map */

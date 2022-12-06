@@ -24,10 +24,24 @@ import AccountFun from "../account/AccountFun";
 import "./MainPageAuth.scss";
 import {theme} from "../login/LoginFun";
 import menu from "./../../img/menu_icon.png";
+import hide from "./../../img/arrow_left.png";
+import avatar from "./../../img/avatar.png";
+import account from "./../../img/account.png";
+import accountChecked from "./../../img/account_checked.png";
+import notes from "./../../img/notes.png";
+import notesChecked from "./../../img/notes_checked.png";
+import logout from "./../../img/logout.png";
 import LogoSVG from "../../LogoSVG";
 
 // export const CustomizedAppBar = styled(AppBar)`
 //   color: white;
+// `;
+
+// const CustomizedDrawer = styled(Drawer)`
+// '& .MuiDrawer-paper': {
+//   width: 15px;
+//   box-sizing: border-box;
+// },
 // `;
 
 const MainPageAuthFun = (props) => {
@@ -113,7 +127,7 @@ const MainPageAuthFun = (props) => {
                 : (
                     <div className="container">
                         <CssBaseline/>
-                        <AppBar position="fixed" className="app-bar" open={openBar} style={{background: '#fff'}}>
+                        <AppBar position="fixed" className="app-bar" open={openBar} elevation={0} style={{background: '#fff'}}>
                             <Toolbar>
                                 {/*<Typography variant="h6" noWrap>*/}
                                 {/*    in.focus*/}
@@ -123,7 +137,7 @@ const MainPageAuthFun = (props) => {
                                     aria-label="open drawer"
                                     onClick={handleDrawerOpen}
                                     edge="start"
-                                    // sx={{ mr: 2, ...(open && { display: 'none' }) }}
+                                    // sx={{mr: 2, ...(openBar && {display: 'none'})}}
                                 >
                                     <img src={menu} alt="Menu Icon"/>
                                 </IconButton>
@@ -135,47 +149,63 @@ const MainPageAuthFun = (props) => {
                         <Drawer
                             className="drawer"
                             variant="persistent"
-                            transitionDuration={2}
+                            transitionDuration={500}
                             anchor="left"
                             open={openBar}
                             // classes={{
                             //     paper: drawer-paper
                             // }}
+                            sx={{
+                                    width: 60,
+                                    flexShrink: 0,
+                                    '& .MuiDrawer-paper': {
+                                        width: 60,
+                                        boxSizing: 'border-box',
+                                        overflowX: 'hidden',
+                                    },
+                                }}
                         >
                             {/*<div className={classes.toolbar} />*/}
-                            <div/>
-                            <Divider/>
+                            {/*<Divider/>*/}
+                            <div className="drawer-header">
+                                <IconButton onClick={handleDrawerClose}>
+                                    <img src={hide} alt="Arrow Left Icon"/>
+                                </IconButton>
+                            </div>
                             <center>
                                 <Avatar src={profilePicture} className="avatar"/>
                                 <p>
                                     {' '}
-                                    {firstName} {lastName}
+                                    {/*{firstName} {lastName}*/}
                                 </p>
                             </center>
                             <Divider/>
                             <List>
-                                <ListItem button key="Todo" onClick={loadTodoPage}>
+                                <ListItem button key="Notes" onClick={loadTodoPage}>
                                     <ListItemIcon>
                                         {' '}
                                         {/*<NotesIcon />{' '}*/}
+                                        <img src={notes} className="icon" alt="Notes Icon"/>
                                     </ListItemIcon>
-                                    <ListItemText primary="Todo"/>
+                                    {/*<ListItemText primary="Todo"/>*/}
                                 </ListItem>
 
                                 <ListItem button key="Account" onClick={loadAccountPage}>
                                     <ListItemIcon>
                                         {' '}
+                                        <img src={account} className="icon" alt="Account Icon"/>
                                         {/*<AccountBoxIcon />{' '}*/}
                                     </ListItemIcon>
-                                    <ListItemText primary="Account"/>
+                                    {/*<ListItemText primary="Account"/>*/}
                                 </ListItem>
 
                                 <ListItem button key="Logout" onClick={logoutHandler}>
                                     <ListItemIcon>
                                         {' '}
+                                        <img src={logout} className="icon" alt="Logout Icon"/>
                                         {/*<ExitToAppIcon />{' '}*/}
                                     </ListItemIcon>
-                                    <ListItemText primary="Logout"/>
+                                    {/*<ListItemText primary="Logout"/>*/}
                                 </ListItem>
                             </List>
                         </Drawer>

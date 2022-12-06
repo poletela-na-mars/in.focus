@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 }
 
 .loader {
@@ -38,6 +39,17 @@
 
 .logo-home {
   margin: 0 auto;
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
 }
 
 /*# sourceMappingURL=MainPageAuth.css.map */
