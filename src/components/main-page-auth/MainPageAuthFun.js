@@ -1,21 +1,25 @@
 import {useEffect, useState} from "react";
 import {authMiddleWare} from "../../util/auth";
 import axios from "axios";
+import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
+import NotesRoundedIcon from '@mui/icons-material/NotesRounded';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
 import {
     AppBar,
     Avatar,
     CircularProgress,
     CssBaseline,
     Divider,
-    Drawer, IconButton,
+    Drawer,
+    IconButton,
     List,
     ListItem,
     ListItemIcon,
-    ListItemText, styled, TextField, ThemeProvider,
-    Toolbar,
-    Typography
+    ThemeProvider,
+    Toolbar
 } from "@mui/material";
-// import MenuIcon from '@mui/icons-material/Menu';
 import {Link, useNavigate} from "react-router-dom";
 
 import Notes from "../notes/Notes";
@@ -23,14 +27,6 @@ import AccountFun from "../account/AccountFun";
 
 import "./MainPageAuth.scss";
 import {theme} from "../login/LoginFun";
-import menu from "./../../img/menu_icon.png";
-import hide from "./../../img/arrow_left.png";
-import avatar from "./../../img/avatar.png";
-import account from "./../../img/account.png";
-import accountChecked from "./../../img/account_checked.png";
-import notes from "./../../img/notes.png";
-import notesChecked from "./../../img/notes_checked.png";
-import logout from "./../../img/logout.png";
 import LogoSVG from "../../LogoSVG";
 
 // export const CustomizedAppBar = styled(AppBar)`
@@ -59,18 +55,19 @@ const MainPageAuthFun = (props) => {
     const [errorMsg, setErrorMsg] = useState('');
     const [error403, setError403] = useState(false);
     const [openBar, setOpenBar] = useState(false);
+    const [isActiveIcon, setActiveIcon] = useState({'notes': true, 'account': false});
 
     const navigate = useNavigate();
 
-    const loadAccountPage = (evt) => {
+    const loadAccountPage = () => {
         setRender(true);
     };
 
-    const loadTodoPage = (evt) => {
+    const loadTodoPage = () => {
         setRender(false);
     };
 
-    const logoutHandler = (evt) => {
+    const logoutHandler = () => {
         localStorage.removeItem('AuthToken');
         navigate("/login");
     };
@@ -118,6 +115,18 @@ const MainPageAuthFun = (props) => {
         setOpenBar(false);
     };
 
+    const iconClassName = (icon) => {
+        return isActiveIcon[icon] === true ? 'icon-active' : 'icon';
+    };
+
+    const makeIconsActive = (prevState, icon) => {
+        Object.keys(prevState).forEach(key => {
+            prevState[key] = false;
+        });
+        prevState[icon] = true;
+        return prevState;
+    };
+
     return (
         <ThemeProvider theme={theme}>
             {(uiLoading === true) ?
@@ -139,7 +148,7 @@ const MainPageAuthFun = (props) => {
                                     edge="start"
                                     // sx={{mr: 2, ...(openBar && {display: 'none'})}}
                                 >
-                                    <img src={menu} alt="Menu Icon"/>
+                                    <MenuRoundedIcon fontSize="large" className="icon" />
                                 </IconButton>
                                 <Link to={"/home"} className="logo-home"><LogoSVG width={122} height={35}
                                 /></Link>
@@ -169,7 +178,8 @@ const MainPageAuthFun = (props) => {
                             {/*<Divider/>*/}
                             <div className="drawer-header">
                                 <IconButton onClick={handleDrawerClose}>
-                                    <img src={hide} alt="Arrow Left Icon"/>
+                                    {/*<img src={hide} alt="Arrow Left Icon"/>*/}
+                                    <ArrowBackIosNewRoundedIcon fontSize="small" className="icon-gray" />
                                 </IconButton>
                             </div>
                             <center>
@@ -184,8 +194,11 @@ const MainPageAuthFun = (props) => {
                                 <ListItem button key="Notes" onClick={loadTodoPage}>
                                     <ListItemIcon>
                                         {' '}
-                                        {/*<NotesIcon />{' '}*/}
-                                        <img src={notes} className="icon" alt="Notes Icon"/>
+                                        <NotesRoundedIcon fontSize="large" className={iconClassName('notes')} onClick={() => {
+                                            setActiveIcon(prevState => {
+                                                return makeIconsActive(prevState, 'notes');
+                                            })
+                                        }} />
                                     </ListItemIcon>
                                     {/*<ListItemText primary="Todo"/>*/}
                                 </ListItem>
@@ -193,8 +206,11 @@ const MainPageAuthFun = (props) => {
                                 <ListItem button key="Account" onClick={loadAccountPage}>
                                     <ListItemIcon>
                                         {' '}
-                                        <img src={account} className="icon" alt="Account Icon"/>
-                                        {/*<AccountBoxIcon />{' '}*/}
+                                        <ManageAccountsRoundedIcon fontSize="large" className={iconClassName('account')} onClick={() => {
+                                            setActiveIcon(prevState => {
+                                                return makeIconsActive(prevState, 'account');
+                                            })
+                                        }} />
                                     </ListItemIcon>
                                     {/*<ListItemText primary="Account"/>*/}
                                 </ListItem>
@@ -202,8 +218,7 @@ const MainPageAuthFun = (props) => {
                                 <ListItem button key="Logout" onClick={logoutHandler}>
                                     <ListItemIcon>
                                         {' '}
-                                        <img src={logout} className="icon" alt="Logout Icon"/>
-                                        {/*<ExitToAppIcon />{' '}*/}
+                                        <LogoutRoundedIcon fontSize="large" className="icon" />
                                     </ListItemIcon>
                                     {/*<ListItemText primary="Logout"/>*/}
                                 </ListItem>

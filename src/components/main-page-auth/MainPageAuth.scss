@@ -58,7 +58,31 @@
   justify-content: flex-end;
 }
 
+//.icon {
+//  width: 24px;
+//  height: 24px;
+//}
+
+//.manage-account-icon {
+//  @extend .icon;
+//}
+//
+//.notes-rounded-icon{
+//  @extend .icon;
+//}
+//
+//.logout-icon {
+//  @extend .icon;
+//}
+
 .icon {
-  width: 24px;
-  height: 24px;
+  color: $violet-color;
+}
+
+.icon-active {
+  color: $orange-color;
+}
+
+.icon-gray {
+  color: $gray-text-color;
 }
