@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {authMiddleWare} from "../../util/auth";
+import {CustomizedTextField, theme} from "../login/LoginFun";
 import axios from "axios";
 import {
     Button,
@@ -7,12 +8,12 @@ import {
     CardActions,
     CardContent,
     CircularProgress,
-    Divider,
+    Container,
     Grid,
-    TextField,
+    styled,
+    ThemeProvider,
     Typography
 } from "@mui/material";
-import clsx from "clsx";
 import {useNavigate} from "react-router-dom";
 
 import "./Account.scss";
@@ -20,6 +21,11 @@ import "./Account.scss";
 // function CloudUploadIcon() {
 //     return null;
 // }
+
+const CustomizedCard = styled(Card)`
+  box-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+`;
 
 const AccountFun = (props) => {
     const navigate = useNavigate();
@@ -65,7 +71,9 @@ const AccountFun = (props) => {
     useEffect(() => {
         setMounted(true);
         if (error403) {
-            setTimeout(() => {navigate("/login")}, 0)
+            setTimeout(() => {
+                navigate("/login")
+            }, 0)
             // navigate("/login");
         }
     }, [error403, navigate])
@@ -157,142 +165,166 @@ const AccountFun = (props) => {
             {uiLoading && <CircularProgress size={100} className="loader"/>}
         </main>
     ) : (
-        <main className="content">
-            <div className="toolbar"/>
-            {/*<Card {...rest} className={clsx(classes.root, classes)}>*/}
-            <Card>
-                <CardContent>
-                    <div className="details">
-                        <div>
-                            <Typography className="location-text" gutterBottom variant="h4">
-                                {firstName} {lastName}
-                            </Typography>
-                            <Button
-                                variant="outlined"
-                                color="primary"
-                                type="submit"
-                                size="small"
-                                // startIcon={<CloudUploadIcon/>}
-                                className="upload-button"
-                                onClick={profilePictureHandler}
-                            >
-                                Upload Photo
-                            </Button>
-                            <input type="file" onChange={handleImageChange}/>
+        <ThemeProvider theme={theme}>
+            <main className="content">
+                <div className="toolbar"/>
+                {/*<Card {...rest} className={clsx(classes.root, classes)}>*/}
+                <Container maxWidth="md">
+                    <CustomizedCard variant="outlined">
+                        <CardContent>
+                            <div className="details">
+                                <div>
+                                    <Typography className="name-surname" gutterBottom variant="h4">
+                                        {firstName} {lastName}
+                                    </Typography>
+                                    <Button
+                                        variant="outlined"
+                                        color="primary"
+                                        type="submit"
+                                        size="small"
+                                        // startIcon={<CloudUploadIcon/>}
+                                        className="upload-button"
+                                        onClick={profilePictureHandler}
+                                    >
+                                        Upload Photo
+                                    </Button>
+                                    <input type="file" onChange={handleImageChange}/>
 
-                            {imageError ? (
-                                <div className="custom-error">
-                                    {' '}
-                                    Wrong Image Format || Supported Format are PNG and JPG
+                                    {imageError ? (
+                                        <div className="custom-error">
+                                            {' '}
+                                            Wrong Image Format || Supported Format are PNG and JPG
+                                        </div>
+                                    ) : false}
                                 </div>
-                            ) : false}
-                        </div>
-                    </div>
-                    <div className="progress"/>
-                </CardContent>
-                <Divider/>
-            </Card>
+                            </div>
+                            <div className="progress"/>
+                        </CardContent>
+                        {/*<Divider/>*/}
+                    </CustomizedCard>
 
-            <br/>
-            {/*<Card {...rest} className={clsx(classes.root, classes)}>*/}
-            <Card>
-                <form autoComplete="off" noValidate>
-                    <Divider/>
-                    <CardContent>
-                        <Grid container spacing={3}>
-                            <Grid item md={6} xs={12}>
-                                <TextField
-                                    fullWidth
-                                    label="First name"
-                                    margin="dense"
-                                    name="firstName"
-                                    variant="outlined"
-                                    value={firstName}
-                                    onChange={handleChange}
-                                />
-                            </Grid>
-                            <Grid item md={6} xs={12}>
-                                <TextField
-                                    fullWidth
-                                    label="Last name"
-                                    margin="dense"
-                                    name="lastName"
-                                    variant="outlined"
-                                    value={lastName}
-                                    onChange={handleChange}
-                                />
-                            </Grid>
-                            <Grid item md={6} xs={12}>
-                                <TextField
-                                    fullWidth
-                                    label="Email"
-                                    margin="dense"
-                                    name="email"
-                                    variant="outlined"
-                                    disabled={true}
-                                    value={email}
-                                    onChange={handleChange}
-                                />
-                            </Grid>
-                            <Grid item md={6} xs={12}>
-                                <TextField
-                                    fullWidth
-                                    label="Phone Number"
-                                    margin="dense"
-                                    name="phone"
-                                    type="number"
-                                    variant="outlined"
-                                    disabled={true}
-                                    value={phoneNumber}
-                                    onChange={handleChange}
-                                />
-                            </Grid>
-                            <Grid item md={6} xs={12}>
-                                <TextField
-                                    fullWidth
-                                    label="User Name"
-                                    margin="dense"
-                                    name="userHandle"
-                                    disabled={true}
-                                    variant="outlined"
-                                    value={username}
-                                    onChange={handleChange}
-                                />
-                            </Grid>
-                            <Grid item md={6} xs={12}>
-                                <TextField
-                                    fullWidth
-                                    label="Country"
-                                    margin="dense"
-                                    name="country"
-                                    variant="outlined"
-                                    value={country}
-                                    onChange={handleChange}
-                                />
-                            </Grid>
-                        </Grid>
-                    </CardContent>
-                    <Divider/>
-                    <CardActions/>
-                </form>
-            </Card>
-            <Button
-                color="primary"
-                variant="contained"
-                type="submit"
-                className="submit-button"
-                onClick={updateFormValues}
-                disabled={
-                    buttonLoading ||
-                    !firstName ||
-                    !lastName ||
-                    !country
-                }
-            >
-                Save details
-                {buttonLoading && <CircularProgress size={30}/>}
-            </Button>
-        </main>
+                    <br/>
+                    {/*<Card {...rest} className={clsx(classes.root, classes)}>*/}
+                    <CustomizedCard variant="outlined">
+                        <form autoComplete="off" noValidate>
+                            {/*<Divider/>*/}
+                            <CardContent>
+                                <Grid container spacing={3}>
+                                    <Grid item md={6} xs={12}>
+                                        <CustomizedTextField
+                                            fullWidth
+                                            label="First name"
+                                            margin="dense"
+                                            name="firstName"
+                                            variant="outlined"
+                                            value={firstName}
+                                            onChange={handleChange}
+                                        />
+                                    </Grid>
+                                    <Grid item md={6} xs={12}>
+                                        <CustomizedTextField
+                                            fullWidth
+                                            label="Last name"
+                                            margin="dense"
+                                            name="lastName"
+                                            variant="outlined"
+                                            value={lastName}
+                                            onChange={handleChange}
+                                        />
+                                    </Grid>
+                                    <Grid item md={6} xs={12}>
+                                        <CustomizedTextField
+                                            fullWidth
+                                            label="Email"
+                                            margin="dense"
+                                            name="email"
+                                            variant="outlined"
+                                            disabled={true}
+                                            value={email}
+                                            onChange={handleChange}
+                                        />
+                                    </Grid>
+                                    <Grid item md={6} xs={12}>
+                                        <CustomizedTextField
+                                            fullWidth
+                                            label="Phone Number"
+                                            margin="dense"
+                                            name="phone"
+                                            type="number"
+                                            variant="outlined"
+                                            disabled={true}
+                                            value={phoneNumber}
+                                            onChange={handleChange}
+                                        />
+                                    </Grid>
+                                    <Grid item md={6} xs={12}>
+                                        <CustomizedTextField
+                                            fullWidth
+                                            label="User Name"
+                                            margin="dense"
+                                            name="userHandle"
+                                            disabled={true}
+                                            variant="outlined"
+                                            value={username}
+                                            onChange={handleChange}
+                                        />
+                                    </Grid>
+                                    <Grid item md={6} xs={12}>
+                                        <CustomizedTextField
+                                            fullWidth
+                                            label="Country"
+                                            margin="dense"
+                                            name="country"
+                                            variant="outlined"
+                                            value={country}
+                                            onChange={handleChange}
+                                        />
+                                    </Grid>
+                                </Grid>
+                            </CardContent>
+                            {/*<Divider/>*/}
+                            <CardActions/>
+                        </form>
+                    </CustomizedCard>
+                    {/*<Button*/}
+                    {/*    color="primary"*/}
+                    {/*    variant="contained"*/}
+                    {/*    type="submit"*/}
+                    {/*    className="submit-button"*/}
+                    {/*    onClick={updateFormValues}*/}
+                    {/*    disabled={*/}
+                    {/*        buttonLoading ||*/}
+                    {/*        !firstName ||*/}
+                    {/*        !lastName ||*/}
+                    {/*        !country*/}
+                    {/*    }*/}
+                    {/*>*/}
+                    <Grid container
+                          spacing={0}
+                          direction="column"
+                          alignItems="center"
+                          justifyContent="center"
+                    >
+                        <button
+                            className="save-details-button"
+                            type="submit"
+                            onClick={updateFormValues}
+                            disabled={
+                                buttonLoading ||
+                                !firstName ||
+                                !lastName ||
+                                !country
+                            }
+                        >
+                            Save Details
+                        </button>
+                    </Grid>
+                </Container>
+                {/*    Save details*/}
+                {/*    {buttonLoading && <CircularProgress size={30}/>}*/}
+                {/*</Button>*/}
+            </main>
+        </ThemeProvider>
     );
 };
 

@@ -22,7 +22,12 @@ export const theme = createTheme({
     typography: {
         fontFamily: [
             'Geometria Light'
-        ].join(',')
+        ].join(','),
+        h4: {
+            fontFamily: [
+                'Geometria Medium'
+            ].join(','),
+        },
     },
     palette: {
         primary: {

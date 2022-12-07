@@ -2,7 +2,9 @@
 
 .content {
   flex-grow: 1;
-  //padding: theme.spacing(3)
+  //margin-right: 2%;
+  //margin-left: 2%;
+  margin: 2%;
 }
 
 .toolbar {
@@ -22,8 +24,9 @@
   flex-grow: 0;
 }
 
-.location-text {
+.name-surname {
   padding-left :15px;
+  font-family: $medium-font-family;
 }
 
 .button-property {
@@ -57,4 +60,16 @@
 
 .submit-button {
   margin-top: 10px;
+}
+
+.card {
+  box-shadow: $button-box-shadow;
+}
+
+.save-details-button {
+  @include violet-button;
+  font-size: 18px;
+  width: 130px;
+  height: 40px;
+  margin: 20px;
 }

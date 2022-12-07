@@ -14,6 +14,7 @@
 
 .content {
   flex-grow: 1;
+  margin: 2%;
 }
 
 .avatar {
@@ -23,8 +24,9 @@
   flex-grow: 0;
 }
 
-.location-text {
+.name-surname {
   padding-left: 15px;
+  font-family: "Geometria Medium", sans-serif;
 }
 
 .button-property {
@@ -48,6 +50,36 @@
 
 .submit-button {
   margin-top: 10px;
+}
+
+.card {
+  box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.save-details-button {
+  font-size: 18px;
+  width: 130px;
+  height: 40px;
+  margin: 20px;
+}
+.save-details-button {
+  font-family: "Geometria Medium", sans-serif;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  color: #FFFFFF;
+  background-color: #8613E0;
+  transition: background-color 0.5s ease;
+}
+.save-details-button:hover {
+  background-color: #FF7A00;
+}
+.save-details-button:disabled {
+  background-color: rgb(204, 184, 219);
+  cursor: default;
 }
 
 /*# sourceMappingURL=Account.css.map */
