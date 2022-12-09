@@ -10,7 +10,6 @@ import {
     AppBar,
     Avatar,
     CircularProgress,
-    CssBaseline,
     Divider,
     Drawer,
     IconButton,
@@ -135,9 +134,9 @@ const MainPageAuthFun = (props) => {
                 </div>)
                 : (
                     <div className="container">
-                        <CssBaseline/>
+                        {/*<CssBaseline/>*/}
                         <AppBar position="fixed" className="app-bar" open={openBar} elevation={0} style={{background: '#fff'}}>
-                            <Toolbar>
+                            <Toolbar sx={{}}>
                                 {/*<Typography variant="h6" noWrap>*/}
                                 {/*    in.focus*/}
                                 {/*</Typography>*/}
@@ -197,7 +196,8 @@ const MainPageAuthFun = (props) => {
                                         <NotesRoundedIcon fontSize="large" className={iconClassName('notes')} onClick={() => {
                                             setActiveIcon(prevState => {
                                                 return makeIconsActive(prevState, 'notes');
-                                            })
+                                            });
+                                            handleDrawerClose();
                                         }} />
                                     </ListItemIcon>
                                     {/*<ListItemText primary="Todo"/>*/}
@@ -209,7 +209,8 @@ const MainPageAuthFun = (props) => {
                                         <ManageAccountsRoundedIcon fontSize="large" className={iconClassName('account')} onClick={() => {
                                             setActiveIcon(prevState => {
                                                 return makeIconsActive(prevState, 'account');
-                                            })
+                                            });
+                                            handleDrawerClose();
                                         }} />
                                     </ListItemIcon>
                                     {/*<ListItemText primary="Account"/>*/}

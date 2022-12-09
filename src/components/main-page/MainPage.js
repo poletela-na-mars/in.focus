@@ -36,20 +36,19 @@ const MainPage = (props) => {
 };
 
 //TODO:
-//      -если нет фото профиля,то avatar серый
-//      ?-убрать обводку при наведении на кнопки
-//      !-проблемы с отступами в account
-//      !-доделать дизайн account - border покруглее
-//      !-ошибка в кнопке
-//      !-выбор файла
+//      -SECURITY- количество попыток для входа - Exponential Backoff
+//      -SECURITY- ограничить число созданных аккаунтов во времени
+//      -DESIGN- если нет фото профиля,то avatar серый
+//      ?!-ошибка в кнопке
+//      !-выбор файла - state.image
 //      -сделать изменяемыми телефон, почту и username
-//      -хэширование данных пользователя
-//      -!clean-up
-//      -!проверка на загрузку фото: максимальный размер, название, расширение, Content-Type Header, без флага exe,
-//      -переименовывать файлы при загрузке
-//      -вынести 50px для border-radius
-//      -медиазапрос для MainPage - поменьше для телефона
+//      -SECURITY- хэширование данных пользователя
+//      -clean-up
+//      -SECURITY- проверка на загрузку фото: максимальный размер, название, расширение, Content-Type Header, без флага exe,
+//      -SECURITY- переименовывать файлы при загрузке
+//      -DESIGN- вынести 50px для border-radius
+//      -DESIGN- медиазапрос для MainPage - поменьше для телефона
 //      -ESLint config
-//      -add HTTP headers in axios config for security
+//      -SECURITY- add HTTP headers in axios config for security
 
 export default MainPage;

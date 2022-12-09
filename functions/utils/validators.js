@@ -15,9 +15,9 @@ exports.validateLoginData = (data) => {
     let errors = {};
     if (!emailRegexp.test(data.email)) {
         errors.email = 'Wrong Email';
-    } else if (isEmpty(data.email)) errors.email = 'Must not be empty';
+    } else if (isEmpty(data.email) || data.email.length > 50) errors.email = 'Must not be empty';
     if (isEmpty(data.password)) errors.password = 'Must not be empty';
-    if (!passwordRegexp.test(data.password)) {
+    if (!passwordRegexp.test(data.password) || data.email.length > 50) {
         errors.password = 'Wrong Password';
     } else if (isEmpty(data.password)) {
         errors.password = 'Must not be empty';
