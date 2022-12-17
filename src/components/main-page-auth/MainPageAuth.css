@@ -1,3 +1,7 @@
+.content {
+  flex-grow: 1;
+}
+
 .container {
   width: 100vw;
   height: 100vh;
@@ -12,6 +16,18 @@
   color: #8613E0;
 }
 
+.icon {
+  color: #8613E0;
+}
+
+.icon-active {
+  color: #FF7A00;
+}
+
+.icon-gray {
+  color: #D9D9D9;
+}
+
 .app-bar {
   z-index: 1000;
   height: 55px;
@@ -24,10 +40,6 @@
 
 .drawer-paper {
   width: 150px;
-}
-
-.content {
-  flex-grow: 1;
 }
 
 .avatar {
@@ -46,18 +58,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-}
-
-.icon {
-  color: #8613E0;
-}
-
-.icon-active {
-  color: #FF7A00;
-}
-
-.icon-gray {
-  color: #D9D9D9;
 }
 
 /*# sourceMappingURL=MainPageAuth.css.map */

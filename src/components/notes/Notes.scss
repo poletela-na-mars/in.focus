@@ -1,0 +1,51 @@
+@import "./../../vars";
+
+.floatingButton {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.title {
+  //margin-left: theme.spacing(2);
+  flex: 1;
+}
+
+.submitButton {
+  display: block;
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 14px;
+  right: 10px;
+}
+
+.form {
+  width: 98%;
+  margin-left: 13px;
+  //marginTop: theme.spacing(3)
+}
+
+//TODO: media-queries
+.root {
+  min-width: 250px;
+  //min-width: 50%;
+}
+
+.pos {
+  margin-bottom: 12px;
+}
+
+.dialogStyle {
+  .MuiDialog-paperFullWidth {
+    max-width: 50%;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  //right: theme.spacing(1);
+  //top: theme.spacing(1);
+  //color: theme.palette.grey[500]
+  color: $gray-text-color;
+}

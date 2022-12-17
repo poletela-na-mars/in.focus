@@ -151,17 +151,18 @@ const LoginFun = (props) => {
                             helperText={errors.password}
                             error={!!errors.password}
                             onChange={handleChange}
-                            InputProps={{endAdornment:
-                                <InputAdornment position="end" sx={{marginRight: 1}}>
-                                <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                // onMouseDown={handleMouseDownPassword}
-                                edge="end"
-                                >
-                            {showPassword ? <VisibilityOff/> : <Visibility/>}
-                                </IconButton>
-                                </InputAdornment>
+                            InputProps={{
+                                endAdornment:
+                                    <InputAdornment position="end" sx={{marginRight: 1}}>
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            // onMouseDown={handleMouseDownPassword}
+                                            edge="end"
+                                        >
+                                            {showPassword ? <VisibilityOff/> : <Visibility/>}
+                                        </IconButton>
+                                    </InputAdornment>
                             }}
                         />
                         {/*<FormControlLabel*/}

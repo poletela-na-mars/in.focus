@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 
 const app = require("express")();
+app.disable('x-powered-by');
 
 const {
     getAllNotes,

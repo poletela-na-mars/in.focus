@@ -62,7 +62,7 @@ const MainPageAuthFun = (props) => {
         setRender(true);
     };
 
-    const loadTodoPage = () => {
+    const loadNotePage = () => {
         setRender(false);
     };
 
@@ -135,7 +135,8 @@ const MainPageAuthFun = (props) => {
                 : (
                     <div className="container">
                         {/*<CssBaseline/>*/}
-                        <AppBar position="fixed" className="app-bar" open={openBar} elevation={0} style={{background: '#fff'}}>
+                        <AppBar position="fixed" className="app-bar" open={openBar} elevation={0}
+                                style={{background: '#fff'}}>
                             <Toolbar sx={{}}>
                                 {/*<Typography variant="h6" noWrap>*/}
                                 {/*    in.focus*/}
@@ -147,7 +148,7 @@ const MainPageAuthFun = (props) => {
                                     edge="start"
                                     // sx={{mr: 2, ...(openBar && {display: 'none'})}}
                                 >
-                                    <MenuRoundedIcon fontSize="large" className="icon" />
+                                    <MenuRoundedIcon fontSize="large" className="icon"/>
                                 </IconButton>
                                 <Link to={"/home"} className="logo-home"><LogoSVG width={122} height={35}
                                 /></Link>
@@ -164,21 +165,21 @@ const MainPageAuthFun = (props) => {
                             //     paper: drawer-paper
                             // }}
                             sx={{
+                                width: 60,
+                                flexShrink: 0,
+                                '& .MuiDrawer-paper': {
                                     width: 60,
-                                    flexShrink: 0,
-                                    '& .MuiDrawer-paper': {
-                                        width: 60,
-                                        boxSizing: 'border-box',
-                                        overflowX: 'hidden',
-                                    },
-                                }}
+                                    boxSizing: 'border-box',
+                                    overflowX: 'hidden',
+                                },
+                            }}
                         >
                             {/*<div className={classes.toolbar} />*/}
                             {/*<Divider/>*/}
                             <div className="drawer-header">
                                 <IconButton onClick={handleDrawerClose}>
                                     {/*<img src={hide} alt="Arrow Left Icon"/>*/}
-                                    <ArrowBackIosNewRoundedIcon fontSize="small" className="icon-gray" />
+                                    <ArrowBackIosNewRoundedIcon fontSize="small" className="icon-gray"/>
                                 </IconButton>
                             </div>
                             <center>
@@ -190,15 +191,16 @@ const MainPageAuthFun = (props) => {
                             </center>
                             <Divider/>
                             <List>
-                                <ListItem button key="Notes" onClick={loadTodoPage}>
+                                <ListItem button key="Notes" onClick={loadNotePage}>
                                     <ListItemIcon>
                                         {' '}
-                                        <NotesRoundedIcon fontSize="large" className={iconClassName('notes')} onClick={() => {
-                                            setActiveIcon(prevState => {
-                                                return makeIconsActive(prevState, 'notes');
-                                            });
-                                            handleDrawerClose();
-                                        }} />
+                                        <NotesRoundedIcon fontSize="large" className={iconClassName('notes')}
+                                                          onClick={() => {
+                                                              setActiveIcon(prevState => {
+                                                                  return makeIconsActive(prevState, 'notes');
+                                                              });
+                                                              handleDrawerClose();
+                                                          }}/>
                                     </ListItemIcon>
                                     {/*<ListItemText primary="Todo"/>*/}
                                 </ListItem>
@@ -206,12 +208,13 @@ const MainPageAuthFun = (props) => {
                                 <ListItem button key="Account" onClick={loadAccountPage}>
                                     <ListItemIcon>
                                         {' '}
-                                        <ManageAccountsRoundedIcon fontSize="large" className={iconClassName('account')} onClick={() => {
-                                            setActiveIcon(prevState => {
-                                                return makeIconsActive(prevState, 'account');
-                                            });
-                                            handleDrawerClose();
-                                        }} />
+                                        <ManageAccountsRoundedIcon fontSize="large" className={iconClassName('account')}
+                                                                   onClick={() => {
+                                                                       setActiveIcon(prevState => {
+                                                                           return makeIconsActive(prevState, 'account');
+                                                                       });
+                                                                       handleDrawerClose();
+                                                                   }}/>
                                     </ListItemIcon>
                                     {/*<ListItemText primary="Account"/>*/}
                                 </ListItem>
@@ -219,7 +222,7 @@ const MainPageAuthFun = (props) => {
                                 <ListItem button key="Logout" onClick={logoutHandler}>
                                     <ListItemIcon>
                                         {' '}
-                                        <LogoutRoundedIcon fontSize="large" className="icon" />
+                                        <LogoutRoundedIcon fontSize="large" className="icon"/>
                                     </ListItemIcon>
                                     {/*<ListItemText primary="Logout"/>*/}
                                 </ListItem>

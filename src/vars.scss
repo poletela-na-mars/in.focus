@@ -58,6 +58,10 @@ $transition: background-color 0.5s ease;
 $app-bar-height: 55px;
 $drawer-width: 60px;
 
+.content {
+  flex-grow: 1;
+}
+
 .container {
   width: 100vw;
   height: 100vh;
@@ -71,4 +75,16 @@ $drawer-width: 60px;
   //position: fixed;
   z-index: 1001;
   color: $violet-color;
+}
+
+.icon {
+  color: $violet-color;
+}
+
+.icon-active {
+  color: $orange-color;
+}
+
+.icon-gray {
+  color: $gray-text-color;
 }

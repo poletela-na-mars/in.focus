@@ -36,6 +36,10 @@ const MainPage = (props) => {
 };
 
 //TODO:
+//      -SECURITY- помечать id, как устаревшие, при выходе из профиля
+//      -why cannot submit note
+//      -зависание при клике на View
+//      -DESIGN- add search bar
 //      -SECURITY- количество попыток для входа - Exponential Backoff
 //      -SECURITY- ограничить число созданных аккаунтов во времени
 //      -DESIGN- если нет фото профиля,то avatar серый
