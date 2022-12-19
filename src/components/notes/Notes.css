@@ -28,7 +28,7 @@
   color: #D9D9D9;
 }
 
-.floatingButton {
+.floating-button {
   position: fixed;
   bottom: 0;
   right: 0;
@@ -38,7 +38,7 @@
   flex: 1;
 }
 
-.submitButton {
+.submit-button {
   display: block;
   color: white;
   text-align: center;
@@ -49,24 +49,30 @@
 
 .form {
   width: 98%;
-  margin-left: 13px;
 }
 
 .root {
   min-width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .pos {
   margin-bottom: 12px;
 }
 
-.dialogStyle .MuiDialog-paperFullWidth {
+.dialog-style .MuiDialog-paperFullWidth {
   max-width: 50%;
 }
 
-.closeButton {
+.close-button {
   position: absolute;
   color: #D9D9D9;
+}
+
+.app-bar {
+  position: relative;
 }
 
 /*# sourceMappingURL=Notes.css.map */

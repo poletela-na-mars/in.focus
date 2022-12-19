@@ -6,7 +6,7 @@ import {
     CardActions,
     CardContent, CircularProgress,
     Dialog,
-    DialogContent,
+    DialogContent, DialogContentText,
     DialogTitle,
     Grid,
     IconButton, Slide,
@@ -25,6 +25,7 @@ import "./Notes.scss";
 import {AddCircleRounded} from "@mui/icons-material";
 import {CloseRounded} from "@mui/icons-material";
 import {theme} from "../login/LoginFun";
+import DialogContext from "@mui/material/Dialog/DialogContext";
 
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -113,12 +114,27 @@ const Notes = (props) => {
     };
 
     // const DialogTitle = withStyles(styles)((props) => {const { children, classes, onClose, ...other } = props;
-    const DialogTitle = ({onClose, children}) => {
+    const DialogTitleWrapper = (props) => {
+        const {children, onClose} = props;
+        // return
+        //     <DialogTitle disableTypography className="root">
+        //         <Typography variant="h6">{children}</Typography>
+        //         {onClose ? (
+        //             <IconButton aria-label="close" className="close-button" onClick={onClose}>
+        //                 <CloseRounded/>
+        //             </IconButton>
+        //         ) : null}
+        //     <DialogTitle />
         return (
-            <DialogTitle disableTypography className="root">
-                <Typography variant="h6">{children}</Typography>
+            <DialogTitle component="h6" className="root">
+                {/*<Typography variant="h6">{children}</Typography>*/}
+                {children}
                 {onClose ? (
-                    <IconButton aria-label="close" className="closeButton" onClick={onClose}>
+                    <IconButton aria-label="close" className="close-button" onClick={onClose} sx={{
+                        // left: theme.spacing(5),
+                        // right: theme.spacing(5),
+                        // top: theme.spacing(1)
+                    }}>
                         <CloseRounded/>
                     </IconButton>
                 ) : null}
@@ -150,6 +166,7 @@ const Notes = (props) => {
         const userNote = {
             title: title,
             body: body,
+            editedAt: new Date().toISOString(),
         };
         let options = {};
         if (buttonType === "Edit") {
@@ -203,46 +220,55 @@ const Notes = (props) => {
                 (<div className="container">
                     {uiLoading && <CircularProgress size={100} className="loader"/>}
                 </div>) : (
-                    <main className="content">
+                    // <main className="content" style={{padding: theme.spacing(3)}}>
+                    <main className="content" style={{padding: theme.spacing(3)}}>
                         {/*<div className="toolbar"/>*/}
                         <div className="toolbar"/>
                         <IconButton
-                            className="floatingButton"
+                            className="floating-button"
                             color="primary"
                             aria-label="Add Note"
                             onClick={handleClickOpen}
                         >
                             <AddCircleRounded fontSize="large" className="icon"/>
                         </IconButton>
-                        {/*<Dialog fullScreen open={open} onClose={handleClose}>*/}
                         <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
-                            <AppBar className="appBar">
+                            <AppBar className="app-bar">
                                 <Toolbar>
                                     <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
                                         <CloseRounded/>
                                     </IconButton>
-                                    <Typography variant="h6" className="title">
+                                    <Typography variant="h6" className="title" sx={{marginLeft: theme.spacing(2)}}>
                                         {buttonType === "Edit" ? "Edit Note" : "Create a new Note"}
                                     </Typography>
                                     <Button
                                         autoFocus
                                         color="inherit"
                                         onClick={handleSubmit}
-                                        className="submitButton"
+                                        className="submit-button"
                                     >
                                         {buttonType === "Edit" ? "Save" : "Submit"}
                                     </Button>
                                 </Toolbar>
                             </AppBar>
 
-                            <form className="form" noValidate>
-                                <Grid container spacing={2}>
+                            <form className="form" noValidate style={{
+                                marginTop: theme.spacing(3),
+                                marginLeft: theme.spacing(1.5),
+                                marginRight: theme.spacing(1.5)
+                            }}>
+                                <Grid container spacing={3}>
                                     <Grid item xs={12}>
                                         <TextField
                                             variant="outlined"
                                             required
                                             fullWidth
-                                            id="noteTitle"
+                                            minRows={1}
+                                            maxRows={5}
+                                            inputProps={{maxLength: 100}}
+                                            multiline
+                                            // id="noteTitle"
+                                            className="note-title"
                                             label="Note Title"
                                             name="title"
                                             autoComplete="noteTitle"
@@ -250,6 +276,7 @@ const Notes = (props) => {
                                             value={title}
                                             error={!!errors.title}
                                             onChange={handleChange}
+                                            sx={{marginTop: theme.spacing(8)}}
                                         />
                                     </Grid>
                                     <Grid item xs={12}>
@@ -257,13 +284,15 @@ const Notes = (props) => {
                                             variant="outlined"
                                             required
                                             fullWidth
-                                            id="noteDetails"
+                                            // id="noteDetails"
+                                            className="note-details"
                                             label="Note Details"
                                             name="body"
                                             autoComplete="noteDetails"
                                             multiline
-                                            rows={25}
-                                            rowsMax={25}
+                                            minRows={20}
+                                            maxRows={25}
+                                            inputProps={{maxLength: 500}}
                                             helperText={errors.body}
                                             error={!!errors.body}
                                             onChange={handleChange}
@@ -283,7 +312,7 @@ const Notes = (props) => {
                                                 {note.title}
                                             </Typography>
                                             <Typography className="pos" color="textSecondary">
-                                                {`created ${dayjs(note.createdAt).fromNow()}`}
+                                                {`last changes ${(note.createdAt !== note.editedAt) ? dayjs(note.editedAt).fromNow() : dayjs(note.createdAt).fromNow()}`}
                                             </Typography>
                                             <Typography variant="body2" component="p">
                                                 {`${note.body.substring(0, 65)}`}
@@ -310,27 +339,42 @@ const Notes = (props) => {
 
                         <Dialog
                             onClose={handleViewClose}
-                            aria-labelledby="customized-dialog-title"
+                            // aria-labelledby="customized-dialog-title"
                             open={viewOpen}
                             fullWidth
                             className="dialogStyle"
-                            // classes={{paperFullWidth: classes.dialogeStyle}}
+                            // classes={{paperFullWidth: classes.dialog-style}}
                         >
-                            <DialogTitle id="customized-dialog-title" onClose={handleViewClose}>
+                            <DialogTitleWrapper onClose={handleViewClose}>
                                 {title}
-                            </DialogTitle>
-                            <DialogContent dividers>
+                                {/*<TextField*/}
+                                {/*    fullWidth*/}
+                                {/*    // id="noteTitle"*/}
+                                {/*    name="title"*/}
+                                {/*    multiline*/}
+                                {/*    readonly*/}
+                                {/*    minRows={1}*/}
+                                {/*    maxRows={5}*/}
+                                {/*    value={body}*/}
+                                {/*    inputProps={{*/}
+                                {/*        disableUnderline: true,*/}
+                                {/*        maxLength: 500*/}
+                                {/*    }}*/}
+                                {/*/>*/}
+                            </DialogTitleWrapper>
+                            <DialogContent dividers sx={{padding: theme.spacing(2), margin: 0}}>
                                 <TextField
                                     fullWidth
-                                    id="noteDetails"
+                                    // id="noteDetails"
                                     name="body"
                                     multiline
                                     readonly
-                                    rows={1}
-                                    rowsMax={25}
+                                    minRows={20}
+                                    maxRows={25}
                                     value={body}
-                                    InputProps={{
-                                        disableUnderline: true
+                                    inputProps={{
+                                        disableUnderline: true,
+                                        maxLength: 500
                                     }}
                                 />
                             </DialogContent>

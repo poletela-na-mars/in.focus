@@ -4,7 +4,7 @@ exports.getAllNotes = (request, response) => {
     db
         .collection('notes')
         .where('username', '==', request.user.username)
-        .orderBy('createdAt', 'desc')
+        .orderBy('editedAt', 'desc')
         .get()
         .then((data) => {
             let notes = [];
@@ -15,6 +15,7 @@ exports.getAllNotes = (request, response) => {
                     username: doc.data().username,
                     body: doc.data().body,
                     createdAt: doc.data().createdAt,
+                    editedAt: doc.data().editedAt,
                 });
             });
             return response.json(notes);
@@ -63,7 +64,8 @@ exports.postOneNote = (request, response) => {
         title: request.body.title,
         body: request.body.body,
         createdAt: new Date().toISOString(),
-        username: request.user.username
+        editedAt: new Date().toISOString(),
+        username: request.user.username,
     }
     db
         .collection('notes')

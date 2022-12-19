@@ -80,6 +80,7 @@ exports.signUpUser = (request, response) => {
                 country: newUser.country,
                 email: newUser.email,
                 createdAt: new Date().toISOString(),
+                editedAt: new Date().toISOString(),
                 userId
             };
             return db

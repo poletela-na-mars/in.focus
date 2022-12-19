@@ -1,6 +1,6 @@
 @import "./../../vars";
 
-.floatingButton {
+.floating-button {
   position: fixed;
   bottom: 0;
   right: 0;
@@ -11,7 +11,7 @@
   flex: 1;
 }
 
-.submitButton {
+.submit-button {
   display: block;
   color: white;
   text-align: center;
@@ -22,13 +22,16 @@
 
 .form {
   width: 98%;
-  margin-left: 13px;
+  //margin-left: 13px;
   //marginTop: theme.spacing(3)
 }
 
 //TODO: media-queries
 .root {
   min-width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   //min-width: 50%;
 }
 
@@ -36,16 +39,17 @@
   margin-bottom: 12px;
 }
 
-.dialogStyle {
+.dialog-style {
   .MuiDialog-paperFullWidth {
     max-width: 50%;
   }
 }
 
-.closeButton {
+.close-button {
   position: absolute;
-  //right: theme.spacing(1);
-  //top: theme.spacing(1);
-  //color: theme.palette.grey[500]
   color: $gray-text-color;
+}
+
+.app-bar {
+  position: relative;
 }
