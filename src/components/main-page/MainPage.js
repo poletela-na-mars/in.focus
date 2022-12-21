@@ -36,13 +36,11 @@ const MainPage = (props) => {
 };
 
 //TODO:
-//      -!скруглить края у заметок
 //      -сделать View при клике на заметку
 //      -!problem with keys, while typing
 //      -!validate notes
 //      -!fix spacings and styles...
 //      -!проблемы с версткой на телефонах и планшетах
-//      -!многоточие, если много символов в заметке
 //      -SECURITY- помечать id, как устаревшие, при выходе из профиля
 //      -DESIGN- add search bar
 //      -SECURITY- количество попыток для входа - Exponential Backoff

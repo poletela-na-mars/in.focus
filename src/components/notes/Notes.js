@@ -26,6 +26,10 @@ import {AddCircleRounded} from "@mui/icons-material";
 import {CloseRounded} from "@mui/icons-material";
 import {theme} from "../login/LoginFun";
 import DialogContext from "@mui/material/Dialog/DialogContext";
+import {CustomizedCard} from "../account/AccountFun";
+
+const MAX_TITLE_LENGTH = 30;
+const MAX_BODY_LENGTH = 65;
 
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -221,7 +225,7 @@ const Notes = (props) => {
                     {uiLoading && <CircularProgress size={100} className="loader"/>}
                 </div>) : (
                     // <main className="content" style={{padding: theme.spacing(3)}}>
-                    <main className="content" style={{padding: theme.spacing(3)}}>
+                    <main className="content" style={{padding: theme.spacing(3), marginRight: theme.spacing(5)}}>
                         {/*<div className="toolbar"/>*/}
                         <div className="toolbar"/>
                         <IconButton
@@ -306,16 +310,17 @@ const Notes = (props) => {
                         <Grid container spacing={2}>
                             {notes.map((note) => (
                                 <Grid item xs={12} sm={6} key={noteId}>
-                                    <Card className="root" variant="outlined">
+                                    <CustomizedCard className="root" variant="outlined">
                                         <CardContent>
                                             <Typography variant="h5" component="h2">
-                                                {note.title}
+                                                {note.title.length > MAX_TITLE_LENGTH ? `${note.title.slice(0, MAX_TITLE_LENGTH)}...` : note.title}
                                             </Typography>
                                             <Typography className="pos" color="textSecondary">
                                                 {`last changes ${(note.createdAt !== note.editedAt) ? dayjs(note.editedAt).fromNow() : dayjs(note.createdAt).fromNow()}`}
                                             </Typography>
                                             <Typography variant="body2" component="p">
-                                                {`${note.body.substring(0, 65)}`}
+                                                {/*{`${note.body.substring(0, 65)}`}*/}
+                                                {note.body.length > MAX_BODY_LENGTH ? `${note.body.slice(0, MAX_BODY_LENGTH)}...` : note.body}
                                             </Typography>
                                         </CardContent>
                                         <CardActions>
@@ -332,7 +337,7 @@ const Notes = (props) => {
                                                 Delete
                                             </Button>
                                         </CardActions>
-                                    </Card>
+                                    </CustomizedCard>
                                 </Grid>
                             ))}
                         </Grid>
@@ -342,7 +347,7 @@ const Notes = (props) => {
                             // aria-labelledby="customized-dialog-title"
                             open={viewOpen}
                             fullWidth
-                            className="dialogStyle"
+                            className="dialog-style"
                             // classes={{paperFullWidth: classes.dialog-style}}
                         >
                             <DialogTitleWrapper onClose={handleViewClose}>

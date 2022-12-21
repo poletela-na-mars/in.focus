@@ -56,6 +56,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  word-break: break-all;
 }
 
 .pos {
@@ -64,6 +65,7 @@
 
 .dialog-style .MuiDialog-paperFullWidth {
   max-width: 50%;
+  border-radius: 20px;
 }
 
 .close-button {

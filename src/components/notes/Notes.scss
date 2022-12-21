@@ -32,6 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  word-break: break-all;
   //min-width: 50%;
 }
 
@@ -42,6 +43,7 @@
 .dialog-style {
   .MuiDialog-paperFullWidth {
     max-width: 50%;
+    border-radius: 20px;
   }
 }
 

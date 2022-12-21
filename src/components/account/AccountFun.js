@@ -23,8 +23,8 @@ import "./Account.scss";
 //     return null;
 // }
 
-const CustomizedCard = styled(Card)`
-  box-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.1);
+export const CustomizedCard = styled(Card)`
+  box-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.05);
   border-radius: 20px;
 `;
 
