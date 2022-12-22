@@ -18,6 +18,7 @@ import {
 import {useNavigate} from "react-router-dom";
 
 import "./Account.scss";
+import {deleteUser} from "../../../functions/APIs/users";
 
 // function CloudUploadIcon() {
 //     return null;
@@ -106,6 +107,10 @@ const AccountFun = (props) => {
         //     image: event.target.files[0]
         // });
         setProfilePicture(event.target.files[0]);
+    };
+
+    const deleteUserHandler = () => {
+
     };
 
     const profilePictureHandler = (event) => {
@@ -309,6 +314,13 @@ const AccountFun = (props) => {
                               alignItems="center"
                               justifyContent="center"
                         >
+                            <button
+                                className="delete-account-button"
+                                type="submit"
+                                onClick={deleteUserHandler}
+                            >
+                                Delete Account
+                            </button>
                             <button
                                 className="save-details-button"
                                 type="submit"

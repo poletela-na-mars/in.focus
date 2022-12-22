@@ -2,15 +2,17 @@ import {forwardRef, useEffect, useState} from "react";
 import {
     AppBar,
     Button,
-    Card,
     CardActions,
-    CardContent, CircularProgress,
+    CardContent,
+    CircularProgress,
     Dialog,
-    DialogContent, DialogContentText,
+    DialogContent,
     DialogTitle,
     Grid,
-    IconButton, Slide,
-    TextField, ThemeProvider,
+    IconButton,
+    Slide,
+    TextField,
+    ThemeProvider,
     Toolbar,
     Typography
 } from "@mui/material";
@@ -22,10 +24,8 @@ import relativeTime from "dayjs/plugin/relativeTime";
 
 import "./Notes.scss";
 
-import {AddCircleRounded} from "@mui/icons-material";
-import {CloseRounded} from "@mui/icons-material";
+import {AddCircleRounded, CloseRounded} from "@mui/icons-material";
 import {theme} from "../login/LoginFun";
-import DialogContext from "@mui/material/Dialog/DialogContext";
 import {CustomizedCard} from "../account/AccountFun";
 
 const MAX_TITLE_LENGTH = 30;
@@ -230,11 +230,11 @@ const Notes = (props) => {
                         <div className="toolbar"/>
                         <IconButton
                             className="floating-button"
-                            color="primary"
+                            // color="primary"
                             aria-label="Add Note"
                             onClick={handleClickOpen}
                         >
-                            <AddCircleRounded fontSize="large" className="icon"/>
+                            <AddCircleRounded fontSize="large" className="icon-active"/>
                         </IconButton>
                         <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
                             <AppBar className="app-bar">
@@ -268,7 +268,7 @@ const Notes = (props) => {
                                             required
                                             fullWidth
                                             minRows={1}
-                                            maxRows={5}
+                                            maxRows={2}
                                             inputProps={{maxLength: 100}}
                                             multiline
                                             // id="noteTitle"
@@ -294,8 +294,8 @@ const Notes = (props) => {
                                             name="body"
                                             autoComplete="noteDetails"
                                             multiline
-                                            minRows={20}
-                                            maxRows={25}
+                                            // minRows={10}
+                                            maxRows={20}
                                             inputProps={{maxLength: 500}}
                                             helperText={errors.body}
                                             error={!!errors.body}
@@ -309,8 +309,8 @@ const Notes = (props) => {
 
                         <Grid container spacing={2}>
                             {notes.map((note) => (
-                                <Grid item xs={12} sm={6} key={noteId}>
-                                    <CustomizedCard className="root" variant="outlined">
+                                <Grid item xs={12} sm={6} key={note.noteId}>
+                                    <CustomizedCard className="root" variant="outlined" onClick={() => handleViewOpen({note})}>
                                         <CardContent>
                                             <Typography variant="h5" component="h2">
                                                 {note.title.length > MAX_TITLE_LENGTH ? `${note.title.slice(0, MAX_TITLE_LENGTH)}...` : note.title}
@@ -324,10 +324,10 @@ const Notes = (props) => {
                                             </Typography>
                                         </CardContent>
                                         <CardActions>
-                                            <Button size="small" color="primary" onClick={() => handleViewOpen({note})}>
-                                                {' '}
-                                                View{' '}
-                                            </Button>
+                                            {/*<Button size="small" color="primary" onClick={() => handleViewOpen({note})}>*/}
+                                            {/*    {' '}*/}
+                                            {/*    View{' '}*/}
+                                            {/*</Button>*/}
                                             <Button size="small" color="primary"
                                                     onClick={() => handleEditClickOpen({note})}>
                                                 Edit
@@ -373,14 +373,19 @@ const Notes = (props) => {
                                     // id="noteDetails"
                                     name="body"
                                     multiline
-                                    readonly
+                                    // readonly
                                     minRows={20}
                                     maxRows={25}
                                     value={body}
-                                    inputProps={{
+                                    // disabled={true}
+                                    // disableUnderline={true}
+                                    variant="standard"
+                                    InputProps={{
                                         disableUnderline: true,
-                                        maxLength: 500
+                                        readOnly: true
+                                        // maxLength: 500
                                     }}
+                                    // style={{cursor: "none"}}
                                 />
                             </DialogContent>
                         </Dialog>

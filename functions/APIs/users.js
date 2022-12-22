@@ -8,6 +8,8 @@ firebase.initializeApp(config);
 const {validateLoginData, validateSignUpData} = require('../utils/validators');
 
 const firebaseAuth = require("firebase/compat/auth");
+const {response} = require("express");
+const {getAuth} = require("firebase-admin/auth");
 const auth = firebase.auth();
 
 // Login
@@ -205,5 +207,23 @@ exports.updateUserDetails = (request, response) => {
             return response.status(500).json({
                 message: "Cannot update the value"
             });
+        });
+};
+
+exports.deleteUser = (request, response) => {
+    // const user = {
+    //     email: request.body.email,
+    //     password: request.body.password
+    // }
+    // db.collection('users').document(FirebaseAuth.getInstance().currentUser.uid).delete()
+    //     .addOnSuccessListener { FirebaseAuth.getInstance().currentUser!!.delete().addOnCompleteListener {//Go to login screen} }
+    // .addOnFailureListener { ... }
+    getAuth()
+        .deleteUser(auth.currentUser.uid)
+        .then(() => {
+            console.log('Successfully deleted user');
+        })
+        .catch((error) => {
+            console.log('Error deleting user: ', error);
         });
 };
