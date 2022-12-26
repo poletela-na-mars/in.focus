@@ -18,7 +18,6 @@ import {
 import {useNavigate} from "react-router-dom";
 
 import "./Account.scss";
-import {deleteUser} from "../../../functions/APIs/users";
 
 // function CloudUploadIcon() {
 //     return null;
@@ -47,6 +46,7 @@ const AccountFun = (props) => {
     const [error403, setError403] = useState(false);
     const [image, setImage] = useState('');
     const [content, setContent] = useState('');
+    // const [userId, setUserId] = useState('');
 
     if (!mounted) {
         authMiddleWare(navigate);
@@ -62,6 +62,7 @@ const AccountFun = (props) => {
                 setCountry(response.data.userCredentials.country);
                 setUsername(response.data.userCredentials.username);
                 setUiLoading(false);
+                // setUserId(response.data.userCredentials.userId);
             })
             .catch((error) => {
                 if (error.response.status === 403) {
@@ -109,8 +110,28 @@ const AccountFun = (props) => {
         setProfilePicture(event.target.files[0]);
     };
 
-    const deleteUserHandler = () => {
+    const deleteUserHandler = (event) => {
+        authMiddleWare(navigate);
+        const authToken = localStorage.getItem("AuthToken");
+        axios.defaults.headers.common = {Authorization: `${authToken}`};
 
+        event.preventDefault();
+        setUiLoading(true);
+        // const userData = {
+        //     username: username,
+        // };
+        axios
+            .delete(`/users/${username}`)
+            .then(() => {
+                localStorage.removeItem('AuthToken');
+                setUiLoading(false);
+                navigate('/login');
+            })
+            .catch((error) => {
+                console.log(error);
+                // setErrors(error.response.data);
+                // setLoading(false);
+            });
     };
 
     const profilePictureHandler = (event) => {

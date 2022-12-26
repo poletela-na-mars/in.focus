@@ -12,6 +12,11 @@ const {response} = require("express");
 const {getAuth} = require("firebase-admin/auth");
 const auth = firebase.auth();
 
+const catchTemplate = (err, code, jsonBody) => {
+    console.error(err);
+    return response.status(code).json(jsonBody);
+};
+
 // Login
 exports.loginUser = (request, response) => {
     const user = {
@@ -30,10 +35,12 @@ exports.loginUser = (request, response) => {
         .then((token) => {
             return response.json({token});
         })
-        .catch((error) => {
-            console.error(error);
-            return response.status(403).json({general: 'Wrong credentials, please try again'});
-        })
+        .catch((err) => {
+            catchTemplate(err, 403, {general: 'Wrong credentials, please try again'});
+            //     console.error(error);
+            //     return response.status(403).json({general: 'Wrong credentials, please try again'});
+            // })
+        });
 };
 
 exports.signUpUser = (request, response) => {
@@ -92,15 +99,15 @@ exports.signUpUser = (request, response) => {
         .then(() => {
             return response.status(201).json({token});
         })
-        .catch((error) => {
-            console.error(error);
-            if (error.code === 'auth/email-already-in-use') {
+        .catch((err) => {
+            console.error(err);
+            if (err.code === 'auth/email-already-in-use') {
                 return response.status(400).json({email: 'Email is already in use'});
             } else {
                 return response.status(500).json({general: 'Something went wrong, please try again'});
             }
         });
-}
+};
 
 const deleteImage = (imageName) => {
     const bucket = admin.storage().bucket();
@@ -138,9 +145,10 @@ exports.uploadProfilePhoto = (request, response) => {
         imageToBeUploaded = {filePath, mimetype};
         file.pipe(fs.createWriteStream(filePath));
     });
-    deleteImage(imageFileName).catch((error) => {
-        console.error(error);
-        return response.status(500).json({error: error.code});
+    deleteImage(imageFileName).catch((err) => {
+        catchTemplate(err, 500, {error: err.code})
+        // console.error(error);
+        // return response.status(500).json({error: error.code});
     });
     busboy.on('limit', () => {
         fs.unlink(filePath, () => {
@@ -171,9 +179,10 @@ exports.uploadProfilePhoto = (request, response) => {
                     return response.json({message: 'Image uploaded successfully'});
                 }
             })
-            .catch((error) => {
-                console.error(error);
-                return response.status(500).json({error: error.code});
+            .catch((err) => {
+                catchTemplate(err, 500, {error: err.code});
+                // console.error(err);
+                // return response.status(500).json({error: err.code});
             });
     });
     busboy.end(request.rawBody);
@@ -190,40 +199,105 @@ exports.getUserDetail = (request, response) => {
                 return response.json(userData);
             }
         })
-        .catch((error) => {
-            console.error(error);
-            return response.status(500).json({ error: error.code });
+        .catch((err) => {
+            // console.error(err);
+            // return response.status(500).json({error: err.code});
+            catchTemplate(err, 500, {error: err.code});
         });
 };
 
 exports.updateUserDetails = (request, response) => {
     let document = db.collection('users').doc(`${request.user.username}`);
     document.update(request.body)
-        .then(()=> {
+        .then(() => {
             response.json({message: 'Updated successfully'});
         })
-        .catch((error) => {
-            console.error(error);
-            return response.status(500).json({
-                message: "Cannot update the value"
-            });
+        .catch((err) => {
+            // console.error(err);
+            // return response.status(500).json({
+            //     message: "Cannot update the value"
+            // });
+            catchTemplate(err, 500, {message: "Cannot update the value"});
         });
 };
 
 exports.deleteUser = (request, response) => {
     // const user = {
-    //     email: request.body.email,
-    //     password: request.body.password
+    //     username: request.body.username,
     // }
     // db.collection('users').document(FirebaseAuth.getInstance().currentUser.uid).delete()
     //     .addOnSuccessListener { FirebaseAuth.getInstance().currentUser!!.delete().addOnCompleteListener {//Go to login screen} }
     // .addOnFailureListener { ... }
-    getAuth()
-        .deleteUser(auth.currentUser.uid)
-        .then(() => {
-            console.log('Successfully deleted user');
+
+    // /**Как получить uid*/
+    // const uid = db.collection('users').doc(`${user.username}`).uid;
+
+    // const user = auth.currentUser;
+    //
+    // user.delete().then(() => {
+    //     console.log('Successfully deleted user');
+    // })
+    //     .catch((error) => {
+    //         console.error(error);
+    //         return response.status(500).json({
+    //             message: "Error deleting user"
+    //         });
+    //     });
+
+    const document = db.doc(`/users/${request.params.username}`);
+    document
+        .get()
+        .then((doc) => {
+            if (!doc.exists) {
+                return response.status(404).json({error: 'User not found'})
+            }
+            if (doc.data().username !== request.user.username) {
+                return response.status(403).json({error: "Unauthorized"})
+            }
+            auth.currentUser.delete()
+                .then(() => {
+                    response.json({message: 'Deleted from Auth Base successfully'});
+                })
+                .catch((err) => {
+                    // console.error(err);
+                    // return response.status(500).json({error: err.code});
+                    catchTemplate(err, 500, {error: err.code});
+                })
+            return document.delete();
         })
-        .catch((error) => {
-            console.log('Error deleting user: ', error);
+        .then(() => {
+            response.json({message: 'Deleted from DB successfully'});
+        })
+        .catch((err) => {
+            // console.error(err);
+            // return response.status(500).json({error: err.code});
+            catchTemplate(err, 500, {error: err.code});
         });
+
+    // return auth.currentUser.delete();
+
+    // auth.currentUser.delete().then(() => {
+    //     response.json({message: 'Deleted from Auth Base successfully'});
+    // })
+    //     .catch((err) => {
+    //         console.error(err);
+    //         return response.status(500).json({error: err.code});
+    //     });
+    // db.collection("users").document(currentUser.uid).delete()
+    //     .addOnSuccessListener { Fireba.getInstance().currentUser!!.delete().addOnCompleteListener {//Go to login screen} }
+    // .addOnFailureListener { ... }
+
+    // getAuth()
+    //     // .deleteUser(auth.currentUser.uid)
+    //     .deleteUser(uid)
+    //     .then(() => {
+    //         console.log('Successfully deleted user');
+    //     })
+    //     .catch((error) => {
+    //         // console.log('Error deleting user: ', error);
+    //         console.error(error);
+    //         return response.status(500).json({
+    //             message: "Error deleting user"
+    //         });
+    //     });
 };
