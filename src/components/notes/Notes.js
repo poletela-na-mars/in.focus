@@ -310,8 +310,8 @@ const Notes = (props) => {
                         <Grid container spacing={2}>
                             {notes.map((note) => (
                                 <Grid item xs={12} sm={6} key={note.noteId}>
-                                    <CustomizedCard className="root" variant="outlined" onClick={() => handleViewOpen({note})}>
-                                        <CardContent>
+                                    <CustomizedCard className="root" variant="outlined">
+                                        <CardContent className="view-field-card" onClick={() => handleViewOpen({note})}>
                                             <Typography variant="h5" component="h2">
                                                 {note.title.length > MAX_TITLE_LENGTH ? `${note.title.slice(0, MAX_TITLE_LENGTH)}...` : note.title}
                                             </Typography>

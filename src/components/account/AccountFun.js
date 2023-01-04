@@ -3,6 +3,7 @@ import {authMiddleWare} from "../../util/auth";
 import {CustomizedTextField, theme} from "../login/LoginFun";
 import axios from "axios";
 import {
+    Autocomplete,
     Box,
     Button,
     Card,
@@ -18,6 +19,7 @@ import {
 import {useNavigate} from "react-router-dom";
 
 import "./Account.scss";
+import {countries} from "../sign-up/countries";
 
 // function CloudUploadIcon() {
 //     return null;
@@ -46,6 +48,7 @@ const AccountFun = (props) => {
     const [error403, setError403] = useState(false);
     const [image, setImage] = useState('');
     const [content, setContent] = useState('');
+    const [errors, setErrors] = useState([]);
     // const [userId, setUserId] = useState('');
 
     if (!mounted) {
@@ -92,12 +95,15 @@ const AccountFun = (props) => {
             case "lastName":
                 setLastName(event.target.value);
                 break;
-            case "username":
-                setUsername(event.target.value);
-                break;
-            case "email":
-                setEmail(event.target.value);
-                break;
+            // case "username":
+            //     setUsername(event.target.value);
+            //     break;
+            // case "email":
+            //     setEmail(event.target.value);
+            //     break;
+            // case "phone":
+            //     setPhoneNumber(event.target.value);
+            //     break;
             default:
                 break;
         }
@@ -162,8 +168,12 @@ const AccountFun = (props) => {
             });
     };
 
+    const handleChangeCountry = (event, newValue) => {
+        setCountry(newValue);
+    };
+
     const updateFormValues = (event) => {
-        event.preventDefault();
+        //event.preventDefault();
         setButtonLoading(true);
         authMiddleWare(navigate);
         const authToken = localStorage.getItem('AuthToken');
@@ -174,20 +184,22 @@ const AccountFun = (props) => {
             country: country
         };
         axios
-            .post('/user', formRequest)
+            .put('/user', formRequest)
             .then(() => {
                 setButtonLoading(false);
+                console.log('upd 2');
             })
             .catch((error) => {
                 if (error.response.status === 403) {
-                    navigate("/login");
+                    navigate('/login');
                 }
                 console.log(error);
+                // setErrorMsg(error.response.data);
+                setErrors(error.response.data);
                 setButtonLoading(false);
             });
     };
 
-    // const {classes, ...rest} = this.props;
     return uiLoading === true ? (
         <main className="container">
             {/*<div className="toolbar"/>*/}
@@ -196,8 +208,6 @@ const AccountFun = (props) => {
     ) : (
         <ThemeProvider theme={theme}>
             <main className="content container">
-                {/*<div className="toolbar"/>*/}
-                {/*<Card {...rest} className={clsx(classes.root, classes)}>*/}
                 <Container maxWidth="md">
                     <Box className="box">
                         <CustomizedCard variant="outlined">
@@ -234,9 +244,8 @@ const AccountFun = (props) => {
                         </CustomizedCard>
 
                         <br/>
-                        {/*<Card {...rest} className={clsx(classes.root, classes)}>*/}
                         <CustomizedCard variant="outlined">
-                            <form autoComplete="off" noValidate>
+                            <form autoComplete="off">
                                 {/*<Divider/>*/}
                                 <CardContent>
                                     <Grid container spacing={3}>
@@ -249,6 +258,8 @@ const AccountFun = (props) => {
                                                 variant="outlined"
                                                 value={firstName}
                                                 onChange={handleChange}
+                                                helperText={errors.firstName}
+                                                error={!!errors.firstName}
                                             />
                                         </Grid>
                                         <Grid item md={6} xs={12}>
@@ -260,6 +271,8 @@ const AccountFun = (props) => {
                                                 variant="outlined"
                                                 value={lastName}
                                                 onChange={handleChange}
+                                                helperText={errors.lastName}
+                                                error={!!errors.lastName}
                                             />
                                         </Grid>
                                         <Grid item md={6} xs={12}>
@@ -280,7 +293,6 @@ const AccountFun = (props) => {
                                                 label="Phone Number"
                                                 margin="dense"
                                                 name="phone"
-                                                type="number"
                                                 variant="outlined"
                                                 disabled={true}
                                                 value={phoneNumber}
@@ -299,15 +311,34 @@ const AccountFun = (props) => {
                                                 onChange={handleChange}
                                             />
                                         </Grid>
+                                        {/*<Grid item md={6} xs={12}>*/}
+                                        {/*    <CustomizedTextField*/}
+                                        {/*        fullWidth*/}
+                                        {/*        label="Country"*/}
+                                        {/*        margin="dense"*/}
+                                        {/*        name="country"*/}
+                                        {/*        variant="outlined"*/}
+                                        {/*        value={country}*/}
+                                        {/*        onChange={handleChange}*/}
+                                        {/*    />*/}
+                                        {/*</Grid>*/}
                                         <Grid item md={6} xs={12}>
-                                            <CustomizedTextField
+                                            <Autocomplete
+                                                // disablePortal
+                                                id="country"
+                                                name="country"
+                                                options={countries}
                                                 fullWidth
                                                 label="Country"
                                                 margin="dense"
-                                                name="country"
                                                 variant="outlined"
                                                 value={country}
-                                                onChange={handleChange}
+                                                renderInput={(params) => <CustomizedTextField {...params}
+                                                                                              // fullWidth
+                                                                                              label="Country"/>}
+                                                onChange={(event, value) => handleChangeCountry(event, value)}
+                                                // helperText={errors.country}
+                                                // error={!!errors.country}
                                             />
                                         </Grid>
                                     </Grid>
@@ -331,17 +362,10 @@ const AccountFun = (props) => {
                         {/*>*/}
                         <Grid container
                               spacing={0}
-                              direction="column"
+                              // direction="column"
                               alignItems="center"
                               justifyContent="center"
                         >
-                            <button
-                                className="delete-account-button"
-                                type="submit"
-                                onClick={deleteUserHandler}
-                            >
-                                Delete Account
-                            </button>
                             <button
                                 className="save-details-button"
                                 type="submit"
@@ -354,6 +378,13 @@ const AccountFun = (props) => {
                                 }
                             >
                                 Save Details
+                            </button>
+                            <button
+                                className="delete-account-button"
+                                type="submit"
+                                onClick={deleteUserHandler}
+                            >
+                                Delete Account
                             </button>
                         </Grid>
                     </Box>

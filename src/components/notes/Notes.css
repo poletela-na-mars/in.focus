@@ -57,6 +57,9 @@
   align-items: center;
   justify-content: space-between;
   word-break: break-all;
+}
+
+.view-field-card {
   cursor: pointer;
 }
 

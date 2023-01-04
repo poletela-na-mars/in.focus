@@ -103,7 +103,7 @@ exports.deleteNote = (request, response) => {
         });
 };
 
-exports.editNote = ( request, response ) => {
+exports.editNote = (request, response) => {
     if(request.body.noteId || request.body.createdAt){
         response.status(403).json({message: 'Not allowed to edit'});
     }

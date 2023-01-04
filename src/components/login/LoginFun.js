@@ -133,6 +133,7 @@ const LoginFun = (props) => {
                             label="Email Address"
                             name="email"
                             autoComplete="email"
+                            inputProps={{maxLength: 50}}
                             autoFocus
                             helperText={errors.email}
                             error={!!errors.email}
@@ -148,6 +149,7 @@ const LoginFun = (props) => {
                             type={showPassword ? 'text' : 'password'}
                             id="password"
                             autoComplete="current-password"
+                            inputProps={{maxLength: 50}}
                             helperText={errors.password}
                             error={!!errors.password}
                             onChange={handleChange}

@@ -5,7 +5,7 @@ const firebase = require("firebase/compat/app");
 
 firebase.initializeApp(config);
 
-const {validateLoginData, validateSignUpData} = require('../utils/validators');
+const {validateLoginData, validateSignUpData, validateUpdatedData} = require('../utils/validators');
 
 const firebaseAuth = require("firebase/compat/auth");
 const {response} = require("express");
@@ -49,6 +49,7 @@ exports.signUpUser = (request, response) => {
         lastName: request.body.lastName,
         email: request.body.email,
         phoneNumber: request.body.phoneNumber,
+        phoneNumberCountry: request.body.phoneNumberCountry,
         country: request.body.country,
         password: request.body.password,
         confirmPassword: request.body.confirmPassword,
@@ -86,6 +87,7 @@ exports.signUpUser = (request, response) => {
                 lastName: newUser.lastName,
                 username: newUser.username,
                 phoneNumber: newUser.phoneNumber,
+                phoneNumberCountry: newUser.phoneNumberCountry,
                 country: newUser.country,
                 email: newUser.email,
                 createdAt: new Date().toISOString(),
@@ -207,6 +209,18 @@ exports.getUserDetail = (request, response) => {
 };
 
 exports.updateUserDetails = (request, response) => {
+    const updatedData = {
+        firstName: request.body.firstName,
+        lastName: request.body.lastName,
+        country: request.body.country,
+    };
+
+    console.log('upd');
+
+    const {valid, errors} = validateUpdatedData(updatedData);
+
+    if (!valid) return response.status(400).json(errors);
+
     let document = db.collection('users').doc(`${request.user.username}`);
     document.update(request.body)
         .then(() => {

@@ -23,6 +23,7 @@ const SignUpFun = (props) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [phoneNumberCountry, setPhoneNumberCountry] = useState('');
     const [country, setCountry] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -58,6 +59,7 @@ const SignUpFun = (props) => {
 
     const handleChangeTel = (newValue, info) => {
         setPhoneNumber("+" + info.countryCallingCode + newValue);
+        setPhoneNumberCountry(info.countryCode);
     };
 
     const handleChangeCountry = (event, newValue) => {
@@ -71,6 +73,7 @@ const SignUpFun = (props) => {
             firstName: firstName,
             lastName: lastName,
             phoneNumber: phoneNumber,
+            phoneNumberCountry: phoneNumberCountry,
             country: country,
             username: username,
             email: email,
@@ -80,7 +83,7 @@ const SignUpFun = (props) => {
         axios
             .post('/signup', newUserData)
             .then((response) => {
-                localStorage.setItem('AuthToken', `${response.data.token}`);
+                localStorage.setItem('AuthToken', `Bearer ${response.data.token}`);
                 setLoading(false)
                 navigate("/home");
             })
@@ -126,6 +129,7 @@ const SignUpFun = (props) => {
                                     label="First Name"
                                     name="firstName"
                                     autoComplete="firstName"
+                                    inputProps={{maxLength: 30}}
                                     helperText={errors.firstName}
                                     error={!!errors.firstName}
                                     onChange={handleChange}
@@ -140,6 +144,7 @@ const SignUpFun = (props) => {
                                     label="Last Name"
                                     name="lastName"
                                     autoComplete="lastName"
+                                    inputProps={{maxLength: 30}}
                                     helperText={errors.lastName}
                                     error={!!errors.lastName}
                                     onChange={handleChange}
@@ -155,6 +160,7 @@ const SignUpFun = (props) => {
                                     label="User Name"
                                     name="username"
                                     autoComplete="username"
+                                    inputProps={{maxLength: 30}}
                                     helperText={errors.username}
                                     error={!!errors.username}
                                     onChange={handleChange}
@@ -170,6 +176,7 @@ const SignUpFun = (props) => {
                                     label="Phone Number"
                                     name="phoneNumber"
                                     autoComplete="phoneNumber"
+                                    inputProps={{maxLength: 20}}
                                     defaultCountry="RU"
                                     splitCallingCode
                                     helperText={errors.phoneNumber}
@@ -188,6 +195,7 @@ const SignUpFun = (props) => {
                                     label="Email Address"
                                     name="email"
                                     autoComplete="email"
+                                    inputProps={{maxLength: 50}}
                                     helperText={errors.email}
                                     error={!!errors.email}
                                     onChange={handleChange}
@@ -196,7 +204,7 @@ const SignUpFun = (props) => {
 
                             <Grid item xs={12}>
                                 <Autocomplete
-                                    disablePortal
+                                    // disablePortal
                                     id="country"
                                     name="country"
                                     options={countries}
@@ -220,6 +228,7 @@ const SignUpFun = (props) => {
                                     type="password"
                                     id="password"
                                     autoComplete="current-password"
+                                    inputProps={{maxLength: 50}}
                                     helperText={errors.password}
                                     error={!!errors.password}
                                     onChange={handleChange}
@@ -234,7 +243,7 @@ const SignUpFun = (props) => {
                                     label="Confirm Password"
                                     type="password"
                                     id="confirmPassword"
-                                    autoComplete="current-password"
+                                    inputProps={{maxLength: 50}}
                                     helperText={errors.confirmPassword}
                                     error={!!errors.confirmPassword}
                                     onChange={handleChange}
@@ -263,7 +272,9 @@ const SignUpFun = (props) => {
                                     !lastName ||
                                     !country ||
                                     !username ||
-                                    !phoneNumber}
+                                    !phoneNumber ||
+                                    !confirmPassword
+                                }
                             >
                                 {/*{console.log(loading,*/}
                                 {/*    email,*/}

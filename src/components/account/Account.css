@@ -67,13 +67,13 @@
   box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
-.save-details-button {
-  font-size: 18px;
+.save-details-button, .delete-account-button {
+  font-size: 16px;
   width: 130px;
-  height: 40px;
+  height: 45px;
   margin: 20px;
 }
-.save-details-button {
+.save-details-button, .delete-account-button {
   font-family: "Geometria Medium", sans-serif;
   border-radius: 50px;
   border: none;
@@ -85,12 +85,16 @@
   background-color: #8613E0;
   transition: background-color 0.5s ease;
 }
-.save-details-button:hover {
+.save-details-button:hover, .delete-account-button:hover {
   background-color: #FF7A00;
 }
-.save-details-button:disabled {
+.save-details-button:disabled, .delete-account-button:disabled {
   background-color: rgb(204, 184, 219);
   cursor: default;
+}
+
+.delete-account-button {
+  background-color: #d26d6d;
 }
 
 .box {
