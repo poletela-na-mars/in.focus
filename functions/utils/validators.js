@@ -67,11 +67,7 @@ exports.validateUpdatedData = (data) => {
     //
     // if (isEmpty(data.country)) errors.country = 'Must not be empty';
 
-    console.log('VALIDATED 1');
-
     let errors = basicValidation(data, {});
-
-    console.log('VALIDATED 2');
 
     return {
         errors,

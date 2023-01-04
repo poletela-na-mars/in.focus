@@ -173,7 +173,7 @@ const AccountFun = (props) => {
     };
 
     const updateFormValues = (event) => {
-        //event.preventDefault();
+        event.preventDefault();
         setButtonLoading(true);
         authMiddleWare(navigate);
         const authToken = localStorage.getItem('AuthToken');
@@ -187,14 +187,13 @@ const AccountFun = (props) => {
             .put('/user', formRequest)
             .then(() => {
                 setButtonLoading(false);
-                console.log('upd 2');
+                setErrors([]);
             })
             .catch((error) => {
                 if (error.response.status === 403) {
                     navigate('/login');
                 }
                 console.log(error);
-                // setErrorMsg(error.response.data);
                 setErrors(error.response.data);
                 setButtonLoading(false);
             });

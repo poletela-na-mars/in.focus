@@ -250,6 +250,10 @@ const Notes = (props) => {
                                         color="inherit"
                                         onClick={handleSubmit}
                                         className="submit-button"
+                                        disabled={
+                                            !title.trim() ||
+                                            !body.trim()
+                                        }
                                     >
                                         {buttonType === "Edit" ? "Save" : "Submit"}
                                     </Button>

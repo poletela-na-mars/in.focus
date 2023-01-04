@@ -215,8 +215,6 @@ exports.updateUserDetails = (request, response) => {
         country: request.body.country,
     };
 
-    console.log('upd');
-
     const {valid, errors} = validateUpdatedData(updatedData);
 
     if (!valid) return response.status(400).json(errors);

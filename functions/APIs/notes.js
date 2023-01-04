@@ -67,6 +67,7 @@ exports.postOneNote = (request, response) => {
         editedAt: new Date().toISOString(),
         username: request.user.username,
     }
+
     db
         .collection('notes')
         .add(newNoteItem)
