@@ -10,10 +10,10 @@ import {
     CardActions,
     CardContent,
     CircularProgress,
-    Container,
-    Grid,
+    Container, Fade,
+    Grid, Modal,
     styled,
-    ThemeProvider,
+    ThemeProvider, Toolbar,
     Typography
 } from "@mui/material";
 import {useNavigate} from "react-router-dom";
@@ -49,6 +49,7 @@ const AccountFun = (props) => {
     const [image, setImage] = useState('');
     const [content, setContent] = useState('');
     const [errors, setErrors] = useState([]);
+    const [openDeterminePopup, setOpenDeterminePopup] = useState(false);
     // const [userId, setUserId] = useState('');
 
     if (!mounted) {
@@ -199,6 +200,14 @@ const AccountFun = (props) => {
             });
     };
 
+    const deleteAccountButtonClickHandler = () => {
+        setOpenDeterminePopup(true);
+    };
+
+    const closeDeleteAccountButtonPopupHandler = () => {
+        setOpenDeterminePopup(false);
+    };
+
     return uiLoading === true ? (
         <main className="container">
             {/*<div className="toolbar"/>*/}
@@ -206,9 +215,10 @@ const AccountFun = (props) => {
         </main>
     ) : (
         <ThemeProvider theme={theme}>
-            <main className="content container">
-                <Container maxWidth="md">
-                    <Box className="box">
+            {/*<main className="content container">*/}
+            <Toolbar className="tool-bar" />
+            <Container maxWidth="md">
+                    <Box className="box" style={{padding: theme.spacing(3)}}>
                         <CustomizedCard variant="outlined">
                             <CardContent>
                                 <div className="details">
@@ -381,17 +391,32 @@ const AccountFun = (props) => {
                             <button
                                 className="delete-account-button"
                                 type="submit"
-                                onClick={deleteUserHandler}
+                                onClick={deleteAccountButtonClickHandler}
                             >
                                 Delete Account
                             </button>
                         </Grid>
                     </Box>
                 </Container>
-                {/*    Save details*/}
-                {/*    {buttonLoading && <CircularProgress size={30}/>}*/}
-                {/*</Button>*/}
-            </main>
+
+                <Modal
+                    className="determine-popup"
+                    open={openDeterminePopup}
+                    onClose={closeDeleteAccountButtonPopupHandler}
+                    closeAfterTransition
+                >
+                    <Fade in={openDeterminePopup}>
+                        <div className="determine-popup-paper">
+                            <h3>Do you really want to delete account?</h3>
+                            <div className="determine-buttons-container">
+                                <button className="yes-button" onClick={deleteUserHandler}>Yes</button>
+                                <button className="no-button" onClick={closeDeleteAccountButtonPopupHandler}>No</button>
+                            </div>
+                        </div>
+                    </Fade>
+                </Modal>
+
+            {/*</main>*/}
         </ThemeProvider>
     );
 };

@@ -1,10 +1,10 @@
 @import "./../../vars";
 
-.floating-button {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-}
+//.floating-button {
+//  position: fixed;
+//  bottom: 0;
+//  right: 0;
+//}
 
 .title {
   //margin-left: theme.spacing(2);
@@ -47,7 +47,7 @@
 .dialog-style {
   .MuiDialog-paperFullWidth {
     max-width: 50%;
-    border-radius: 20px;
+    border-radius: $light-rounded-border-radius;
   }
 }
 
@@ -58,4 +58,15 @@
 
 .app-bar {
   position: relative;
+}
+
+.add-notes-button {
+  z-index: 1001;
+  position: fixed;
+  right: 3vh;
+  bottom: 3vh;
+}
+
+.tool-bar {
+  height: 65px;
 }

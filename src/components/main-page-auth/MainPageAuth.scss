@@ -8,8 +8,9 @@
 //}
 
 .app-bar {
-  z-index: 1000;
+  //z-index: 1000;
   height: $app-bar-height;
+  //box-sizing: border-box;
   //background: #fff;
 }
 
@@ -87,3 +88,38 @@
 //.icon-gray {
 //  color: $gray-text-color;
 //}
+
+.determine-buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.determine-popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.determine-popup-paper {
+  text-align: center;
+  background-color: $white-color;
+  border-radius: $light-rounded-border-radius;
+  box-shadow: $button-box-shadow;
+  padding: 5%;
+  margin: 3%;
+
+  h3 {
+    margin: 0 0 5%;
+  }
+}
+
+.yes-button, .no-button {
+  @include violet-button;
+  font-size: 16px;
+  width: 130px;
+  height: 45px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+}

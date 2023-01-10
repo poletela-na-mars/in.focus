@@ -36,27 +36,21 @@ const MainPage = (props) => {
 };
 
 //TODO:
-//      -осталась заметка после удаления аккаунта
+//      -!!осталась заметка после удаления аккаунта
 //      -?проблемы с удалением аккаунта (не удаляется почта)
-//      -!кнопка добавления заметок
-//      -!validate notes
-//      -перед выходом и удалением спрашивать второй раз
+//      -DESIGN- если нет фото профиля,то avatar серый
+//      !-выбор файла - state.image
+//      -SECURITY- проверка на загрузку фото: максимальный размер, название, расширение, Content-Type Header, без флага exe,
+//      -SECURITY- переименовывать файлы при загрузке
 //      ***
 //      -!fix spacings and styles...
-//      -!проблемы с версткой на телефонах и планшетах
 //      -SECURITY- помечать id, как устаревшие, при выходе из профиля
 //      -DESIGN- add search bar
 //      -SECURITY- количество попыток для входа - Exponential Backoff
 //      -SECURITY- ограничить число созданных аккаунтов во времени
-//      -DESIGN- если нет фото профиля,то avatar серый
-//      !-выбор файла - state.image
 //      -SECURITY- хэширование данных пользователя
 //      -clean-up
-//      -SECURITY- проверка на загрузку фото: максимальный размер, название, расширение, Content-Type Header, без флага exe,
-//      -SECURITY- переименовывать файлы при загрузке
-//      -DESIGN- вынести 50px для border-radius
 //      -DESIGN- медиазапрос для MainPage - поменьше для телефона
-//      -ESLint config
 //      -SECURITY- add HTTP headers in axios config for security
 
 export default MainPage;

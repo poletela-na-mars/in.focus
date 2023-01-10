@@ -58,6 +58,8 @@ $light-font-family: "Geometria Light", sans-serif;
 $transition: background-color 0.5s ease;
 $app-bar-height: 55px;
 $drawer-width: 60px;
+$rounded-border-radius: 50px;
+$light-rounded-border-radius: 20px;
 
 .content {
   flex-grow: 1;
@@ -69,7 +71,7 @@ $drawer-width: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
+  //overflow-x: hidden;
 }
 
 .loader {

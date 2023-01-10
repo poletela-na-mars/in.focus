@@ -8,14 +8,14 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
 import {
     AppBar,
-    Avatar,
+    Avatar, Box,
     CircularProgress,
     Divider,
-    Drawer,
+    Drawer, Fade,
     IconButton,
     List,
     ListItem,
-    ListItemIcon,
+    ListItemIcon, Modal, Popover,
     ThemeProvider,
     Toolbar
 } from "@mui/material";
@@ -54,6 +54,7 @@ const MainPageAuthFun = (props) => {
     const [errorMsg, setErrorMsg] = useState('');
     const [error403, setError403] = useState(false);
     const [openBar, setOpenBar] = useState(false);
+    const [openDeterminePopup, setOpenDeterminePopup] = useState(false);
     const [isActiveIcon, setActiveIcon] = useState({'notes': true, 'account': false});
 
     const navigate = useNavigate();
@@ -126,6 +127,33 @@ const MainPageAuthFun = (props) => {
         return prevState;
     };
 
+    const logoutButtonClickHandler = () => {
+        setOpenDeterminePopup(true);
+    };
+
+    const closeDeterminePopupHandler = () => {
+        setOpenDeterminePopup(false);
+    };
+
+    // export const determinePopupHandler = (openDeterminePopup) => {
+    //     return (
+    //         <Popover
+    //             id={id}
+    //             open={openDeterminePopup}
+    //             anchorEl={anchorEl}
+    //             onClose={handleCloseDeterminePopup}
+    //             anchorReference="anchorPosition"
+    //             anchorPosition={{ top: 50%, left: 50% }}
+    //         >
+    //             <Typography sx={{p: 2}}>The content of the Popover.</Typography>
+    // <div className="determine-buttons-container">
+    //     <button>Yes</button>
+    //     <button>No</button>
+    // </div>
+    //         </Popover>
+    //     )
+    // };
+
     return (
         <ThemeProvider theme={theme}>
             {(uiLoading === true) ?
@@ -133,11 +161,13 @@ const MainPageAuthFun = (props) => {
                     {uiLoading && <CircularProgress size={100} className="loader"/>}
                 </div>)
                 : (
-                    <div className="container">
-                        {/*<CssBaseline/>*/}
+                    <>
+                    {/*<Box className="container">*/}
+                    {/*<CssBaseline/>*/}
+                    {/*    <AppBar position="fixed" className="app-bar" open={openBar} elevation={0}*/}
                         <AppBar position="fixed" className="app-bar" open={openBar} elevation={0}
                                 style={{background: '#fff'}}>
-                            <Toolbar sx={{}}>
+                            <Toolbar>
                                 {/*<Typography variant="h6" noWrap>*/}
                                 {/*    in.focus*/}
                                 {/*</Typography>*/}
@@ -175,7 +205,6 @@ const MainPageAuthFun = (props) => {
                             }}
                         >
                             {/*<div className={classes.toolbar} />*/}
-                            {/*<Divider/>*/}
                             <div className="drawer-header">
                                 <IconButton onClick={handleDrawerClose}>
                                     {/*<img src={hide} alt="Arrow Left Icon"/>*/}
@@ -186,7 +215,6 @@ const MainPageAuthFun = (props) => {
                                 <Avatar src={profilePicture} className="avatar"/>
                                 <p>
                                     {' '}
-                                    {/*{firstName} {lastName}*/}
                                 </p>
                             </center>
                             <Divider/>
@@ -219,18 +247,38 @@ const MainPageAuthFun = (props) => {
                                     {/*<ListItemText primary="Account"/>*/}
                                 </ListItem>
 
-                                <ListItem button key="Logout" onClick={logoutHandler}>
+                                <ListItem button key="Logout" onClick={logoutButtonClickHandler}>
                                     <ListItemIcon>
                                         {' '}
                                         <LogoutRoundedIcon fontSize="large" className="icon"/>
                                     </ListItemIcon>
                                     {/*<ListItemText primary="Logout"/>*/}
                                 </ListItem>
+
+                                <Modal
+                                    className="determine-popup"
+                                    open={openDeterminePopup}
+                                    onClose={closeDeterminePopupHandler}
+                                    closeAfterTransition
+                                >
+                                    <Fade in={openDeterminePopup}>
+                                        <div className="determine-popup-paper">
+                                            <h3>Do you really want to log out?</h3>
+                                            <div className="determine-buttons-container">
+                                                <button className="yes-button" onClick={logoutHandler}>Yes</button>
+                                                <button className="no-button" onClick={closeDeterminePopupHandler}>No
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </Fade>
+                                </Modal>
+
                             </List>
                         </Drawer>
 
-                        <div>{render ? <AccountFun/> : <Notes/>}</div>
-                    </div>
+                        <Box>{render ? <AccountFun/> : <Notes/>}</Box>
+                     {/*</Box>*/}
+                        </>
                 )
             }
         </ThemeProvider>

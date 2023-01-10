@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 import {authMiddleWare} from "../../util/auth";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
@@ -27,6 +27,9 @@ import "./Notes.scss";
 import {AddCircleRounded, CloseRounded} from "@mui/icons-material";
 import {theme} from "../login/LoginFun";
 import {CustomizedCard} from "../account/AccountFun";
+import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import LogoSVG from "../../LogoSVG";
 
 const MAX_TITLE_LENGTH = 30;
 const MAX_BODY_LENGTH = 65;
@@ -225,17 +228,20 @@ const Notes = (props) => {
                     {uiLoading && <CircularProgress size={100} className="loader"/>}
                 </div>) : (
                     // <main className="content" style={{padding: theme.spacing(3)}}>
-                    <main className="content" style={{padding: theme.spacing(3), marginRight: theme.spacing(5)}}>
-                        {/*<div className="toolbar"/>*/}
-                        <div className="toolbar"/>
-                        <IconButton
-                            className="floating-button"
-                            // color="primary"
-                            aria-label="Add Note"
-                            onClick={handleClickOpen}
-                        >
-                            <AddCircleRounded fontSize="large" className="icon-active"/>
-                        </IconButton>
+                    <main className="content" style={{padding: theme.spacing(3)}}>
+                        {/*<main className="content" style={{padding: theme.spacing(3), marginRight: theme.spacing(3)}}>*/}
+                        <Toolbar className="tool-bar" />
+
+                        <div className="add-notes-button">
+                            <IconButton
+                                size="large"
+                                aria-label="Add Note"
+                                onClick={handleClickOpen}
+                            >
+                                <AddCircleRounded fontSize="large" className="icon-active"/>
+                                {/*<AddCircleOutlineTwoToneIcon fontSize="large" className="icon-active" />*/}
+                            </IconButton>
+                        </div>
                         <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
                             <AppBar className="app-bar">
                                 <Toolbar>

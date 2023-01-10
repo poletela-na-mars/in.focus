@@ -8,7 +8,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
 }
 
 .loader {
@@ -29,7 +28,6 @@
 }
 
 .app-bar {
-  z-index: 1000;
   height: 55px;
 }
 
@@ -58,6 +56,58 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+.determine-buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.determine-popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.determine-popup-paper {
+  text-align: center;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
+  padding: 5%;
+  margin: 3%;
+}
+.determine-popup-paper h3 {
+  margin: 0 0 5%;
+}
+
+.yes-button, .no-button {
+  font-size: 16px;
+  width: 130px;
+  height: 45px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+}
+.yes-button, .no-button {
+  font-family: "Geometria Medium", sans-serif;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  color: #FFFFFF;
+  background-color: #8613E0;
+  transition: background-color 0.5s ease;
+}
+.yes-button:hover, .no-button:hover {
+  background-color: #FF7A00;
+}
+.yes-button:disabled, .no-button:disabled {
+  background-color: rgb(204, 184, 219);
+  cursor: default;
 }
 
 /*# sourceMappingURL=MainPageAuth.css.map */
