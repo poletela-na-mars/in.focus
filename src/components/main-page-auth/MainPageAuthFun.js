@@ -201,6 +201,7 @@ const MainPageAuthFun = (props) => {
                                     width: 60,
                                     boxSizing: 'border-box',
                                     overflowX: 'hidden',
+                                    border: '1px solid #e5e5e5'
                                 },
                             }}
                         >
@@ -217,7 +218,7 @@ const MainPageAuthFun = (props) => {
                                     {' '}
                                 </p>
                             </center>
-                            <Divider/>
+                            <Divider light />
                             <List>
                                 <ListItem button key="Notes" onClick={loadNotePage}>
                                     <ListItemIcon>

@@ -33,11 +33,7 @@
 
 .submit-button {
   display: block;
-  color: white;
   text-align: center;
-  position: absolute;
-  top: 14px;
-  right: 10px;
 }
 
 .form {
@@ -56,12 +52,22 @@
   cursor: pointer;
 }
 
+.card-text {
+  overflow-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
 .pos {
   margin-bottom: 12px;
 }
 
 .dialog-style .MuiDialog-paperFullWidth {
-  max-width: 50%;
+  max-width: 80%;
   border-radius: 20px;
 }
 

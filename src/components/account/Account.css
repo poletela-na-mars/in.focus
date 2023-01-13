@@ -35,10 +35,14 @@
 }
 
 .name-surname {
+  overflow-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  word-wrap: break-word;
+  -moz-hyphens: auto;
   hyphens: auto;
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
-  word-wrap: break-word;
   padding-left: 15px;
   font-family: "Geometria Medium", sans-serif;
 }

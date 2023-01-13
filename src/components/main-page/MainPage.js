@@ -36,10 +36,11 @@ const MainPage = (props) => {
 };
 
 //TODO:
-//      -!!осталась заметка после удаления аккаунта
+//      -?не всегда правильная обработка setActiveIcon
 //      -?проблемы с удалением аккаунта (не удаляется почта)
-//      -DESIGN- если нет фото профиля,то avatar серый
-//      !-выбор файла - state.image
+//      !-выбор файла - path undefined - state.image (через postman получается...)
+//      !кнопка загрузки файла
+//      !-кнопка - удалить фото
 //      -SECURITY- проверка на загрузку фото: максимальный размер, название, расширение, Content-Type Header, без флага exe,
 //      -SECURITY- переименовывать файлы при загрузке
 //      ***
@@ -50,7 +51,6 @@ const MainPage = (props) => {
 //      -SECURITY- ограничить число созданных аккаунтов во времени
 //      -SECURITY- хэширование данных пользователя
 //      -clean-up
-//      -DESIGN- медиазапрос для MainPage - поменьше для телефона
 //      -SECURITY- add HTTP headers in axios config for security
 
 export default MainPage;

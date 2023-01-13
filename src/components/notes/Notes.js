@@ -1,6 +1,6 @@
 import {forwardRef, useEffect, useState} from "react";
 import {
-    AppBar,
+    AppBar, Box,
     Button,
     CardActions,
     CardContent,
@@ -230,7 +230,7 @@ const Notes = (props) => {
                     // <main className="content" style={{padding: theme.spacing(3)}}>
                     <main className="content" style={{padding: theme.spacing(3)}}>
                         {/*<main className="content" style={{padding: theme.spacing(3), marginRight: theme.spacing(3)}}>*/}
-                        <Toolbar className="tool-bar" />
+                        <Toolbar className="tool-bar"/>
 
                         <div className="add-notes-button">
                             <IconButton
@@ -252,7 +252,7 @@ const Notes = (props) => {
                                         {buttonType === "Edit" ? "Edit Note" : "Create a new Note"}
                                     </Typography>
                                     <Button
-                                        autoFocus
+                                        // autoFocus
                                         color="inherit"
                                         onClick={handleSubmit}
                                         className="submit-button"
@@ -304,7 +304,6 @@ const Notes = (props) => {
                                             name="body"
                                             autoComplete="noteDetails"
                                             multiline
-                                            // minRows={10}
                                             maxRows={20}
                                             inputProps={{maxLength: 500}}
                                             helperText={errors.body}
@@ -318,64 +317,62 @@ const Notes = (props) => {
                         </Dialog>
 
                         <Grid container spacing={2}>
-                            {notes.map((note) => (
-                                <Grid item xs={12} sm={6} key={note.noteId}>
-                                    <CustomizedCard className="root" variant="outlined">
-                                        <CardContent className="view-field-card" onClick={() => handleViewOpen({note})}>
-                                            <Typography variant="h5" component="h2">
-                                                {note.title.length > MAX_TITLE_LENGTH ? `${note.title.slice(0, MAX_TITLE_LENGTH)}...` : note.title}
-                                            </Typography>
-                                            <Typography className="pos" color="textSecondary">
-                                                {`last changes ${(note.createdAt !== note.editedAt) ? dayjs(note.editedAt).fromNow() : dayjs(note.createdAt).fromNow()}`}
-                                            </Typography>
-                                            <Typography variant="body2" component="p">
-                                                {/*{`${note.body.substring(0, 65)}`}*/}
-                                                {note.body.length > MAX_BODY_LENGTH ? `${note.body.slice(0, MAX_BODY_LENGTH)}...` : note.body}
-                                            </Typography>
-                                        </CardContent>
-                                        <CardActions>
-                                            {/*<Button size="small" color="primary" onClick={() => handleViewOpen({note})}>*/}
-                                            {/*    {' '}*/}
-                                            {/*    View{' '}*/}
-                                            {/*</Button>*/}
-                                            <Button size="small" color="primary"
-                                                    onClick={() => handleEditClickOpen({note})}>
-                                                Edit
-                                            </Button>
-                                            <Button size="small" color="primary"
-                                                    onClick={() => deleteNoteHandler({note})}>
-                                                Delete
-                                            </Button>
-                                        </CardActions>
-                                    </CustomizedCard>
-                                </Grid>
-                            ))}
+                            {notes.length !== 0 ? (notes.map((note) => (
+                                    <Grid item xs={12} sm={6} key={note.noteId}>
+                                        <CustomizedCard className="root" variant="outlined">
+                                            <CardContent className="view-field-card" onClick={() => handleViewOpen({note})}>
+                                                <Typography variant="h5" component="h2" className="card-text">
+                                                    {note.title.length > MAX_TITLE_LENGTH ? `${note.title.slice(0, MAX_TITLE_LENGTH)}...` : note.title}
+                                                </Typography>
+                                                <Typography color="textSecondary" className="card-text pos">
+                                                    {`last changes ${(note.createdAt !== note.editedAt) ? dayjs(note.editedAt).fromNow() : dayjs(note.createdAt).fromNow()}`}
+                                                </Typography>
+                                                <Typography variant="body2" component="p" className="card-text">
+                                                    {/*{`${note.body.substring(0, 65)}`}*/}
+                                                    {note.body.length > MAX_BODY_LENGTH ? `${note.body.slice(0, MAX_BODY_LENGTH)}...` : note.body}
+                                                </Typography>
+                                            </CardContent>
+                                            <CardActions>
+
+                                                <Button size="small" color="primary"
+                                                        onClick={() => handleEditClickOpen({note})}>
+                                                    Edit
+                                                </Button>
+                                                <Button size="small" color="primary"
+                                                        onClick={() => deleteNoteHandler({note})}>
+                                                    Delete
+                                                </Button>
+                                            </CardActions>
+                                        </CustomizedCard>
+                                    </Grid>
+                                ))) :
+                                (
+                                    <Box
+                                        sx={{
+                                            width: '100%',
+                                            height: '80vh',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            margin: 2,
+                                            textAlign: 'center'
+                                        }}
+                                    >
+                                        <Typography color="textSecondary" component="h2" variant="h5">You don't have any
+                                            notes now</Typography>
+                                    </Box>
+                                )
+                            }
                         </Grid>
 
                         <Dialog
                             onClose={handleViewClose}
-                            // aria-labelledby="customized-dialog-title"
                             open={viewOpen}
                             fullWidth
                             className="dialog-style"
-                            // classes={{paperFullWidth: classes.dialog-style}}
                         >
                             <DialogTitleWrapper onClose={handleViewClose}>
                                 {title}
-                                {/*<TextField*/}
-                                {/*    fullWidth*/}
-                                {/*    // id="noteTitle"*/}
-                                {/*    name="title"*/}
-                                {/*    multiline*/}
-                                {/*    readonly*/}
-                                {/*    minRows={1}*/}
-                                {/*    maxRows={5}*/}
-                                {/*    value={body}*/}
-                                {/*    inputProps={{*/}
-                                {/*        disableUnderline: true,*/}
-                                {/*        maxLength: 500*/}
-                                {/*    }}*/}
-                                {/*/>*/}
                             </DialogTitleWrapper>
                             <DialogContent dividers sx={{padding: theme.spacing(2), margin: 0}}>
                                 <TextField
@@ -395,7 +392,6 @@ const Notes = (props) => {
                                         readOnly: true
                                         // maxLength: 500
                                     }}
-                                    // style={{cursor: "none"}}
                                 />
                             </DialogContent>
                         </Dialog>

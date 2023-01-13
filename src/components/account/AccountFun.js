@@ -142,6 +142,10 @@ const AccountFun = (props) => {
     };
 
     const profilePictureHandler = (event) => {
+        const headers = Object.keys({header: 'multipart/form-data'}).reduce((newHeaders, key) => {
+            newHeaders[key.toLowerCase()] = {header: 'multipart/form-data'}[key];
+            return newHeaders;
+        }, {});
         event.preventDefault();
         setUiLoading(true);
         authMiddleWare(navigate);
@@ -152,9 +156,15 @@ const AccountFun = (props) => {
         axios.defaults.headers.common = {Authorization: `${authToken}`};
         axios
             .post('/user/image', form_data, {
+                // headers: {
+                //     'content-type': 'multipart/form-data'
+                // }
                 headers: {
-                    'content-type': 'multipart/form-data'
-                }
+                    'content-type': headers['Content-Type'],
+                },
+                transformRequest: (data, request) => { // This is all that matters
+                    return data;
+                },
             })
             .then(() => {
                 window.location.reload();
@@ -242,7 +252,7 @@ const AccountFun = (props) => {
                                         {imageError ? (
                                             <div className="custom-error">
                                                 {' '}
-                                                Wrong Image Format || Supported Format are PNG and JPG
+                                                Wrong Image Format || Supported Formats are PNG and JPG
                                             </div>
                                         ) : false}
                                     </div>
