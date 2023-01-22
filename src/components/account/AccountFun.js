@@ -10,10 +10,13 @@ import {
     CardActions,
     CardContent,
     CircularProgress,
-    Container, Fade,
-    Grid, Modal,
+    Container,
+    Fade,
+    Grid,
+    Modal,
     styled,
-    ThemeProvider, Toolbar,
+    ThemeProvider,
+    Toolbar,
     Typography
 } from "@mui/material";
 import {useNavigate} from "react-router-dom";
@@ -40,7 +43,7 @@ const AccountFun = (props) => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [username, setUsername] = useState('');
     const [country, setCountry] = useState('');
-    const [profilePicture, setProfilePicture] = useState('');
+    // const [profilePicture, setProfilePicture] = useState('');
     const [uiLoading, setUiLoading] = useState(true);
     const [buttonLoading, setButtonLoading] = useState(false);
     const [imageError, setImageError] = useState('');
@@ -114,7 +117,7 @@ const AccountFun = (props) => {
         // this.setState({
         //     image: event.target.files[0]
         // });
-        setProfilePicture(event.target.files[0]);
+        setImage(event.target.files[0]);
     };
 
     const deleteUserHandler = (event) => {
@@ -141,24 +144,37 @@ const AccountFun = (props) => {
             });
     };
 
+    // const upload = () => {
+    //     if (image == null)
+    //         return;
+    //     storage.ref(`/images/${image.name}`).put(image)
+    //         .on("state_changed" , alert("success") , alert);
+    // };
+
     const profilePictureHandler = (event) => {
         const headers = Object.keys({header: 'multipart/form-data'}).reduce((newHeaders, key) => {
             newHeaders[key.toLowerCase()] = {header: 'multipart/form-data'}[key];
             return newHeaders;
         }, {});
         event.preventDefault();
+        // const headers = {
+        //     'content-type': 'multipart/form-data'
+        // };
         setUiLoading(true);
         authMiddleWare(navigate);
         const authToken = localStorage.getItem('AuthToken');
         let form_data = new FormData();
-        form_data.append('image', setImage());
-        form_data.append('content', content);
+        form_data.append('image', image);
+        //form_data.append('content', content);
         axios.defaults.headers.common = {Authorization: `${authToken}`};
+        // axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
         axios
             .post('/user/image', form_data, {
-                // headers: {
-                //     'content-type': 'multipart/form-data'
-                // }
+            //     headers: {
+            //         'content-type': 'multipart/form-data'
+            //     },
+                //     headers: headers
+                // },
                 headers: {
                     'content-type': headers['Content-Type'],
                 },
@@ -166,8 +182,21 @@ const AccountFun = (props) => {
                     return data;
                 },
             })
+            // .then((res) => {
+            //     res.json();
+            // })
+            // .then(json => {
+            //     console.log(json)
+            // })
+            .then(r =>  r.json().then(data => ({status: r.status, body: data})))
+            .then(obj => console.log(obj))
+            // .post('/user/image', form_data, {
+            //     headers: {
+            //         'content-type': 'multipart/form-data'
+            //     },
+            // })
             .then(() => {
-                window.location.reload();
+                window.location.reload()
             })
             .catch((error) => {
                 if (error.response.status === 403) {
