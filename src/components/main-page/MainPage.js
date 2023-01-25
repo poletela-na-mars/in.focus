@@ -38,15 +38,13 @@ const MainPage = (props) => {
 //TODO:
 //      -?не всегда правильная обработка setActiveIcon
 //      -?проблемы с удалением аккаунта (не удаляется почта)
-//      !-выбор файла - path undefined - state.image (через postman получается...)
-//      !кнопка загрузки файла
-//      !-кнопка - удалить фото
-//      -SECURITY- проверка на загрузку фото: максимальный размер, название, расширение, Content-Type Header, без флага exe,
-//      -SECURITY- переименовывать файлы при загрузке
+//      !!-кнопка - удалить фото
+//      !-SECURITY- проверка на загрузку фото: максимальный размер, название, расширение, Content-Type Header, без флага exe,
+//      !!-disable button delete when no pic
 //      ***
 //      -!fix spacings and styles...
 //      -SECURITY- помечать id, как устаревшие, при выходе из профиля
-//      -DESIGN- add search bar
+//      !-DESIGN- add search bar
 //      -SECURITY- количество попыток для входа - Exponential Backoff
 //      -SECURITY- ограничить число созданных аккаунтов во времени
 //      -SECURITY- хэширование данных пользователя

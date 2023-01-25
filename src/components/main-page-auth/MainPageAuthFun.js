@@ -8,14 +8,17 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
 import {
     AppBar,
-    Avatar, Box,
+    Avatar,
+    Box,
     CircularProgress,
     Divider,
-    Drawer, Fade,
+    Drawer,
+    Fade,
     IconButton,
     List,
     ListItem,
-    ListItemIcon, Modal, Popover,
+    ListItemIcon,
+    Modal,
     ThemeProvider,
     Toolbar
 } from "@mui/material";
@@ -38,7 +41,6 @@ import LogoSVG from "../../LogoSVG";
 //   box-sizing: border-box;
 // },
 // `;
-
 const MainPageAuthFun = (props) => {
     const [mounted, setMounted] = useState(false);
     const [firstName, setFirstName] = useState('');
@@ -86,7 +88,9 @@ const MainPageAuthFun = (props) => {
                 setCountry(response.data.userCredentials.country);
                 setUsername(response.data.userCredentials.username);
                 setUiLoading(false);
-                setProfilePicture(response.data.userCredentials.imageUrl);
+                if (response.data.userCredentials.imageUrl) {
+                    setProfilePicture(response.data.userCredentials.imageUrl);
+                }
             })
             .catch((error) => {
                 if (error.response.status === 403) {
@@ -135,25 +139,6 @@ const MainPageAuthFun = (props) => {
         setOpenDeterminePopup(false);
     };
 
-    // export const determinePopupHandler = (openDeterminePopup) => {
-    //     return (
-    //         <Popover
-    //             id={id}
-    //             open={openDeterminePopup}
-    //             anchorEl={anchorEl}
-    //             onClose={handleCloseDeterminePopup}
-    //             anchorReference="anchorPosition"
-    //             anchorPosition={{ top: 50%, left: 50% }}
-    //         >
-    //             <Typography sx={{p: 2}}>The content of the Popover.</Typography>
-    // <div className="determine-buttons-container">
-    //     <button>Yes</button>
-    //     <button>No</button>
-    // </div>
-    //         </Popover>
-    //     )
-    // };
-
     return (
         <ThemeProvider theme={theme}>
             {(uiLoading === true) ?
@@ -162,9 +147,9 @@ const MainPageAuthFun = (props) => {
                 </div>)
                 : (
                     <>
-                    {/*<Box className="container">*/}
-                    {/*<CssBaseline/>*/}
-                    {/*    <AppBar position="fixed" className="app-bar" open={openBar} elevation={0}*/}
+                        {/*<Box className="container">*/}
+                        {/*<CssBaseline/>*/}
+                        {/*    <AppBar position="fixed" className="app-bar" open={openBar} elevation={0}*/}
                         <AppBar position="fixed" className="app-bar" open={openBar} elevation={0}
                                 style={{background: '#fff'}}>
                             <Toolbar>
@@ -218,7 +203,7 @@ const MainPageAuthFun = (props) => {
                                     {' '}
                                 </p>
                             </center>
-                            <Divider light />
+                            <Divider light/>
                             <List>
                                 <ListItem button key="Notes" onClick={loadNotePage}>
                                     <ListItemIcon>
@@ -278,8 +263,8 @@ const MainPageAuthFun = (props) => {
                         </Drawer>
 
                         <Box>{render ? <AccountFun/> : <Notes/>}</Box>
-                     {/*</Box>*/}
-                        </>
+                        {/*</Box>*/}
+                    </>
                 )
             }
         </ThemeProvider>

@@ -45,28 +45,93 @@
   top: 50%;
 }
 
-//.ui-progress {
-//  position: fixed;
-//  z-index: 1000;
-//  height: 31px;
-//  width: 31px;
-//  left: 50%;
-//  top: 35%;
-//}
-
 .progress {
   position: absolute;
 }
 
-.upload-button {
-  margin-left: 8px;
+.upload-and-delete-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-image-button {
+  //margin-left: 8px;
   //margin: theme.spacing(1)
+  @include violet-button;
+  font-size: 14px;
+  width: 120px;
+  height: 40px;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-top: 20px;
+}
+
+.delete-image-button {
+  @extend .upload-image-button;
+  background-color: $red-color;
+}
+
+.input-file-style-container {
+  display: flex;
+}
+
+//input[type=file]::file-selector-button {
+//  background-color: transparent;
+//  color: $black-color;
+//  border: 0;
+//  border-right: 1px solid #e5e5e5;
+//  padding: 10px 15px;
+//  transition: .5s;
+//  margin-right: 20px;
+//}
+//
+//input[type=file]::file-selector-button:hover {
+//  background-color: $gray-text-color;
+//  border: 0;
+//  border-right: 1px solid #e5e5e5;
+//}
+
+input[type=file]::-webkit-file-upload-button {
+  background-color: transparent;
+  color: $black-color;
+  border: 0;
+  border-right: 1px solid #e5e5e5;
+  padding: 10px 15px;
+  -webkit-transition: .5s;
+  transition: .5s;
+  margin-right: 20px;
+}
+
+input[type=file]::file-selector-button {
+  background-color: transparent;
+  color: $black-color;
+  border: 0;
+  border-right: 1px solid #e5e5e5;
+  padding: 10px 15px;
+  -webkit-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
+  margin-right: 20px;
+}
+
+input[type=file]::-webkit-file-upload-button:hover {
+  background-color: $gray-text-color;
+  border: 0;
+  border-right: 1px solid #e5e5e5;
+}
+
+input[type=file]::file-selector-button:hover {
+  background-color: $gray-text-color;
+  border: 0;
+  border-right: 1px solid #e5e5e5;
 }
 
 .custom-error {
   color: red;
-  font-size: 0.8rem;
+  font-size: 14px;
   margin-top: 10px;
+  margin-left: 15px;
 }
 
 .submit-button {

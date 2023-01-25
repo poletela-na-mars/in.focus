@@ -14,12 +14,11 @@ const os = require("os");
 const {storage} = require("firebase-admin");
 const auth = firebase.auth();
 
-const catchTemplate = (err, code, jsonBody) => {
-    console.error(err);
-    return response.status(code).json(jsonBody);
-};
+// const catchTemplate = (err, code, jsonBody) => {
+//     console.error(err);
+//     return response.status(code).json(jsonBody);
+// };
 
-// Login
 exports.loginUser = (request, response) => {
     const user = {
         email: request.body.email,
@@ -39,10 +38,10 @@ exports.loginUser = (request, response) => {
         })
         .catch((err) => {
             // catchTemplate(err, 403, {general: 'Wrong credentials, please try again'});
-                console.error(err);
-                return response.status(403).json({general: 'Wrong credentials, please try again'});
-            // })
-        });
+            console.error(err);
+            return response.status(403).json({general: 'Wrong credentials, please try again'});
+        })
+    // });
 };
 
 exports.signUpUser = (request, response) => {
@@ -113,49 +112,65 @@ exports.signUpUser = (request, response) => {
         });
 };
 
-const deleteImage = (imageName) => {
+const deleteImage = (profilePicture, username) => {
     const bucket = admin.storage().bucket(config.storageBucket);
-    const path = `${imageName}`
-    return bucket.file(path).delete()
+    const extRe = profilePicture.match(/(jpg)|(jpeg)|(png)/);
+    const ext = extRe[extRe.length - 1];
+    const fullPath = `${username}.${ext}`;
+    console.log(extRe.length);
+    console.log(extRe[extRe.length - 1] + '   path');
+    bucket.file(fullPath).delete()
         .then(() => {
-            return
+            response.json({message: 'File deleted from storage successfully'});
         })
-        .catch((error) => {
-            return
+        .catch((err) => {
+            console.error(err);
+            return response.status(500).json({
+                error: err.code
+            });
+            // catchTemplate(err, 500, {error: err.code});
+        });
+
+    return db.doc(`/users/${username}`).update({
+        imageUrl: ''
+    })
+        .then(() => {
+            response.json({message: 'Image URL updated successfully'});
         })
-    //TODO -deleting file
+        .catch((err) => {
+            // catchTemplate(err, 500, {error: err.code});
+            console.error(err);
+            return response.status(500).json({
+                error: err.code
+            });
+        });
 };
 
-// Upload profile picture
-exports.uploadProfilePhoto = (req, res) => {
+exports.uploadProfileImage = (request, response) => {
     const BusBoy = require('../../node_modules/@fastify/busboy');
     const path = require('path');
     const os = require('os');
     const fs = require('fs');
 
     const busboy = new BusBoy({
-        headers: req.headers
+        headers: request.headers
     });
 
     let imageFileName;
     let imageToBeUploaded = {};
 
     busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
-
         console.log(fieldname, filename, encoding, mimetype);
 
         if (mimetype !== 'image/jpeg' && mimetype !== 'image/png') {
-            return res.status(400).json({
+            return response.status(400).json({
                 error: '❌ Wrong file type submitted'
-            })
+            });
         }
 
         const imageExtension = filename.split('.')[filename.split('.').length - 1];
 
-        // imageFileName = `${Math.round(
-        //     Math.random() * 1000000000000
-        // )}.${imageExtension}`;
-        imageFileName = `${req.user.username}.${imageExtension}`;
+        imageFileName = `${request.user.username}.${imageExtension}`;
 
         const filepath = path.join(os.tmpdir(), imageFileName);
 
@@ -167,12 +182,17 @@ exports.uploadProfilePhoto = (req, res) => {
         file.pipe(fs.createWriteStream(filepath));
     });
 
-    // deleteImage(imageFileName);
-    deleteImage(imageFileName).catch((err) => {
-        catchTemplate(err, 500, {error: err.code})
-        // console.error(error);
-        // return response.status(500).json({error: error.code});
-    });
+    if (request.body.profilePicture) {
+        deleteImage(imageFileName, request.user.username)
+            .then(() => {
+                response.json({message: 'Image URL updated successfully'})
+            })
+            .catch((err) => {
+                // catchTemplate(err, 500, {error: err.code});
+                console.error(err);
+                return response.status(500).json({error: err.code});
+            });
+    }
 
     busboy.on('finish', () => {
         admin
@@ -187,181 +207,40 @@ exports.uploadProfilePhoto = (req, res) => {
                 },
             })
             .then(() => {
-                const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media`
-                return db.doc(`/users/${req.user.username}`).update({
+                const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media`;
+                return db.doc(`/users/${request.user.username}`).update({
                     imageUrl
-                })
+                });
             })
             .then(() => {
-                return res.json({
+                return response.json({
                     message: '✅ Image uploaded successfully'
-                })
+                });
             })
             .catch((err) => {
-                console.error(err)
-                return res.status(500).json({
+                console.error(err);
+                return response.status(500).json({
                     error: err.code
-                })
+                });
             })
     });
-    busboy.end(req.rawBody);
-    req.pipe(busboy);
-
-    // NEW
-
-    // let mimtype;
-    // let saveTo;
-    // // const bucket = storage.bucket(config.storageBucket);
-    //
-    // busboy.on('file', function(name, file, filename, encoding, mimetype) {
-    //     console.log('File [' + name + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
-    //     const imageExtension = filename.split('.')[filename.split('.').length - 1];
-    //     imageFileName = filename + '.' + imageExtension;
-    //     saveTo = path.join(os.tmpdir(), filename);
-    //     file.pipe(fs.createWriteStream(saveTo));
-    //     mimtype = mimetype;
-    //
-    // });
-    //
-    // busboy.on('finish', async function() {
-    //     await admin.storage().bucket(config.storageBucket).upload(saveTo, {
-    //         resumable: false,
-    //         gzip: true,
-    //         metadata:{
-    //             metadata:{
-    //                 contentType: mimtype
-    //             }
-    //         }
-    //     })
-    //         .then(() => {
-    //                         const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media`
-    //                         return db.doc(`/users/${req.user.username}`).update({
-    //                             imageUrl
-    //                         })
-    //                     })
-    //                     .then(() => {
-    //                         return res.json({
-    //                             message: '✅ Image uploaded successfully'
-    //                         })
-    //                     })
-    //         .catch(err => {
-    //             console.error(err);
-    //             return res.status(400).send(JSON.stringify(err, ["message", "arguments", "type", "name"]));
-    //         });
-    //
-    //     res.end();
-    // });
-    // req.pipe(busboy);
-
-    //NEW
-
-    // const busboy = new BusBoy({headers: req.headers});
-    // let imageFileName;
-    // let imageTobeUploaded = {};
-    // busboy.on('file',(fieldname, file, filename, encoding, mimeType) => {
-    //     //my.image.png
-    //     const imageExtension = filename.split('.')[filename.split('.').length - 1];
-    //     //12345678900.png
-    //     imageFileName = `${Math.round(Math.random()*100000000000)}.${imageExtension}`;
-    //     const filepath = path.join(os.tmpdir(), imageFileName);
-    //     imageTobeUploaded = {filepath, mimeType};
-    //     file.pipe(fs.createWriteStream(filepath));
-    // })
-    // busboy.on('finish', () => {
-    //     admin.storage().bucket(config.storageBucket).upload(imageTobeUploaded.filepath, {
-    //         resumable: false,
-    //         metadata:{
-    //             metadata:{
-    //                 contentType:imageTobeUploaded.mimeType
-    //             }
-    //         }
-    //     })
-    //         .then( () => {
-    //             const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media`
-    //             return db.doc(`/users/${req.user.handle}`).update({imageUrl});
-    //         })
-    //         .then( () => {
-    //             return res.json({message: "Image Uploaded Successfully"});
-    //         })
-    //         .catch(err => {
-    //             console.error(err);
-    //             return res.status(400).json({ error : err.code});
-    //         })
-    // });
-    // busboy.end(req.rawBody);
+    busboy.end(request.rawBody);
+    request.pipe(busboy);
 };
 
-// exports.uploadProfilePhoto = (request, response) => {
-//     const Busboy = require('../../node_modules/@fastify/busboy');
-//     const path = require('path');
-//     const os = require('os');
-//     const fs = require('fs');
-//     // const busboy = new Busboy({headers: request.headers});
-//     const busboy = new Busboy({headers: request.headers, limits: {files: 1, fileSize: 10000000}});
-//
-//     let imageFileName;
-//     let imageToBeUploaded = {};
-//     let filePath;
-//     let limitReach = false;
-//     const limitReachErr = "You have attached more than one file or your file is too large";
-//
-//     console.log(os.tmpdir());
-//     console.log(imageFileName);
-//
-//     busboy.on('file', (fieldName, file, fileName, encoding, mimetype) => {
-//         if (mimetype !== 'image/png' && mimetype !== 'image/jpeg' && mimetype !== 'image/jpg') {
-//             return response.status(400).json({error: 'Wrong file type submitted'});
-//         }
-//         const imageExtension = fileName.split('.')[fileName.split('.').length - 1];
-//         imageFileName = `${request.user.username}.${imageExtension}`;
-//         console.log(os.tmpdir());
-//         console.log(imageFileName);
-//         filePath = path.join(os.tmpdir(), imageFileName);
-//         imageToBeUploaded = {filePath, mimetype};
-//         file.pipe(fs.createWriteStream(filePath));
-//     });
-//     deleteImage(imageFileName).catch((err) => {
-//         catchTemplate(err, 500, {error: err.code})
-//         // console.error(error);
-//         // return response.status(500).json({error: error.code});
-//     });
-//     busboy.on('limit', () => {
-//         fs.unlink(filePath, () => {
-//             limitReach = true;
-//             return response.status(455).send(limitReachErr);
-//         })
-//     });
-//     busboy.on('finish', () => {
-//         admin
-//             .storage()
-//             .bucket()
-//             .upload(imageToBeUploaded.filePath, {
-//                 resumable: false,
-//                 metadata: {
-//                     metadata: {
-//                         contentType: imageToBeUploaded.mimetype
-//                     }
-//                 }
-//             })
-//             .then(() => {
-//                 const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media`;
-//                 return db.doc(`/users/${request.user.username}`).update({
-//                     imageUrl
-//                 });
-//             })
-//             .then(() => {
-//                 if (!limitReach) {
-//                     return response.json({message: 'Image uploaded successfully'});
-//                 }
-//             })
-//             .catch((err) => {
-//                 catchTemplate(err, 500, {error: err.code});
-//                 // console.error(err);
-//                 // return response.status(500).json({error: err.code});
-//             });
-//     });
-//     busboy.end(request.rawBody);
-// };
+exports.deleteProfileImage = (request, response) => {
+    deleteImage(request.body.profilePicture, request.user.username)
+        .then(() => {
+            return response.json({
+                message: '✅ Image deleted successfully'
+            });
+        })
+        .catch((err) => {
+            // catchTemplate(err, 500, {error: err.code});
+            console.error(err);
+            return response.status(500).json({error: err.code});
+        });
+};
 
 exports.getUserDetail = (request, response) => {
     let userData = {};
@@ -375,9 +254,9 @@ exports.getUserDetail = (request, response) => {
             }
         })
         .catch((err) => {
-            // console.error(err);
-            // return response.status(500).json({error: err.code});
-            catchTemplate(err, 500, {error: err.code});
+            console.error(err);
+            return response.status(500).json({error: err.code});
+            // catchTemplate(err, 500, {error: err.code});
         });
 };
 
@@ -398,37 +277,15 @@ exports.updateUserDetails = (request, response) => {
             response.json({message: 'Updated successfully'});
         })
         .catch((err) => {
-            // console.error(err);
-            // return response.status(500).json({
-            //     message: "Cannot update the value"
-            // });
-            catchTemplate(err, 500, {message: "Cannot update the value"});
+            console.error(err);
+            return response.status(500).json({
+                message: "Cannot update the value"
+            });
+            // catchTemplate(err, 500, {message: "Cannot update the value"});
         });
 };
 
 exports.deleteUser = (request, response) => {
-    // const user = {
-    //     username: request.body.username,
-    // }
-    // db.collection('users').document(FirebaseAuth.getInstance().currentUser.uid).delete()
-    //     .addOnSuccessListener { FirebaseAuth.getInstance().currentUser!!.delete().addOnCompleteListener {//Go to login screen} }
-    // .addOnFailureListener { ... }
-
-    // /**Как получить uid*/
-    // const uid = db.collection('users').doc(`${user.username}`).uid;
-
-    // const user = auth.currentUser;
-    //
-    // user.delete().then(() => {
-    //     console.log('Successfully deleted user');
-    // })
-    //     .catch((error) => {
-    //         console.error(error);
-    //         return response.status(500).json({
-    //             message: "Error deleting user"
-    //         });
-    //     });
-
     const userNotes = db.collection('notes');
     userNotes
         .where("username", "==", request.params.username)
@@ -442,9 +299,9 @@ exports.deleteUser = (request, response) => {
             response.json({message: 'Notes deleted from DB successfully'});
         })
         .catch((err) => {
-            // console.error(err);
-            // return response.status(500).json({error: err.code});
-            catchTemplate(err, 500, {error: err.code});
+            console.error(err);
+            return response.status(500).json({error: err.code});
+            // catchTemplate(err, 500, {error: err.code});
         });
 
     const document = db.doc(`/users/${request.params.username}`);
@@ -462,9 +319,9 @@ exports.deleteUser = (request, response) => {
                     response.json({message: "Deleted from Auth Base successfully"});
                 })
                 .catch((err) => {
-                    // console.error(err);
-                    // return response.status(500).json({error: err.code});
-                    catchTemplate(err, 500, {error: err.code});
+                    console.error(err);
+                    return response.status(500).json({error: err.code});
+                    // catchTemplate(err, 500, {error: err.code});
                 })
             return document.delete();
         })
@@ -472,35 +329,8 @@ exports.deleteUser = (request, response) => {
             response.json({message: 'Deleted from DB successfully'});
         })
         .catch((err) => {
-            // console.error(err);
-            // return response.status(500).json({error: err.code});
-            catchTemplate(err, 500, {error: err.code});
+            console.error(err);
+            return response.status(500).json({error: err.code});
+            // catchTemplate(err, 500, {error: err.code});
         });
-
-    // return auth.currentUser.delete();
-
-    // auth.currentUser.delete().then(() => {
-    //     response.json({message: 'Deleted from Auth Base successfully'});
-    // })
-    //     .catch((err) => {
-    //         console.error(err);
-    //         return response.status(500).json({error: err.code});
-    //     });
-    // db.collection("users").document(currentUser.uid).delete()
-    //     .addOnSuccessListener { Fireba.getInstance().currentUser!!.delete().addOnCompleteListener {//Go to login screen} }
-    // .addOnFailureListener { ... }
-
-    // getAuth()
-    //     // .deleteUser(auth.currentUser.uid)
-    //     .deleteUser(uid)
-    //     .then(() => {
-    //         console.log('Successfully deleted user');
-    //     })
-    //     .catch((error) => {
-    //         // console.log('Error deleting user: ', error);
-    //         console.error(error);
-    //         return response.status(500).json({
-    //             message: "Error deleting user"
-    //         });
-    //     });
 };
