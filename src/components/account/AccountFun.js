@@ -157,13 +157,26 @@ const AccountFun = (props) => {
             })
             .then(r => r.json()
                 .then(data => ({status: r.status, body: data})))
-            .catch((error) => {
-                if (error.response.status === 403) {
-                    navigate("/login");
-                }
-                console.log(error);
+            .catch((err) => {
+                console.log(err);
                 setUiLoading(false);
-                setImageError('Error in posting the data');
+                let imageErrorMsg;
+
+                switch (err.response.status) {
+                    case 403:
+                        navigate("/login");
+                        break;
+                    case 400:
+                        imageErrorMsg = 'Invalid image name or extension of file. Supported Formats are PNG and JPG';
+                        break;
+                    case 455:
+                        imageErrorMsg = 'File is too large or several files were selected';
+                        break;
+                    default:
+                        imageErrorMsg = 'Something went wrong while uploading image';
+                }
+
+                setImageError(imageErrorMsg);
             });
     };
 
@@ -187,7 +200,7 @@ const AccountFun = (props) => {
                 }
                 console.log(err);
                 setUiLoading(false);
-                setImageError('Error in deleting the data');
+                setImageError('Error in deleting image');
             });
     };
 
@@ -257,7 +270,8 @@ const AccountFun = (props) => {
                                     {imageError ? (
                                         <div className="custom-error">
                                             {' '}
-                                            Wrong Image Format || Supported Formats are PNG and JPG
+                                            {imageError}
+                                            {/*Wrong Image Format || Supported Formats are PNG and JPG*/}
                                         </div>
                                     ) : false}
                                     <div className="upload-and-delete-image-container">

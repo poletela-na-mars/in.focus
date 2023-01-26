@@ -12,7 +12,11 @@ const {response} = require("express");
 const {getAuth} = require("firebase-admin/auth");
 const os = require("os");
 const {storage} = require("firebase-admin");
+const fs = require("fs");
+const path = require("path");
 const auth = firebase.auth();
+
+const reExt = /^(jpeg)|(jpg)|(png)$/;
 
 // const catchTemplate = (err, code, jsonBody) => {
 //     console.error(err);
@@ -114,11 +118,11 @@ exports.signUpUser = (request, response) => {
 
 const deleteImage = (profilePicture, username) => {
     const bucket = admin.storage().bucket(config.storageBucket);
-    const extRe = profilePicture.match(/(jpg)|(jpeg)|(png)/);
-    const ext = extRe[extRe.length - 1];
+    const extReMatch = profilePicture.match(reExt);
+    const ext = extReMatch[extReMatch.length - 1];
     const fullPath = `${username}.${ext}`;
-    console.log(extRe.length);
-    console.log(extRe[extRe.length - 1] + '   path');
+    console.log(extReMatch.length);
+    console.log(extReMatch[extReMatch.length - 1] + '   path');
     bucket.file(fullPath).delete()
         .then(() => {
             response.json({message: 'File deleted from storage successfully'});
@@ -153,11 +157,14 @@ exports.uploadProfileImage = (request, response) => {
     const fs = require('fs');
 
     const busboy = new BusBoy({
-        headers: request.headers
+        headers: request.headers,
+        limits: { fileSize: 5  * 1024 * 1024 , files: 1 }
     });
 
     let imageFileName;
     let imageToBeUploaded = {};
+    let limit_reach = false;
+    const limit_reach_err = "File is too large or several files were selected!";
 
     busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
         console.log(fieldname, filename, encoding, mimetype);
@@ -168,7 +175,20 @@ exports.uploadProfileImage = (request, response) => {
             });
         }
 
+        const reFileName = /^[a-zA-Z0-9_-]{1,80}\.[a-zA-Z]{1,8}$/;
+        if (!reFileName.test(filename)) {
+            return response.status(400).json({
+                error: '❌ Invalid image name or extension of file'
+            });
+        }
+
         const imageExtension = filename.split('.')[filename.split('.').length - 1];
+
+        if (!reExt.test(imageExtension)) {
+            return response.status(400).json({
+                error: '❌ Invalid extension of file'
+            });
+        }
 
         imageFileName = `${request.user.username}.${imageExtension}`;
 
@@ -180,6 +200,13 @@ exports.uploadProfileImage = (request, response) => {
         };
 
         file.pipe(fs.createWriteStream(filepath));
+
+        file.on('limit', () => {
+            fs.unlink(filepath, () => {
+                limit_reach = true;
+                response.status(455).send(limit_reach_err);
+            });
+        });
     });
 
     if (request.body.profilePicture) {
@@ -195,34 +222,36 @@ exports.uploadProfileImage = (request, response) => {
     }
 
     busboy.on('finish', () => {
-        admin
-            .storage()
-            .bucket(config.storageBucket)
-            .upload(imageToBeUploaded.filepath, {
-                resumable: false,
-                metadata: {
+        if (!limit_reach) {
+            admin
+                .storage()
+                .bucket(config.storageBucket)
+                .upload(imageToBeUploaded.filepath, {
+                    resumable: false,
                     metadata: {
-                        contentType: imageToBeUploaded.mimetype,
+                        metadata: {
+                            contentType: imageToBeUploaded.mimetype,
+                        },
                     },
-                },
-            })
-            .then(() => {
-                const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media`;
-                return db.doc(`/users/${request.user.username}`).update({
-                    imageUrl
-                });
-            })
-            .then(() => {
-                return response.json({
-                    message: '✅ Image uploaded successfully'
-                });
-            })
-            .catch((err) => {
-                console.error(err);
-                return response.status(500).json({
-                    error: err.code
-                });
-            })
+                })
+                .then(() => {
+                    const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media`;
+                    return db.doc(`/users/${request.user.username}`).update({
+                        imageUrl
+                    });
+                })
+                .then(() => {
+                    return response.json({
+                        message: '✅ Image uploaded successfully'
+                    });
+                })
+                .catch((err) => {
+                    console.error(err);
+                    return response.status(500).json({
+                        error: err.code
+                    });
+                })
+        }
     });
     busboy.end(request.rawBody);
     request.pipe(busboy);
