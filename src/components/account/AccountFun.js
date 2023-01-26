@@ -170,7 +170,7 @@ const AccountFun = (props) => {
                         imageErrorMsg = 'Invalid image name or extension of file. Supported Formats are PNG and JPG';
                         break;
                     case 455:
-                        imageErrorMsg = 'File is too large or several files were selected';
+                        imageErrorMsg = 'File is too large/small or several files were selected';
                         break;
                     default:
                         imageErrorMsg = 'Something went wrong while uploading image';

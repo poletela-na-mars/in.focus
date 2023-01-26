@@ -164,7 +164,7 @@ exports.uploadProfileImage = (request, response) => {
     let imageFileName;
     let imageToBeUploaded = {};
     let limit_reach = false;
-    const limit_reach_err = "File is too large or several files were selected!";
+    const limit_reach_err = "File is too large/small or several files were selected!";
 
     busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
         console.log(fieldname, filename, encoding, mimetype);
@@ -207,6 +207,12 @@ exports.uploadProfileImage = (request, response) => {
                 response.status(455).send(limit_reach_err);
             });
         });
+
+        const fileSize = fs.statSync(filepath);
+        if (fileSize.size < 5 * 1024) {
+            limit_reach = true;
+            response.status(455).send(limit_reach_err);
+        }
     });
 
     if (request.body.profilePicture) {
