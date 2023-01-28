@@ -50,7 +50,7 @@ export const CustomizedTextField = styled(TextField)`
   }
 `;
 
-const LoginFun = (props) => {
+const Login = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
@@ -201,4 +201,4 @@ const LoginFun = (props) => {
     );
 };
 
-export default LoginFun;
+export default Login;

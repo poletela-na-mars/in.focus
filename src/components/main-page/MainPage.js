@@ -39,7 +39,9 @@ const MainPage = (props) => {
 //      -?не всегда правильная обработка setActiveIcon
 //      -?проблемы с удалением аккаунта (не удаляется почта)
 //      ---
-//      -fix spacings and styles... цвета в theme
+//      !-fix spacings and styles... цвета в theme
+//      -ПОСЛЕ users - комментим console.log. return в цепочках. const/let
 //      -clean-up
+//      -autoprefix
 
 export default MainPage;

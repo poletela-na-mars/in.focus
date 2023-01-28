@@ -7,7 +7,7 @@ exports.getAllNotes = (request, response) => {
         .orderBy('editedAt', 'desc')
         .get()
         .then((data) => {
-            let notes = [];
+            const notes = [];
             data.forEach((doc) => {
                 notes.push({
                     noteId: doc.id,
@@ -21,7 +21,7 @@ exports.getAllNotes = (request, response) => {
             return response.json(notes);
         })
         .catch((err) => {
-            console.error(err);
+            // console.error(err);
             return response.status(500).json({error: err.code});
         });
 };
@@ -32,21 +32,20 @@ exports.getOneNote = (request, response) => {
         .get()
         .then((doc) => {
             if (!doc.exists) {
-                return response.status(404).json(
-                    {
-                        error: 'Note not found'
-                    });
+                return response.status(404).json({
+                    error: 'Note not found'
+                });
             }
-            if(doc.data().username !== request.user.username){
-                return response.status(403).json({error:"Unauthorized"})
+            if (doc.data().username !== request.user.username) {
+                return response.status(403).json({error: "Unauthorized"})
             }
-            const NoteData = doc.data();
-            NoteData.noteId = doc.id;
-            return response.json(NoteData);
+            const noteData = doc.data();
+            noteData.noteId = doc.id;
+            return response.json(noteData);
         })
         .catch((err) => {
-            console.error(err);
-            return response.status(500).json({ error: err.code });
+            // console.error(err);
+            return response.status(500).json({error: err.code});
         });
 };
 
@@ -59,25 +58,25 @@ exports.postOneNote = (request, response) => {
         return response.status(400).json({title: 'Must not be empty'});
     }
 
-    const newNoteItem = {
+    const newNote = {
         title: request.body.title,
         body: request.body.body,
         createdAt: new Date().toISOString(),
         editedAt: new Date().toISOString(),
         username: request.user.username,
-    }
+    };
 
     db
         .collection('notes')
-        .add(newNoteItem)
+        .add(newNote)
         .then((doc) => {
-            const responseNoteItem = newNoteItem;
-            responseNoteItem.id = doc.id;
-            return response.json(responseNoteItem);
+            const responseNote = newNote;
+            responseNote.id = doc.id;
+            return response.json(responseNote);
         })
         .catch((err) => {
-            response.status(500).json({error: 'Something went wrong'});
-            console.error(err);
+            return response.status(500).json({error: 'Something went wrong'});
+            // console.error(err);
         });
 };
 
@@ -87,36 +86,37 @@ exports.deleteNote = (request, response) => {
         .get()
         .then((doc) => {
             if (!doc.exists) {
-                return response.status(404).json({error: 'Note not found'})
+                return response.status(404).json({error: 'Note not found'});
             }
-            if(doc.data().username !== request.user.username){
-                return response.status(403).json({error:"Unauthorized"})
+            if (doc.data().username !== request.user.username) {
+                return response.status(403).json({error: "Unauthorized"});
             }
             return document.delete();
         })
         .then(() => {
-            response.json({message: 'Delete successfully'});
+            return response.json({message: 'Deleted successfully'});
         })
         .catch((err) => {
-            console.error(err);
+            // console.error(err);
             return response.status(500).json({error: err.code});
         });
 };
 
 exports.editNote = (request, response) => {
-    if(request.body.noteId || request.body.createdAt){
-        response.status(403).json({message: 'Not allowed to edit'});
+    if (request.body.noteId || request.body.createdAt) {
+        return response.status(403).json({message: 'Not allowed to edit'});
     }
-    let document = db.collection('notes').doc(`${request.params.noteId}`);
+
+    const document = db.collection('notes').doc(`${request.params.noteId}`);
     document.update(request.body)
-        .then(()=> {
-            response.json({message: 'Edited successfully'});
+        .then(() => {
+            return response.json({message: 'Edited successfully'});
         })
         .catch((err) => {
-            if(err.code === 5){
-                response.status(404).json({message: 'Not Found'});
+            if (err.code === 5) {
+                return response.status(404).json({message: 'Not Found'});
             }
-            console.error(err);
+            // console.error(err);
             return response.status(500).json({
                 error: err.code
             });

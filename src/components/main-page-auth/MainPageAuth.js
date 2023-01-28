@@ -26,10 +26,10 @@ import {
 import {Link, useNavigate} from "react-router-dom";
 
 import Notes from "../notes/Notes";
-import AccountFun from "../account/AccountFun";
+import Account from "../account/Account";
 
 import "./MainPageAuth.scss";
-import {theme} from "../login/LoginFun";
+import {theme} from "../login/Login";
 import LogoSVG from "../../LogoSVG";
 
 const Search = styled('div')(({theme}) => ({
@@ -95,7 +95,7 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 //   box-sizing: border-box;
 // },
 // `;
-const MainPageAuthFun = (props) => {
+const MainPageAuth = (props) => {
     const [mounted, setMounted] = useState(false);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -333,7 +333,7 @@ const MainPageAuthFun = (props) => {
                             </List>
                         </Drawer>
 
-                        <Box>{render ? <AccountFun/> : <Notes searchReq={searchReq}/>}</Box>
+                        <Box>{render ? <Account/> : <Notes searchReq={searchReq}/>}</Box>
                         {/*</Box>*/}
                     </>
                 )
@@ -342,4 +342,4 @@ const MainPageAuthFun = (props) => {
     );
 };
 
-export default MainPageAuthFun;
+export default MainPageAuth;

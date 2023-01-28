@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {authMiddleWare} from "../../util/auth";
-import {CustomizedTextField, theme} from "../login/LoginFun";
+import {CustomizedTextField, theme} from "../login/Login";
 import axios from "axios";
 import {
     Autocomplete,
@@ -28,7 +28,7 @@ export const CustomizedCard = styled(Card)`
   border-radius: 20px;
 `;
 
-const AccountFun = (props) => {
+const Account = (props) => {
     const navigate = useNavigate();
 
     const [mounted, setMounted] = useState(false);
@@ -474,4 +474,4 @@ const AccountFun = (props) => {
     );
 };
 
-export default AccountFun;
+export default Account;

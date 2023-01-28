@@ -2,7 +2,7 @@ import {Autocomplete, Box, Container, CssBaseline, Grid, styled, ThemeProvider, 
 import {MuiTelInput} from "mui-tel-input";
 import {useState} from "react";
 import axios from "axios";
-import {CustomizedTextField, theme} from "../login/LoginFun";
+import {CustomizedTextField, theme} from "../login/Login";
 import {Link, useNavigate} from "react-router-dom";
 
 import {countries} from "./countries";
@@ -17,7 +17,7 @@ export const CustomizedMuiTelInput = styled(MuiTelInput)`
   }
 `;
 
-const SignUpFun = (props) => {
+const SignUp = (props) => {
     const navigate = useNavigate();
 
     const [firstName, setFirstName] = useState('');
@@ -300,4 +300,4 @@ const SignUpFun = (props) => {
     );
 };
 
-export default SignUpFun;
+export default SignUp;

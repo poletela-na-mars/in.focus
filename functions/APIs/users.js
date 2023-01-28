@@ -1,33 +1,24 @@
-const {admin, db} = require('../utils/admin');
-const config = require('../utils/config');
+const {admin, db} = require("../utils/admin");
+const config = require("../utils/config");
 
 const firebase = require("firebase/compat/app");
 
 firebase.initializeApp(config);
 
-const {validateLoginData, validateSignUpData, validateUpdatedData} = require('../utils/validators');
+const {validateLoginData, validateSignUpData, validateUpdatedData} = require("../utils/validators");
 
 const firebaseAuth = require("firebase/compat/auth");
 const {response} = require("express");
 const {getAuth} = require("firebase-admin/auth");
-const os = require("os");
-const {storage} = require("firebase-admin");
-const fs = require("fs");
-const path = require("path");
 const auth = firebase.auth();
 
 const reExt = /^(jpeg)|(jpg)|(png)$/;
-
-// const catchTemplate = (err, code, jsonBody) => {
-//     console.error(err);
-//     return response.status(code).json(jsonBody);
-// };
 
 exports.loginUser = (request, response) => {
     const user = {
         email: request.body.email,
         password: request.body.password
-    }
+    };
 
     const {valid, errors} = validateLoginData(user);
     if (!valid) return response.status(400).json(errors);
@@ -41,11 +32,9 @@ exports.loginUser = (request, response) => {
             return response.json({token});
         })
         .catch((err) => {
-            // catchTemplate(err, 403, {general: 'Wrong credentials, please try again'});
-            console.error(err);
+            // console.error(err);
             return response.status(403).json({general: 'Wrong credentials, please try again'});
-        })
-    // });
+        });
 };
 
 exports.signUpUser = (request, response) => {
@@ -62,7 +51,6 @@ exports.signUpUser = (request, response) => {
     };
 
     const {valid, errors} = validateSignUpData(newUser);
-
     if (!valid) return response.status(400).json(errors);
 
     let token, userId;
@@ -107,7 +95,7 @@ exports.signUpUser = (request, response) => {
             return response.status(201).json({token});
         })
         .catch((err) => {
-            console.error(err);
+            // console.error(err);
             if (err.code === 'auth/email-already-in-use') {
                 return response.status(400).json({email: 'Email is already in use'});
             } else {
@@ -121,29 +109,25 @@ const deleteImage = (profilePicture, username) => {
     const extReMatch = profilePicture.match(reExt);
     const ext = extReMatch[extReMatch.length - 1];
     const fullPath = `${username}.${ext}`;
-    console.log(extReMatch.length);
-    console.log(extReMatch[extReMatch.length - 1] + '   path');
     bucket.file(fullPath).delete()
         .then(() => {
-            response.json({message: 'File deleted from storage successfully'});
+            return response.json({message: 'File deleted from storage successfully'});
         })
         .catch((err) => {
-            console.error(err);
+            // console.error(err);
             return response.status(500).json({
                 error: err.code
             });
-            // catchTemplate(err, 500, {error: err.code});
         });
 
     return db.doc(`/users/${username}`).update({
         imageUrl: ''
     })
         .then(() => {
-            response.json({message: 'Image URL updated successfully'});
+            return response.json({message: 'Image URL updated successfully'});
         })
         .catch((err) => {
-            // catchTemplate(err, 500, {error: err.code});
-            console.error(err);
+            // console.error(err);
             return response.status(500).json({
                 error: err.code
             });
@@ -167,18 +151,16 @@ exports.uploadProfileImage = (request, response) => {
     const limit_reach_err = "File is too large/small or several files were selected!";
 
     busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
-        console.log(fieldname, filename, encoding, mimetype);
-
         if (mimetype !== 'image/jpeg' && mimetype !== 'image/png') {
             return response.status(400).json({
-                error: '❌ Wrong file type submitted'
+                error: 'Wrong file type submitted'
             });
         }
 
         const reFileName = /^[a-zA-Z0-9_-]{1,80}\.[a-zA-Z]{1,8}$/;
         if (!reFileName.test(filename)) {
             return response.status(400).json({
-                error: '❌ Invalid image name or extension of file'
+                error: 'Invalid image name or extension of file'
             });
         }
 
@@ -186,7 +168,7 @@ exports.uploadProfileImage = (request, response) => {
 
         if (!reExt.test(imageExtension)) {
             return response.status(400).json({
-                error: '❌ Invalid extension of file'
+                error: 'Invalid extension of file'
             });
         }
 
@@ -204,25 +186,24 @@ exports.uploadProfileImage = (request, response) => {
         file.on('limit', () => {
             fs.unlink(filepath, () => {
                 limit_reach = true;
-                response.status(455).send(limit_reach_err);
+                return response.status(455).send(limit_reach_err);
             });
         });
 
         const fileSize = fs.statSync(filepath);
         if (fileSize.size < 5 * 1024) {
             limit_reach = true;
-            response.status(455).send(limit_reach_err);
+            return response.status(455).send(limit_reach_err);
         }
     });
 
     if (request.body.profilePicture) {
         deleteImage(imageFileName, request.user.username)
             .then(() => {
-                response.json({message: 'Image URL updated successfully'})
+                return response.json({message: 'Image URL updated successfully'});
             })
             .catch((err) => {
-                // catchTemplate(err, 500, {error: err.code});
-                console.error(err);
+                // console.error(err);
                 return response.status(500).json({error: err.code});
             });
     }
@@ -248,15 +229,15 @@ exports.uploadProfileImage = (request, response) => {
                 })
                 .then(() => {
                     return response.json({
-                        message: '✅ Image uploaded successfully'
+                        message: 'Image uploaded successfully'
                     });
                 })
                 .catch((err) => {
-                    console.error(err);
+                    // console.error(err);
                     return response.status(500).json({
                         error: err.code
                     });
-                })
+                });
         }
     });
     busboy.end(request.rawBody);
@@ -267,12 +248,11 @@ exports.deleteProfileImage = (request, response) => {
     deleteImage(request.body.profilePicture, request.user.username)
         .then(() => {
             return response.json({
-                message: '✅ Image deleted successfully'
+                message: 'Image deleted successfully'
             });
         })
         .catch((err) => {
-            // catchTemplate(err, 500, {error: err.code});
-            console.error(err);
+            // console.error(err);
             return response.status(500).json({error: err.code});
         });
 };
@@ -289,9 +269,8 @@ exports.getUserDetail = (request, response) => {
             }
         })
         .catch((err) => {
-            console.error(err);
+            // console.error(err);
             return response.status(500).json({error: err.code});
-            // catchTemplate(err, 500, {error: err.code});
         });
 };
 
@@ -303,20 +282,18 @@ exports.updateUserDetails = (request, response) => {
     };
 
     const {valid, errors} = validateUpdatedData(updatedData);
-
     if (!valid) return response.status(400).json(errors);
 
-    let document = db.collection('users').doc(`${request.user.username}`);
+    const document = db.collection('users').doc(`${request.user.username}`);
     document.update(request.body)
         .then(() => {
-            response.json({message: 'Updated successfully'});
+            return response.json({message: 'Updated successfully'});
         })
         .catch((err) => {
-            console.error(err);
+            // console.error(err);
             return response.status(500).json({
                 message: "Cannot update the value"
             });
-            // catchTemplate(err, 500, {message: "Cannot update the value"});
         });
 };
 
@@ -331,12 +308,11 @@ exports.deleteUser = (request, response) => {
             });
         })
         .then(() => {
-            response.json({message: 'Notes deleted from DB successfully'});
+            return response.json({message: 'Notes deleted from DB successfully'});
         })
         .catch((err) => {
-            console.error(err);
+            // console.error(err);
             return response.status(500).json({error: err.code});
-            // catchTemplate(err, 500, {error: err.code});
         });
 
     const document = db.doc(`/users/${request.params.username}`);
@@ -344,28 +320,26 @@ exports.deleteUser = (request, response) => {
         .get()
         .then((doc) => {
             if (!doc.exists) {
-                return response.status(404).json({error: "User not found"})
+                return response.status(404).json({error: "User not found"});
             }
             if (doc.data().username !== request.user.username) {
-                return response.status(403).json({error: "Unauthorized"})
+                return response.status(403).json({error: "Unauthorized"});
             }
             auth.currentUser.delete()
                 .then(() => {
-                    response.json({message: "Deleted from Auth Base successfully"});
+                    return response.json({message: "Deleted from Auth Base successfully"});
                 })
                 .catch((err) => {
-                    console.error(err);
+                    // console.error(err);
                     return response.status(500).json({error: err.code});
-                    // catchTemplate(err, 500, {error: err.code});
                 })
             return document.delete();
         })
         .then(() => {
-            response.json({message: 'Deleted from DB successfully'});
+            return response.json({message: 'Deleted from DB successfully'});
         })
         .catch((err) => {
-            console.error(err);
+            // console.error(err);
             return response.status(500).json({error: err.code});
-            // catchTemplate(err, 500, {error: err.code});
         });
 };

@@ -26,8 +26,8 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import "./Notes.scss";
 
 import {AddCircleRounded, CloseRounded} from "@mui/icons-material";
-import {theme} from "../login/LoginFun";
-import {CustomizedCard} from "../account/AccountFun";
+import {theme} from "../login/Login";
+import {CustomizedCard} from "../account/Account";
 
 const MAX_TITLE_LENGTH = 30;
 const MAX_BODY_LENGTH = 65;
