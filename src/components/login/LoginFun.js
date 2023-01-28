@@ -38,6 +38,9 @@ export const theme = createTheme({
             main: '#8613E0',
             contrastText: '#fff',
         },
+    },
+    shape: {
+        borderRadius: '20px'
     }
 });
 

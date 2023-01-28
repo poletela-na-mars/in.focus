@@ -1,7 +1,9 @@
 const functions = require("firebase-functions");
+const helmet = require('helmet');
 
 const app = require("express")();
 app.disable('x-powered-by');
+app.use(helmet());
 
 const {
     getAllNotes,
@@ -22,6 +24,7 @@ const {
 } = require("./APIs/users")
 
 const auth = require('./utils/auth');
+const algoliasearch = require("algoliasearch");
 
 // Notes
 app.get("/notes", auth, getAllNotes);

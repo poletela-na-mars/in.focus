@@ -39,13 +39,9 @@ const MainPage = (props) => {
 //      -?не всегда правильная обработка setActiveIcon
 //      -?проблемы с удалением аккаунта (не удаляется почта)
 //      ---
-//      -fix spacings and styles...
-//      !-SECURITY- помечать id, как устаревшие, при выходе из профиля
-//      !-DESIGN- add search bar
-//      -SECURITY- количество попыток для входа - Exponential Backoff
-//      -SECURITY- ограничить число созданных аккаунтов во времени
-//      -SECURITY- хэширование данных пользователя
+//      -сделать лого не кликабельным
+//      -fix spacings and styles... цвета в theme
+//      -DESIGN- add search bar
 //      -clean-up
-//      !-SECURITY- add HTTP headers in axios config for security
 
 export default MainPage;

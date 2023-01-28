@@ -6,7 +6,9 @@ import NotesRoundedIcon from '@mui/icons-material/NotesRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import {
+    alpha,
     AppBar,
     Avatar,
     Box,
@@ -14,11 +16,11 @@ import {
     Divider,
     Drawer,
     Fade,
-    IconButton,
+    IconButton, InputBase,
     List,
     ListItem,
     ListItemIcon,
-    Modal,
+    Modal, styled,
     ThemeProvider,
     Toolbar
 } from "@mui/material";
@@ -30,6 +32,57 @@ import AccountFun from "../account/AccountFun";
 import "./MainPageAuth.scss";
 import {theme} from "../login/LoginFun";
 import LogoSVG from "../../LogoSVG";
+
+const Search = styled('div')(({ theme }) => ({
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    border: '1px solid #D9D9D9',
+    // backgroundColor: alpha(theme.palette.common.white, 0.15),
+    marginLeft: `calc(1em + ${theme.spacing(4)})`,
+    backgroundColor: '#FFFFFF',
+    // '&:focus, &:active': {
+    //     border: '1px solid #8613E0',
+    // },
+    // marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(1),
+        width: 'auto',
+    },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#8613E0'
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: '#252525',
+    '&::placeholder': {
+        color: '#D9D9D9'
+    },
+    '& .MuiInputBase-input': {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        borderRadius: theme.shape.borderRadius,
+        [theme.breakpoints.up('sm')]: {
+            width: '12ch',
+            '&:focus, &:active': {
+                width: '20ch',
+                border: '1px solid #8613E0',
+            },
+        },
+    },
+}));
 
 // export const CustomizedAppBar = styled(AppBar)`
 //   color: white;
@@ -58,6 +111,7 @@ const MainPageAuthFun = (props) => {
     const [openBar, setOpenBar] = useState(false);
     const [openDeterminePopup, setOpenDeterminePopup] = useState(false);
     const [isActiveIcon, setActiveIcon] = useState({'notes': true, 'account': false});
+    const [searchReq, setSearchReq] = useState('');
 
     const navigate = useNavigate();
 
@@ -139,6 +193,14 @@ const MainPageAuthFun = (props) => {
         setOpenDeterminePopup(false);
     };
 
+    const handleChangeSearchReq = (event) => {
+        setSearchReq(event.target.value);
+    };
+
+    const handleSearch = () => {
+
+    };
+
     return (
         <ThemeProvider theme={theme}>
             {(uiLoading === true) ?
@@ -161,15 +223,27 @@ const MainPageAuthFun = (props) => {
                                     aria-label="open drawer"
                                     onClick={handleDrawerOpen}
                                     edge="start"
-                                    // sx={{mr: 2, ...(openBar && {display: 'none'})}}
+                                    sx={{marginRight: `calc(1em + ${theme.spacing(4)})`}}
                                 >
                                     <MenuRoundedIcon fontSize="large" className="icon"/>
                                 </IconButton>
                                 <Link to={"/home"} className="logo-home"><LogoSVG width={122} height={35}
                                 /></Link>
+                                <Search>
+                                    <SearchIconWrapper>
+                                        <SearchRoundedIcon onClick={handleSearch} />
+                                    </SearchIconWrapper>
+                                    <StyledInputBase
+                                        className="search-input"
+                                        name="searchReq"
+                                        placeholder="Search…"
+                                        inputProps={{ 'aria-label': 'search' }}
+                                        onChange={handleChangeSearchReq}
+                                        value={searchReq}
+                                    />
+                                </Search>
                             </Toolbar>
                         </AppBar>
-                        {/*TODO: добавить поиск*/}
                         <Drawer
                             className="drawer"
                             variant="persistent"
