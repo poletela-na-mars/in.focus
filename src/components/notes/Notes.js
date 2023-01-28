@@ -1,6 +1,7 @@
 import {forwardRef, useEffect, useState} from "react";
 import {
-    AppBar, Box,
+    AppBar,
+    Box,
     Button,
     CardActions,
     CardContent,
@@ -18,7 +19,7 @@ import {
 } from "@mui/material";
 import {authMiddleWare} from "../../util/auth";
 import axios from "axios";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
@@ -27,9 +28,6 @@ import "./Notes.scss";
 import {AddCircleRounded, CloseRounded} from "@mui/icons-material";
 import {theme} from "../login/LoginFun";
 import {CustomizedCard} from "../account/AccountFun";
-import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
-import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
-import LogoSVG from "../../LogoSVG";
 
 const MAX_TITLE_LENGTH = 30;
 const MAX_BODY_LENGTH = 65;
@@ -227,11 +225,8 @@ const Notes = (props) => {
                 (<div className="container">
                     {uiLoading && <CircularProgress size={100} className="loader"/>}
                 </div>) : (
-                    // <main className="content" style={{padding: theme.spacing(3)}}>
                     <main className="content" style={{padding: theme.spacing(3)}}>
-                        {/*<main className="content" style={{padding: theme.spacing(3), marginRight: theme.spacing(3)}}>*/}
                         <Toolbar className="tool-bar"/>
-
                         <div className="add-notes-button">
                             <IconButton
                                 size="large"
@@ -239,7 +234,6 @@ const Notes = (props) => {
                                 onClick={handleClickOpen}
                             >
                                 <AddCircleRounded fontSize="large" className="icon-active"/>
-                                {/*<AddCircleOutlineTwoToneIcon fontSize="large" className="icon-active" />*/}
                             </IconButton>
                         </div>
                         <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
@@ -317,7 +311,9 @@ const Notes = (props) => {
                         </Dialog>
 
                         <Grid container spacing={2}>
-                            {notes.length !== 0 ? (notes.map((note) => (
+                            {notes.length !== 0 ? (notes.filter((note) => {
+                                return note.title.includes(props.searchReq) || note.body.includes(props.searchReq)
+                                }).map((note) => (
                                     <Grid item xs={12} sm={6} key={note.noteId}>
                                         <CustomizedCard className="root" variant="outlined">
                                             <CardContent className="view-field-card" onClick={() => handleViewOpen({note})}>

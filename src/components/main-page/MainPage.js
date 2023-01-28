@@ -39,9 +39,7 @@ const MainPage = (props) => {
 //      -?не всегда правильная обработка setActiveIcon
 //      -?проблемы с удалением аккаунта (не удаляется почта)
 //      ---
-//      -сделать лого не кликабельным
 //      -fix spacings and styles... цвета в theme
-//      -DESIGN- add search bar
 //      -clean-up
 
 export default MainPage;

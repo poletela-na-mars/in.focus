@@ -26,7 +26,6 @@ exports.getAllNotes = (request, response) => {
         });
 };
 
-
 exports.getOneNote = (request, response) => {
     db
         .doc(`/notes/${request.params.noteId}`)

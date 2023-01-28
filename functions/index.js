@@ -24,7 +24,6 @@ const {
 } = require("./APIs/users")
 
 const auth = require('./utils/auth');
-const algoliasearch = require("algoliasearch");
 
 // Notes
 app.get("/notes", auth, getAllNotes);

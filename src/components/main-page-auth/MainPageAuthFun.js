@@ -8,7 +8,6 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import {
-    alpha,
     AppBar,
     Avatar,
     Box,
@@ -33,7 +32,7 @@ import "./MainPageAuth.scss";
 import {theme} from "../login/LoginFun";
 import LogoSVG from "../../LogoSVG";
 
-const Search = styled('div')(({ theme }) => ({
+const Search = styled('div')(({theme}) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     border: '1px solid #D9D9D9',
@@ -51,7 +50,7 @@ const Search = styled('div')(({ theme }) => ({
     },
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+const SearchIconWrapper = styled('div')(({theme}) => ({
     padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
@@ -62,7 +61,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     color: '#8613E0'
 }));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
+const StyledInputBase = styled(InputBase)(({theme}) => ({
     color: '#252525',
     '&::placeholder': {
         color: '#D9D9D9'
@@ -78,8 +77,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
             width: '12ch',
             '&:focus, &:active': {
                 width: '20ch',
-                border: '1px solid #8613E0',
             },
+        },
+        '&:focus, &:active': {
+            border: '1px solid #8613E0',
         },
     },
 }));
@@ -197,10 +198,6 @@ const MainPageAuthFun = (props) => {
         setSearchReq(event.target.value);
     };
 
-    const handleSearch = () => {
-
-    };
-
     return (
         <ThemeProvider theme={theme}>
             {(uiLoading === true) ?
@@ -231,13 +228,13 @@ const MainPageAuthFun = (props) => {
                                 /></Link>
                                 <Search>
                                     <SearchIconWrapper>
-                                        <SearchRoundedIcon onClick={handleSearch} />
+                                        <SearchRoundedIcon/>
                                     </SearchIconWrapper>
                                     <StyledInputBase
                                         className="search-input"
                                         name="searchReq"
                                         placeholder="Search…"
-                                        inputProps={{ 'aria-label': 'search' }}
+                                        inputProps={{'aria-label': 'search'}}
                                         onChange={handleChangeSearchReq}
                                         value={searchReq}
                                     />
@@ -336,7 +333,7 @@ const MainPageAuthFun = (props) => {
                             </List>
                         </Drawer>
 
-                        <Box>{render ? <AccountFun/> : <Notes/>}</Box>
+                        <Box>{render ? <AccountFun/> : <Notes searchReq={searchReq}/>}</Box>
                         {/*</Box>*/}
                     </>
                 )

@@ -2,7 +2,7 @@ import {Autocomplete, Box, Container, CssBaseline, Grid, styled, ThemeProvider, 
 import {MuiTelInput} from "mui-tel-input";
 import {useState} from "react";
 import axios from "axios";
-import {CustomizedTextField, theme} from "../login/Login";
+import {CustomizedTextField, theme} from "../login/LoginFun";
 import {Link, useNavigate} from "react-router-dom";
 
 import {countries} from "./countries";
