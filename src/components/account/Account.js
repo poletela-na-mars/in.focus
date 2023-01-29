@@ -21,14 +21,15 @@ import {
 import {useNavigate} from "react-router-dom";
 
 import "./Account.scss";
+
 import {countries} from "../sign-up/countries";
 
-export const CustomizedCard = styled(Card)`
-  box-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.05);
-  border-radius: 20px;
-`;
+export const CustomizedCard = styled(Card)(({theme}) => ({
+    boxShadow: theme.shadow.boxShadowCard,
+    borderRadius: theme.shape.borderRadius,
+}));
 
-const Account = (props) => {
+const Account = () => {
     const navigate = useNavigate();
 
     const [mounted, setMounted] = useState(false);
@@ -41,16 +42,16 @@ const Account = (props) => {
     const [uiLoading, setUiLoading] = useState(true);
     const [buttonLoading, setButtonLoading] = useState(false);
     const [imageError, setImageError] = useState('');
-    const [errorMsg, setErrorMsg] = useState('');
     const [error403, setError403] = useState(false);
     const [image, setImage] = useState('');
     const [profilePicture, setProfilePicture] = useState('');
     const [errors, setErrors] = useState([]);
-    const [openDeterminePopup, setOpenDeterminePopup] = useState(false);
+    const [openSelectionPopup, setOpenSelectionPopup] = useState(false);
 
     if (!mounted) {
         authMiddleWare(navigate);
         const authToken = localStorage.getItem('AuthToken');
+
         axios.defaults.headers.common = {Authorization: `${authToken}`};
         axios
             .get('/user')
@@ -66,12 +67,12 @@ const Account = (props) => {
                 }
                 setUiLoading(false);
             })
-            .catch((error) => {
-                if (error.response.status === 403) {
+            .catch((err) => {
+                if (err.response.status === 403) {
                     setError403(true);
                 }
-                console.log(error);
-                setErrorMsg('Error in retrieving the data');
+                // console.log(err);
+                return err.response.status(500).json({error: err.code});
             });
     }
 
@@ -80,11 +81,11 @@ const Account = (props) => {
         if (error403) {
             setTimeout(() => {
                 navigate("/login")
-            }, 0)
+            }, 0);
         }
-    }, [error403, navigate])
+    }, [error403, navigate]);
 
-    const handleChange = (event) => {
+    const handleNamesChange = (event) => {
         switch (event.target.name) {
             case "firstName":
                 setFirstName(event.target.value);
@@ -104,6 +105,7 @@ const Account = (props) => {
     const deleteUserHandler = (event) => {
         authMiddleWare(navigate);
         const authToken = localStorage.getItem("AuthToken");
+
         axios.defaults.headers.common = {Authorization: `${authToken}`};
         event.preventDefault();
         setUiLoading(true);
@@ -114,19 +116,14 @@ const Account = (props) => {
                 setUiLoading(false);
                 navigate('/login');
             })
-            .catch((error) => {
-                console.log(error);
+            .catch((err) => {
+                // console.log(error);
+                err.response.status(500).json({error: err.code});
                 window.location.reload();
-                // setErrors(error.response.data);
-                // setLoading(false);
             });
     };
 
     const uploadProfileImageHandler = (event) => {
-        // const headers = Object.keys({header: 'multipart/form-data'}).reduce((newHeaders, key) => {
-        //     newHeaders[key.toLowerCase()] = {header: 'multipart/form-data'}[key];
-        //     return newHeaders;
-        // }, {});
         event.preventDefault();
         const headers = {
             'content-type': 'multipart/form-data'
@@ -137,20 +134,12 @@ const Account = (props) => {
         let form_data = new FormData();
         form_data.append('image', image);
         form_data.append('prevImage', profilePicture);
+
         axios.defaults.headers.common = {Authorization: `${authToken}`};
         axios
             .post('/user/image', form_data, {
-                    //     headers: {
-                    //         'content-type': 'multipart/form-data'
-                    //     },
                     headers: headers
                 },
-                // headers: {
-                //     'content-type': headers['Content-Type'],
-                // },
-                // transformRequest: (data, request) => {
-                //     return data;
-                // },
             )
             .then(() => {
                 window.location.reload()
@@ -158,7 +147,7 @@ const Account = (props) => {
             .then(r => r.json()
                 .then(data => ({status: r.status, body: data})))
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
                 setUiLoading(false);
                 let imageErrorMsg;
 
@@ -184,6 +173,7 @@ const Account = (props) => {
         event.preventDefault();
         authMiddleWare(navigate);
         const authToken = localStorage.getItem("AuthToken");
+
         axios
             .delete('user/image', {
                 headers: {
@@ -198,7 +188,7 @@ const Account = (props) => {
                 if (err.response.status === 403) {
                     navigate("/login");
                 }
-                console.log(err);
+                // console.log(err);
                 setUiLoading(false);
                 setImageError('Error in deleting image');
             });
@@ -213,12 +203,14 @@ const Account = (props) => {
         setButtonLoading(true);
         authMiddleWare(navigate);
         const authToken = localStorage.getItem('AuthToken');
+
         axios.defaults.headers.common = {Authorization: `${authToken}`};
         const formRequest = {
             firstName: firstName,
             lastName: lastName,
             country: country
         };
+
         axios
             .put('/user', formRequest)
             .then(() => {
@@ -229,49 +221,46 @@ const Account = (props) => {
                 if (error.response.status === 403) {
                     navigate('/login');
                 }
-                console.log(error);
+                // console.log(error);
                 setErrors(error.response.data);
                 setButtonLoading(false);
             });
     };
 
     const deleteAccountButtonClickHandler = () => {
-        setOpenDeterminePopup(true);
+        setOpenSelectionPopup(true);
     };
 
     const closeDeleteAccountButtonPopupHandler = () => {
-        setOpenDeterminePopup(false);
+        setOpenSelectionPopup(false);
     };
 
-    return uiLoading === true ? (
+    return uiLoading ? (
         <main className="container">
-            {/*<div className="toolbar"/>*/}
             {uiLoading && <CircularProgress size={100} className="loader"/>}
         </main>
     ) : (
         <ThemeProvider theme={theme}>
-            {/*<main className="content container">*/}
             <Toolbar className="tool-bar"/>
             <Container maxWidth="md">
-                <Box className="box" style={{padding: theme.spacing(3)}}>
+                <Box style={{padding: theme.spacing(3)}}>
                     <CustomizedCard variant="outlined">
                         <CardContent>
-                            <div className="details">
+                            <div>
                                 <div>
                                     <Typography className="name-surname" gutterBottom variant="h4">
                                         {firstName} {lastName}
                                     </Typography>
                                     <div className="input-file-style-container">
                                         <input type="file"
+                                               title="file-upload"
                                                accept="image/*"
-                                               className="input-file-button"
                                                onChange={handleImageChange}/>
                                     </div>
                                     {imageError ? (
                                         <div className="custom-error">
                                             {' '}
                                             {imageError}
-                                            {/*Wrong Image Format || Supported Formats are PNG and JPG*/}
                                         </div>
                                     ) : false}
                                     <div className="upload-and-delete-image-container">
@@ -302,13 +291,11 @@ const Account = (props) => {
                             </div>
                             <div className="progress"/>
                         </CardContent>
-                        {/*<Divider/>*/}
                     </CustomizedCard>
 
                     <br/>
                     <CustomizedCard variant="outlined">
                         <form autoComplete="off">
-                            {/*<Divider/>*/}
                             <CardContent>
                                 <Grid container spacing={3}>
                                     <Grid item md={6} xs={12}>
@@ -319,7 +306,7 @@ const Account = (props) => {
                                             name="firstName"
                                             variant="outlined"
                                             value={firstName}
-                                            onChange={handleChange}
+                                            onChange={handleNamesChange}
                                             helperText={errors.firstName}
                                             error={!!errors.firstName}
                                         />
@@ -332,7 +319,7 @@ const Account = (props) => {
                                             name="lastName"
                                             variant="outlined"
                                             value={lastName}
-                                            onChange={handleChange}
+                                            onChange={handleNamesChange}
                                             helperText={errors.lastName}
                                             error={!!errors.lastName}
                                         />
@@ -346,7 +333,6 @@ const Account = (props) => {
                                             variant="outlined"
                                             disabled={true}
                                             value={email}
-                                            onChange={handleChange}
                                         />
                                     </Grid>
                                     <Grid item md={6} xs={12}>
@@ -358,7 +344,6 @@ const Account = (props) => {
                                             variant="outlined"
                                             disabled={true}
                                             value={phoneNumber}
-                                            onChange={handleChange}
                                         />
                                     </Grid>
                                     <Grid item md={6} xs={12}>
@@ -370,23 +355,10 @@ const Account = (props) => {
                                             disabled={true}
                                             variant="outlined"
                                             value={username}
-                                            onChange={handleChange}
                                         />
                                     </Grid>
-                                    {/*<Grid item md={6} xs={12}>*/}
-                                    {/*    <CustomizedTextField*/}
-                                    {/*        fullWidth*/}
-                                    {/*        label="Country"*/}
-                                    {/*        margin="dense"*/}
-                                    {/*        name="country"*/}
-                                    {/*        variant="outlined"*/}
-                                    {/*        value={country}*/}
-                                    {/*        onChange={handleChange}*/}
-                                    {/*    />*/}
-                                    {/*</Grid>*/}
                                     <Grid item md={6} xs={12}>
                                         <Autocomplete
-                                            // disablePortal
                                             id="country"
                                             name="country"
                                             options={countries}
@@ -396,35 +368,17 @@ const Account = (props) => {
                                             variant="outlined"
                                             value={country}
                                             renderInput={(params) => <CustomizedTextField {...params}
-                                                // fullWidth
                                                                                           label="Country"/>}
                                             onChange={(event, value) => handleChangeCountry(event, value)}
-                                            // helperText={errors.country}
-                                            // error={!!errors.country}
                                         />
                                     </Grid>
                                 </Grid>
                             </CardContent>
-                            {/*<Divider/>*/}
                             <CardActions/>
                         </form>
                     </CustomizedCard>
-                    {/*<Button*/}
-                    {/*    color="primary"*/}
-                    {/*    variant="contained"*/}
-                    {/*    type="submit"*/}
-                    {/*    className="submit-button"*/}
-                    {/*    onClick={updateFormValues}*/}
-                    {/*    disabled={*/}
-                    {/*        buttonLoading ||*/}
-                    {/*        !firstName ||*/}
-                    {/*        !lastName ||*/}
-                    {/*        !country*/}
-                    {/*    }*/}
-                    {/*>*/}
                     <Grid container
                           spacing={0}
-                        // direction="column"
                           alignItems="center"
                           justifyContent="center"
                     >
@@ -453,23 +407,21 @@ const Account = (props) => {
             </Container>
 
             <Modal
-                className="determine-popup"
-                open={openDeterminePopup}
+                className="selection-popup"
+                open={openSelectionPopup}
                 onClose={closeDeleteAccountButtonPopupHandler}
                 closeAfterTransition
             >
-                <Fade in={openDeterminePopup}>
-                    <div className="determine-popup-paper">
+                <Fade in={openSelectionPopup}>
+                    <div className="selection-popup-paper">
                         <h3>Do you really want to delete account?</h3>
-                        <div className="determine-buttons-container">
+                        <div className="selection-buttons-container">
                             <button className="yes-button" onClick={deleteUserHandler}>Yes</button>
                             <button className="no-button" onClick={closeDeleteAccountButtonPopupHandler}>No</button>
                         </div>
                     </div>
                 </Fade>
             </Modal>
-
-            {/*</main>*/}
         </ThemeProvider>
     );
 };

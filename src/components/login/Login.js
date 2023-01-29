@@ -32,16 +32,22 @@ export const theme = createTheme({
     palette: {
         primary: {
             main: '#8613E0',
-            darker: '#FF7A00',
+            // darker: '#FF7A00',
         },
-        neutral: {
-            main: '#8613E0',
-            contrastText: '#fff',
+        secondary: {
+            main: '#FF7A00',
         },
+        // neutral: {
+        //     main: '#8613E0',
+        //     contrastText: '#fff',
+        // },
     },
     shape: {
         borderRadius: '20px'
-    }
+    },
+    shadow: {
+        boxShadowCard: '4px 6px 8px 0 rgba(0, 0, 0, 0.05)'
+    },
 });
 
 export const CustomizedTextField = styled(TextField)`

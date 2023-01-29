@@ -2,7 +2,7 @@ const functions = require("firebase-functions");
 const helmet = require('helmet');
 
 const app = require("express")();
-app.disable('x-powered-by');
+app.disable("x-powered-by");
 app.use(helmet());
 
 const {
@@ -23,11 +23,11 @@ const {
     deleteProfileImage
 } = require("./APIs/users")
 
-const auth = require('./utils/auth');
+const auth = require("./utils/auth");
 
 // Notes
 app.get("/notes", auth, getAllNotes);
-app.get('/note/:noteId', auth, getOneNote);
+app.get("/note/:noteId", auth, getOneNote);
 app.post("/note", auth, postOneNote);
 app.delete("/note/:noteId", auth, deleteNote);
 app.put("/note/:noteId", auth, editNote);

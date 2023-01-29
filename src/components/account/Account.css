@@ -30,7 +30,10 @@
 .avatar {
   height: 110px;
   width: 100px;
+  -ms-flex-negative: 0;
   flex-shrink: 0;
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
   flex-grow: 0;
 }
 
@@ -39,7 +42,6 @@
   -ms-word-break: break-all;
   word-break: break-word;
   word-wrap: break-word;
-  -moz-hyphens: auto;
   hyphens: auto;
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
@@ -57,8 +59,14 @@
 }
 
 .upload-and-delete-image-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -134,7 +142,7 @@ input[type=file]::file-selector-button:hover {
 }
 
 .custom-error {
-  color: red;
+  color: #d26d6d;
   font-size: 14px;
   margin-top: 10px;
   margin-left: 15px;
@@ -145,6 +153,7 @@ input[type=file]::file-selector-button:hover {
 }
 
 .card {
+  -webkit-box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -176,10 +185,6 @@ input[type=file]::file-selector-button:hover {
 
 .delete-account-button {
   background-color: #d26d6d;
-}
-
-.box {
-  margin-left: 2%;
 }
 
 /*# sourceMappingURL=Account.css.map */

@@ -58,19 +58,19 @@
   justify-content: flex-end;
 }
 
-.determine-buttons-container {
+.selection-buttons-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.determine-popup {
+.selection-popup {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.determine-popup-paper {
+.selection-popup-paper {
   text-align: center;
   background-color: #FFFFFF;
   border-radius: 20px;
@@ -78,7 +78,7 @@
   padding: 5%;
   margin: 3%;
 }
-.determine-popup-paper h3 {
+.selection-popup-paper h3 {
   margin: 0 0 5%;
 }
 

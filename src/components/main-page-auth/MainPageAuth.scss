@@ -89,19 +89,19 @@
 //  color: $gray-text-color;
 //}
 
-.determine-buttons-container {
+.selection-buttons-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.determine-popup {
+.selection-popup {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.determine-popup-paper {
+.selection-popup-paper {
   text-align: center;
   background-color: $white-color;
   border-radius: $light-rounded-border-radius;

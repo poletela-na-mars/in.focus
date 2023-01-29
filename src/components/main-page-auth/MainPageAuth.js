@@ -110,7 +110,7 @@ const MainPageAuth = (props) => {
     const [errorMsg, setErrorMsg] = useState('');
     const [error403, setError403] = useState(false);
     const [openBar, setOpenBar] = useState(false);
-    const [openDeterminePopup, setOpenDeterminePopup] = useState(false);
+    const [openSelectionPopup, setOpenSelectionPopup] = useState(false);
     const [isActiveIcon, setActiveIcon] = useState({'notes': true, 'account': false});
     const [searchReq, setSearchReq] = useState('');
 
@@ -187,11 +187,11 @@ const MainPageAuth = (props) => {
     };
 
     const logoutButtonClickHandler = () => {
-        setOpenDeterminePopup(true);
+        setOpenSelectionPopup(true);
     };
 
     const closeDeterminePopupHandler = () => {
-        setOpenDeterminePopup(false);
+        setOpenSelectionPopup(false);
     };
 
     const handleChangeSearchReq = (event) => {
@@ -313,15 +313,15 @@ const MainPageAuth = (props) => {
                                 </ListItem>
 
                                 <Modal
-                                    className="determine-popup"
-                                    open={openDeterminePopup}
+                                    className="selection-popup"
+                                    open={openSelectionPopup}
                                     onClose={closeDeterminePopupHandler}
                                     closeAfterTransition
                                 >
-                                    <Fade in={openDeterminePopup}>
-                                        <div className="determine-popup-paper">
+                                    <Fade in={openSelectionPopup}>
+                                        <div className="selection-popup-paper">
                                             <h3>Do you really want to log out?</h3>
-                                            <div className="determine-buttons-container">
+                                            <div className="selection-buttons-container">
                                                 <button className="yes-button" onClick={logoutHandler}>Yes</button>
                                                 <button className="no-button" onClick={closeDeterminePopupHandler}>No
                                                 </button>

@@ -71,11 +71,9 @@ $light-rounded-border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  //overflow-x: hidden;
 }
 
 .loader {
-  //position: fixed;
   z-index: 1001;
   color: $violet-color;
 }
