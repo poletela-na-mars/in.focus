@@ -24,16 +24,16 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
 import "./Notes.scss";
+import {theme} from "../../theme";
 
 import {AddCircleRounded, CloseRounded} from "@mui/icons-material";
-import {theme} from "../login/Login";
 import {CustomizedCard} from "../account/Account";
 
 const MAX_TITLE_LENGTH = 30;
 const MAX_BODY_LENGTH = 65;
 
 const Transition = forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
+    return <Slide direction="up" ref={ref} {...props}/>;
 });
 
 const Notes = (props) => {
@@ -54,6 +54,7 @@ const Notes = (props) => {
     if (!mounted) {
         authMiddleWare(navigate);
         const authToken = localStorage.getItem("AuthToken");
+
         axios.defaults.headers.common = {Authorization: `${authToken}`};
         axios
             .get("/notes")
@@ -62,7 +63,11 @@ const Notes = (props) => {
                 setUiLoading(false);
             })
             .catch((err) => {
-                console.log(err);
+                if (err.response.status === 403) {
+                    setError403(true);
+                }
+                // console.log(error);
+                return err.response.status(500).json({error: err.code});
             });
     }
 
@@ -73,7 +78,7 @@ const Notes = (props) => {
                 navigate("/login")
             }, 0)
         }
-    }, [error403, navigate])
+    }, [error403, navigate]);
 
     const handleChange = (event) => {
         const value = event.target.value;
@@ -92,6 +97,7 @@ const Notes = (props) => {
     const deleteNoteHandler = (data) => {
         authMiddleWare(navigate);
         const authToken = localStorage.getItem("AuthToken");
+
         axios.defaults.headers.common = {Authorization: `${authToken}`};
         let noteId = data.note.noteId;
         axios
@@ -100,7 +106,9 @@ const Notes = (props) => {
                 window.location.reload();
             })
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
+                err.response.status(500).json({error: err.code});
+                window.location.reload();
             });
     };
 
@@ -118,28 +126,13 @@ const Notes = (props) => {
         setViewOpen(true);
     };
 
-    // const DialogTitle = withStyles(styles)((props) => {const { children, classes, onClose, ...other } = props;
     const DialogTitleWrapper = (props) => {
         const {children, onClose} = props;
-        // return
-        //     <DialogTitle disableTypography className="root">
-        //         <Typography variant="h6">{children}</Typography>
-        //         {onClose ? (
-        //             <IconButton aria-label="close" className="close-button" onClick={onClose}>
-        //                 <CloseRounded/>
-        //             </IconButton>
-        //         ) : null}
-        //     <DialogTitle />
         return (
-            <DialogTitle component="h6" className="root">
-                {/*<Typography variant="h6">{children}</Typography>*/}
+            <DialogTitle component="h6" className="top-panel">
                 {children}
                 {onClose ? (
-                    <IconButton aria-label="close" className="close-button" onClick={onClose} sx={{
-                        // left: theme.spacing(5),
-                        // right: theme.spacing(5),
-                        // top: theme.spacing(1)
-                    }}>
+                    <IconButton className="close-button" onClick={onClose}>
                         <CloseRounded/>
                     </IconButton>
                 ) : null}
@@ -147,15 +140,7 @@ const Notes = (props) => {
         );
     };
 
-    // const DialogContent = withStyles((theme) => ({
-    //   viewRoot: {
-    //     padding: theme.spacing(2)
-    //   }
-    // }))(MuiDialogContent);
-
     dayjs.extend(relativeTime);
-    // const { classes } = this.props;
-    // const { open, errors, viewOpen } = this.state;
 
     const handleClickOpen = () => {
         setNoteId('');
@@ -168,12 +153,14 @@ const Notes = (props) => {
     const handleSubmit = (event) => {
         authMiddleWare(navigate);
         event.preventDefault();
+
         const userNote = {
             title: title,
             body: body,
             editedAt: new Date().toISOString(),
         };
-        let options = {};
+
+        let options;
         if (buttonType === "Edit") {
             options = {
                 url: `/note/${noteId}`,
@@ -187,19 +174,20 @@ const Notes = (props) => {
                 data: userNote
             };
         }
+
         const authToken = localStorage.getItem("AuthToken");
+
         axios.defaults.headers.common = {Authorization: `${authToken}`};
         axios(options)
             .then(() => {
-                // this.setState({ open: false });
                 setOpen(false);
                 window.location.reload();
             })
-            .catch((error) => {
-                // this.setState({ open: true, errors: error.response.data });
+            .catch((err) => {
                 setOpen(true);
-                setErrors([...errors, error.response.data]);
-                console.log(error);
+                setErrors([...errors, err.response.data]);
+                err.response.status(500).json({error: err.code});
+                // console.log(error);
             });
     };
 
@@ -211,14 +199,6 @@ const Notes = (props) => {
         setOpen(false);
     };
 
-    // if (uiLoading === true) {
-    //     return (
-    //         <main className="content"}>
-    //             <div className="toolbar" />
-    //             {uiLoading && <CircularProgress size={150} className={classes.uiProgess} />}
-    //
-    //         </main>
-    //     );
     return (
         <ThemeProvider theme={theme}>
             {(uiLoading === true) ?
@@ -230,23 +210,22 @@ const Notes = (props) => {
                         <div className="add-notes-button">
                             <IconButton
                                 size="large"
-                                aria-label="Add Note"
                                 onClick={handleClickOpen}
                             >
-                                <AddCircleRounded fontSize="large" className="icon-active"/>
+                                <AddCircleRounded fontSize="large" className="icon_active"/>
                             </IconButton>
                         </div>
                         <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
                             <AppBar className="app-bar">
                                 <Toolbar>
-                                    <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+                                    <IconButton edge="start" color="inherit" onClick={handleClose}>
                                         <CloseRounded/>
                                     </IconButton>
-                                    <Typography variant="h6" className="title" sx={{marginLeft: theme.spacing(2)}}>
+                                    <Typography variant="h6" className="button-type-title"
+                                                sx={{marginLeft: theme.spacing(2)}}>
                                         {buttonType === "Edit" ? "Edit Note" : "Create a new Note"}
                                     </Typography>
                                     <Button
-                                        // autoFocus
                                         color="inherit"
                                         onClick={handleSubmit}
                                         className="submit-button"
@@ -275,7 +254,6 @@ const Notes = (props) => {
                                             maxRows={2}
                                             inputProps={{maxLength: 100}}
                                             multiline
-                                            // id="noteTitle"
                                             className="note-title"
                                             label="Note Title"
                                             name="title"
@@ -292,7 +270,6 @@ const Notes = (props) => {
                                             variant="outlined"
                                             required
                                             fullWidth
-                                            // id="noteDetails"
                                             className="note-details"
                                             label="Note Details"
                                             name="body"
@@ -312,19 +289,18 @@ const Notes = (props) => {
 
                         <Grid container spacing={2}>
                             {notes.length !== 0 ? (notes.filter((note) => {
-                                return note.title.includes(props.searchReq) || note.body.includes(props.searchReq)
+                                    return note.title.includes(props.searchReq) || note.body.includes(props.searchReq)
                                 }).map((note) => (
                                     <Grid item xs={12} sm={6} key={note.noteId}>
-                                        <CustomizedCard className="root" variant="outlined">
+                                        <CustomizedCard className="top-panel" variant="outlined">
                                             <CardContent className="view-field-card" onClick={() => handleViewOpen({note})}>
                                                 <Typography variant="h5" component="h2" className="card-text">
                                                     {note.title.length > MAX_TITLE_LENGTH ? `${note.title.slice(0, MAX_TITLE_LENGTH)}...` : note.title}
                                                 </Typography>
-                                                <Typography color="textSecondary" className="card-text pos">
+                                                <Typography color="textSecondary" className="card-text card-text__date">
                                                     {`last changes ${(note.createdAt !== note.editedAt) ? dayjs(note.editedAt).fromNow() : dayjs(note.createdAt).fromNow()}`}
                                                 </Typography>
                                                 <Typography variant="body2" component="p" className="card-text">
-                                                    {/*{`${note.body.substring(0, 65)}`}*/}
                                                     {note.body.length > MAX_BODY_LENGTH ? `${note.body.slice(0, MAX_BODY_LENGTH)}...` : note.body}
                                                 </Typography>
                                             </CardContent>
@@ -373,20 +349,15 @@ const Notes = (props) => {
                             <DialogContent dividers sx={{padding: theme.spacing(2), margin: 0}}>
                                 <TextField
                                     fullWidth
-                                    // id="noteDetails"
                                     name="body"
                                     multiline
-                                    // readonly
                                     minRows={20}
                                     maxRows={25}
                                     value={body}
-                                    // disabled={true}
-                                    // disableUnderline={true}
                                     variant="standard"
                                     InputProps={{
                                         disableUnderline: true,
                                         readOnly: true
-                                        // maxLength: 500
                                     }}
                                 />
                             </DialogContent>

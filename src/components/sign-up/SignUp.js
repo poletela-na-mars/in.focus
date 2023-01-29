@@ -2,7 +2,7 @@ import {Autocomplete, Box, Container, CssBaseline, Grid, styled, ThemeProvider, 
 import {MuiTelInput} from "mui-tel-input";
 import {useState} from "react";
 import axios from "axios";
-import {CustomizedTextField, theme} from "../login/Login";
+import {CustomizedTextField} from "../login/Login";
 import {Link, useNavigate} from "react-router-dom";
 
 import {countries} from "./countries";
@@ -10,14 +10,15 @@ import LogoSVG from "../../LogoSVG";
 
 import "../login/Login.scss";
 import "./SignUp.scss";
+import {theme} from "../../theme";
 
-export const CustomizedMuiTelInput = styled(MuiTelInput)`
-  fieldset {
-    border-radius: 50px;
-  }
-`;
+export const CustomizedMuiTelInput = styled(MuiTelInput)(({theme}) => ({
+    fieldset: {
+        borderRadius: theme.shape.roundedBorderRadius,
+    },
+}));
 
-const SignUp = (props) => {
+const SignUp = () => {
     const navigate = useNavigate();
 
     const [firstName, setFirstName] = useState('');
@@ -69,6 +70,7 @@ const SignUp = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         setLoading(true);
+
         const newUserData = {
             firstName: firstName,
             lastName: lastName,
@@ -80,6 +82,7 @@ const SignUp = (props) => {
             password: password,
             confirmPassword: confirmPassword
         };
+
         axios
             .post('/signup', newUserData)
             .then((response) => {
@@ -87,9 +90,10 @@ const SignUp = (props) => {
                 setLoading(false)
                 navigate("/home");
             })
-            .catch((error) => {
-                setErrors(error.response.data);
+            .catch((err) => {
+                setErrors(err.response.data);
                 setLoading(false);
+                err.response.status(500).json({error: err.code});
             });
     };
 
@@ -114,8 +118,8 @@ const SignUp = (props) => {
                           justifyContent="space-evenly"
                           marginBottom="10px"
                     >
-                        <Link to="/login" className="sign-switch">sign in</Link>
-                        <Link to="/signup" className="sign-switch checked-switch">sign up</Link>
+                        <Link to="/login" className="sign-in-up-switch">sign in</Link>
+                        <Link to="/signup" className="sign-in-up-switch sign-in-up-switch_checked">sign up</Link>
                     </Grid>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
                         <Grid container spacing={2} marginTop="3px">
@@ -166,7 +170,6 @@ const SignUp = (props) => {
                                     onChange={handleChange}
                                 />
                             </Grid>
-
                             <Grid item xs={12} sm={6}>
                                 <CustomizedMuiTelInput
                                     variant="outlined"
@@ -204,17 +207,13 @@ const SignUp = (props) => {
 
                             <Grid item xs={12}>
                                 <Autocomplete
-                                    // disablePortal
                                     id="country"
                                     name="country"
                                     options={countries}
                                     renderInput={(params) => <CustomizedTextField {...params}
                                                                                   fullWidth required
                                                                                   label="Country"/>}
-                                    // autoComplete="country"
                                     onChange={(event, value) => handleChangeCountry(event, value)}
-                                    // helperText={errors.country}
-                                    // error={!!errors.country}
                                 />
                             </Grid>
 
@@ -234,6 +233,7 @@ const SignUp = (props) => {
                                     onChange={handleChange}
                                 />
                             </Grid>
+
                             <Grid item xs={12}>
                                 <CustomizedTextField
                                     variant="outlined"
@@ -262,7 +262,7 @@ const SignUp = (props) => {
                                 Terms of Service and Privacy Policy
                             </Typography>
                             <button
-                                className="sign-button_login-signup"
+                                className="sign-in-up-button"
                                 type="submit"
                                 onClick={handleSubmit}
                                 disabled={loading ||
@@ -276,15 +276,6 @@ const SignUp = (props) => {
                                     !confirmPassword
                                 }
                             >
-                                {/*{console.log(loading,*/}
-                                {/*    email,*/}
-                                {/*    password,*/}
-                                {/*    firstName,*/}
-                                {/*    lastName,*/}
-                                {/*    country,*/}
-                                {/*    username,*/}
-                                {/*    phoneNumber,*/}
-                                {/*    confirmPassword)}*/}
                                 Sign Up
                             </button>
                             {errors.general && (

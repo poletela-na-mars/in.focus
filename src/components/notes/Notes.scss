@@ -1,44 +1,36 @@
 @import "./../../vars";
 
-//.floating-button {
-//  position: fixed;
-//  bottom: 0;
-//  right: 0;
-//}
-
-.title {
-  //margin-left: theme.spacing(2);
+.button-type-title {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
 }
 
 .submit-button {
   display: block;
-  //color: $white-color;
   text-align: center;
-  //position: absolute;
-  //top: 14px;
-  //right: 10px;
 }
 
 .form {
   width: 98%;
-  //margin-left: 13px;
-  //marginTop: theme.spacing(3)
 }
 
-//TODO: media-queries
-.root {
+.top-panel {
   min-width: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   word-break: break-all;
-  //min-width: 50%;
 }
 
 .view-field-card {
   cursor: pointer;
-  //word-break: break-all;
 }
 
 .card-text {
@@ -47,12 +39,11 @@
   word-break: break-word;
 
   -ms-hyphens: auto;
-  -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
 }
 
-.pos {
+.card-text__date {
   margin-bottom: 12px;
 }
 

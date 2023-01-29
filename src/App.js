@@ -6,7 +6,7 @@ import MainPageAuth from "./components/main-page-auth/MainPageAuth";
 import Login from "./components/login/Login";
 import SignUp from "./components/sign-up/SignUp";
 
-const App = (props) => {
+const App = () => {
     return (
         <Routes>
             <Route path="/" element={<MainPage/>}/>

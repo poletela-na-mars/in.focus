@@ -1,21 +1,12 @@
 @import "./../../vars";
 
-//.container {
-//  width: 100vw;
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//}
-
 .app-bar {
-  //z-index: 1000;
   height: $app-bar-height;
-  //box-sizing: border-box;
-  //background: #fff;
 }
 
 .drawer {
   width: 150px;
+  -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
@@ -23,81 +14,54 @@
   width: 150px;
 }
 
-//.content {
-//  flex-grow: 1;
-//  //padding: theme.spacing(3)
-//}
-
 .avatar {
   height: 110px;
   width: 100px;
+  -ms-flex-negative: 0;
   flex-shrink: 0;
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
   flex-grow: 0;
   margin-top: 20px;
 }
 
 .logo-home {
-  //display: flex;
-  //justify-content: center;
-  //align-items: center;
   margin: 0 auto;
 }
 
-//.loader {
-//  //position: fixed;
-//  z-index: 1001;
-//  //right: 80%;
-//  //height: 31px;
-//  //width: 31px;
-//  //left: 50%;
-//  //top: 35%;
-//  //margin: 0 auto;
-//}
-
-.drawer-header {
+.drawer__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 
-//.icon {
-//  width: 24px;
-//  height: 24px;
-//}
-
-//.manage-account-icon {
-//  @extend .icon;
-//}
-//
-//.notes-rounded-icon{
-//  @extend .icon;
-//}
-//
-//.logout-icon {
-//  @extend .icon;
-//}
-
-//.icon {
-//  color: $violet-color;
-//}
-//
-//.icon-active {
-//  color: $orange-color;
-//}
-//
-//.icon-gray {
-//  color: $gray-text-color;
-//}
-
 .selection-buttons-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .selection-popup {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -105,6 +69,7 @@
   text-align: center;
   background-color: $white-color;
   border-radius: $light-rounded-border-radius;
+  -webkit-box-shadow: $button-box-shadow;
   box-shadow: $button-box-shadow;
   padding: 5%;
   margin: 3%;
@@ -114,7 +79,7 @@
   }
 }
 
-.yes-button, .no-button {
+.selection-buttons-container__yes-button, .selection-buttons-container__no-button {
   @include violet-button;
   font-size: 16px;
   width: 130px;

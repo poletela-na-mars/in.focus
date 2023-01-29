@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {authMiddleWare} from "../../util/auth";
-import {CustomizedTextField, theme} from "../login/Login";
+import {CustomizedTextField} from "../login/Login";
 import axios from "axios";
 import {
     Autocomplete,
@@ -21,12 +21,13 @@ import {
 import {useNavigate} from "react-router-dom";
 
 import "./Account.scss";
+import {theme} from "../../theme";
 
 import {countries} from "../sign-up/countries";
 
 export const CustomizedCard = styled(Card)(({theme}) => ({
     boxShadow: theme.shadow.boxShadowCard,
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: theme.shape.lightRoundedBorderRadius,
 }));
 
 const Account = () => {
@@ -231,7 +232,7 @@ const Account = () => {
         setOpenSelectionPopup(true);
     };
 
-    const closeDeleteAccountButtonPopupHandler = () => {
+    const closeSelectionPopupHandler = () => {
         setOpenSelectionPopup(false);
     };
 
@@ -409,15 +410,15 @@ const Account = () => {
             <Modal
                 className="selection-popup"
                 open={openSelectionPopup}
-                onClose={closeDeleteAccountButtonPopupHandler}
+                onClose={closeSelectionPopupHandler}
                 closeAfterTransition
             >
                 <Fade in={openSelectionPopup}>
                     <div className="selection-popup-paper">
                         <h3>Do you really want to delete account?</h3>
                         <div className="selection-buttons-container">
-                            <button className="yes-button" onClick={deleteUserHandler}>Yes</button>
-                            <button className="no-button" onClick={closeDeleteAccountButtonPopupHandler}>No</button>
+                            <button className="selection-buttons-container__yes-button" onClick={deleteUserHandler}>Yes</button>
+                            <button className="selection-buttons-container__no-button" onClick={closeSelectionPopupHandler}>No</button>
                         </div>
                     </div>
                 </Fade>

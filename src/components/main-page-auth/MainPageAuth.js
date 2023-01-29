@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react";
 import {authMiddleWare} from "../../util/auth";
 import axios from "axios";
-import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
-import NotesRoundedIcon from '@mui/icons-material/NotesRounded';
-import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import ManageAccountsRoundedIcon from "@mui/icons-material/ManageAccountsRounded";
+import NotesRoundedIcon from "@mui/icons-material/NotesRounded";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import {
     AppBar,
     Avatar,
@@ -15,11 +15,13 @@ import {
     Divider,
     Drawer,
     Fade,
-    IconButton, InputBase,
+    IconButton,
+    InputBase,
     List,
-    ListItem,
+    ListItemButton,
     ListItemIcon,
-    Modal, styled,
+    Modal,
+    styled,
     ThemeProvider,
     Toolbar
 } from "@mui/material";
@@ -29,20 +31,15 @@ import Notes from "../notes/Notes";
 import Account from "../account/Account";
 
 import "./MainPageAuth.scss";
-import {theme} from "../login/Login";
+import {theme} from "../../theme";
 import LogoSVG from "../../LogoSVG";
 
 const Search = styled('div')(({theme}) => ({
     position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    border: '1px solid #D9D9D9',
-    // backgroundColor: alpha(theme.palette.common.white, 0.15),
+    borderRadius: theme.shape.lightRoundedBorderRadius,
+    border: `1px solid ${theme.palette.light.main}`,
     marginLeft: `calc(1em + ${theme.spacing(4)})`,
-    backgroundColor: '#FFFFFF',
-    // '&:focus, &:active': {
-    //     border: '1px solid #8613E0',
-    // },
-    // marginLeft: 0,
+    backgroundColor: theme.palette.light.light,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
@@ -58,13 +55,13 @@ const SearchIconWrapper = styled('div')(({theme}) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: '#8613E0'
+    color: theme.palette.primary.main,
 }));
 
 const StyledInputBase = styled(InputBase)(({theme}) => ({
-    color: '#252525',
+    color: theme.palette.light.dark,
     '&::placeholder': {
-        color: '#D9D9D9'
+        color: theme.palette.light.main,
     },
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
@@ -72,7 +69,7 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create('width'),
         width: '100%',
-        borderRadius: theme.shape.borderRadius,
+        borderRadius: theme.shape.lightRoundedBorderRadius,
         [theme.breakpoints.up('sm')]: {
             width: '12ch',
             '&:focus, &:active': {
@@ -80,34 +77,16 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
             },
         },
         '&:focus, &:active': {
-            border: '1px solid #8613E0',
+            border: `1px solid ${theme.palette.primary.main}`,
         },
     },
 }));
 
-// export const CustomizedAppBar = styled(AppBar)`
-//   color: white;
-// `;
-
-// const CustomizedDrawer = styled(Drawer)`
-// '& .MuiDrawer-paper': {
-//   width: 15px;
-//   box-sizing: border-box;
-// },
-// `;
-const MainPageAuth = (props) => {
+const MainPageAuth = () => {
     const [mounted, setMounted] = useState(false);
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
     const [profilePicture, setProfilePicture] = useState('');
     const [uiLoading, setUiLoading] = useState(true);
-    const [imageLoading, setImageLoading] = useState(false);
     const [render, setRender] = useState(false);
-    const [email, setEmail] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [country, setCountry] = useState('');
-    const [username, setUsername] = useState('');
-    const [errorMsg, setErrorMsg] = useState('');
     const [error403, setError403] = useState(false);
     const [openBar, setOpenBar] = useState(false);
     const [openSelectionPopup, setOpenSelectionPopup] = useState(false);
@@ -136,23 +115,17 @@ const MainPageAuth = (props) => {
         axios
             .get('/user')
             .then((response) => {
-                setFirstName(response.data.userCredentials.firstName);
-                setLastName(response.data.userCredentials.lastName);
-                setEmail(response.data.userCredentials.email);
-                setPhoneNumber(response.data.userCredentials.phoneNumber);
-                setCountry(response.data.userCredentials.country);
-                setUsername(response.data.userCredentials.username);
                 setUiLoading(false);
                 if (response.data.userCredentials.imageUrl) {
                     setProfilePicture(response.data.userCredentials.imageUrl);
                 }
             })
-            .catch((error) => {
-                if (error.response.status === 403) {
+            .catch((err) => {
+                if (err.response.status === 403) {
                     setError403(true);
                 }
-                console.log(error);
-                setErrorMsg("Error in retrieving the data");
+                // console.log(error);
+                return err.response.status(500).json({error: err.code});
             });
     }
 
@@ -162,9 +135,8 @@ const MainPageAuth = (props) => {
             setTimeout(() => {
                 navigate("/login")
             }, 0)
-            // navigate("/login");
         }
-    }, [error403, navigate])
+    }, [error403, navigate]);
 
     const handleDrawerOpen = () => {
         setOpenBar(true);
@@ -175,7 +147,7 @@ const MainPageAuth = (props) => {
     };
 
     const iconClassName = (icon) => {
-        return isActiveIcon[icon] === true ? 'icon-active' : 'icon';
+        return isActiveIcon[icon] ? 'icon_active' : 'icon';
     };
 
     const makeIconsActive = (prevState, icon) => {
@@ -190,7 +162,7 @@ const MainPageAuth = (props) => {
         setOpenSelectionPopup(true);
     };
 
-    const closeDeterminePopupHandler = () => {
+    const closeSelectionPopupHandler = () => {
         setOpenSelectionPopup(false);
     };
 
@@ -206,18 +178,11 @@ const MainPageAuth = (props) => {
                 </div>)
                 : (
                     <>
-                        {/*<Box className="container">*/}
-                        {/*<CssBaseline/>*/}
-                        {/*    <AppBar position="fixed" className="app-bar" open={openBar} elevation={0}*/}
                         <AppBar position="fixed" className="app-bar" open={openBar} elevation={0}
-                                style={{background: '#fff'}}>
+                                style={{background: theme.palette.light.light}}>
                             <Toolbar>
-                                {/*<Typography variant="h6" noWrap>*/}
-                                {/*    in.focus*/}
-                                {/*</Typography>*/}
                                 <IconButton
                                     color="inherit"
-                                    aria-label="open drawer"
                                     onClick={handleDrawerOpen}
                                     edge="start"
                                     sx={{marginRight: `calc(1em + ${theme.spacing(4)})`}}
@@ -234,7 +199,6 @@ const MainPageAuth = (props) => {
                                         className="search-input"
                                         name="searchReq"
                                         placeholder="Search…"
-                                        inputProps={{'aria-label': 'search'}}
                                         onChange={handleChangeSearchReq}
                                         value={searchReq}
                                     />
@@ -247,9 +211,6 @@ const MainPageAuth = (props) => {
                             transitionDuration={500}
                             anchor="left"
                             open={openBar}
-                            // classes={{
-                            //     paper: drawer-paper
-                            // }}
                             sx={{
                                 width: 60,
                                 flexShrink: 0,
@@ -257,15 +218,13 @@ const MainPageAuth = (props) => {
                                     width: 60,
                                     boxSizing: 'border-box',
                                     overflowX: 'hidden',
-                                    border: '1px solid #e5e5e5'
+                                    border: `1px solid ${theme.palette.light.main}`
                                 },
                             }}
                         >
-                            {/*<div className={classes.toolbar} />*/}
-                            <div className="drawer-header">
+                            <div className="drawer__header">
                                 <IconButton onClick={handleDrawerClose}>
-                                    {/*<img src={hide} alt="Arrow Left Icon"/>*/}
-                                    <ArrowBackIosNewRoundedIcon fontSize="small" className="icon-gray"/>
+                                    <ArrowBackIosNewRoundedIcon fontSize="small" className="icon_gray"/>
                                 </IconButton>
                             </div>
                             <center>
@@ -276,7 +235,7 @@ const MainPageAuth = (props) => {
                             </center>
                             <Divider light/>
                             <List>
-                                <ListItem button key="Notes" onClick={loadNotePage}>
+                                <ListItemButton key="notes" onClick={loadNotePage}>
                                     <ListItemIcon>
                                         {' '}
                                         <NotesRoundedIcon fontSize="large" className={iconClassName('notes')}
@@ -287,10 +246,9 @@ const MainPageAuth = (props) => {
                                                               handleDrawerClose();
                                                           }}/>
                                     </ListItemIcon>
-                                    {/*<ListItemText primary="Todo"/>*/}
-                                </ListItem>
+                                </ListItemButton>
 
-                                <ListItem button key="Account" onClick={loadAccountPage}>
+                                <ListItemButton key="account" onClick={loadAccountPage}>
                                     <ListItemIcon>
                                         {' '}
                                         <ManageAccountsRoundedIcon fontSize="large" className={iconClassName('account')}
@@ -301,29 +259,30 @@ const MainPageAuth = (props) => {
                                                                        handleDrawerClose();
                                                                    }}/>
                                     </ListItemIcon>
-                                    {/*<ListItemText primary="Account"/>*/}
-                                </ListItem>
+                                </ListItemButton>
 
-                                <ListItem button key="Logout" onClick={logoutButtonClickHandler}>
+                                <ListItemButton key="logout" onClick={logoutButtonClickHandler}>
                                     <ListItemIcon>
                                         {' '}
                                         <LogoutRoundedIcon fontSize="large" className="icon"/>
                                     </ListItemIcon>
-                                    {/*<ListItemText primary="Logout"/>*/}
-                                </ListItem>
+                                </ListItemButton>
 
                                 <Modal
                                     className="selection-popup"
                                     open={openSelectionPopup}
-                                    onClose={closeDeterminePopupHandler}
+                                    onClose={closeSelectionPopupHandler}
                                     closeAfterTransition
                                 >
                                     <Fade in={openSelectionPopup}>
                                         <div className="selection-popup-paper">
                                             <h3>Do you really want to log out?</h3>
                                             <div className="selection-buttons-container">
-                                                <button className="yes-button" onClick={logoutHandler}>Yes</button>
-                                                <button className="no-button" onClick={closeDeterminePopupHandler}>No
+                                                <button className="selection-buttons-container__yes-button"
+                                                        onClick={logoutHandler}>Yes
+                                                </button>
+                                                <button className="selection-buttons-container__no-button"
+                                                        onClick={closeSelectionPopupHandler}>No
                                                 </button>
                                             </div>
                                         </div>
@@ -334,7 +293,6 @@ const MainPageAuth = (props) => {
                         </Drawer>
 
                         <Box>{render ? <Account/> : <Notes searchReq={searchReq}/>}</Box>
-                        {/*</Box>*/}
                     </>
                 )
             }

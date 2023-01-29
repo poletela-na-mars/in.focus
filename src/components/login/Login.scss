@@ -1,6 +1,6 @@
 @import "./../../vars";
 
-.sign-button_login-signup {
+.sign-in-up-button {
   @include violet-button;
   font-size: 18px;
   width: 130px;
@@ -8,20 +8,19 @@
   margin: 20px;
 }
 
-.sign-switch {
+.sign-in-up-switch {
   font-size: 18px;
   font-family: $medium-font-family;
   color: $gray-text-color;
-  //cursor: pointer;
   text-decoration: none;
 }
 
-.checked-switch {
+.sign-in-up-switch_checked {
   color: $orange-color;
 }
 
 .custom-error {
-  color: red;
+  color: $red-color;
   font-size: 0.8rem;
   margin-top: 10px;
 }

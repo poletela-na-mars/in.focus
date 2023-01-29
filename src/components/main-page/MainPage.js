@@ -1,20 +1,21 @@
-import LogoSVG from "../../LogoSVG";
-import "./MainPage.scss";
 import {Link} from "react-router-dom";
 
-const MainPage = (props) => {
+import LogoSVG from "../../LogoSVG";
+import "./MainPage.scss";
+
+const MainPage = () => {
     return (
         <div className="animation-area">
             <div className="main-page-container">
                 <div className="sign-in-button-container">
-                    <Link to={"/login"} className="sign-in-link">
-                        <button className="sign-in-button_main-page">Sign in</button>
+                    <Link to={"/login"} className="sign-in-button__link">
+                        <button className="sign-in-button">Sign in</button>
                     </Link>
                 </div>
-                <div className="main-page-block">
+                <div className="main-page">
                     <Link to={"/"} className="logo"><LogoSVG height={55} width={240}/></Link>
                     <p className="main-text">Organize and plan your life with in.focus</p>
-                    <Link to={"/signup"} className="start-link">
+                    <Link to={"/signup"} className="start-button__link">
                         <button className="start-button">Get started →</button>
                     </Link>
                 </div>
@@ -34,14 +35,5 @@ const MainPage = (props) => {
         </div>
     );
 };
-
-//TODO:
-//      -?не всегда правильная обработка setActiveIcon
-//      -?проблемы с удалением аккаунта (не удаляется почта)
-//      ---
-//      !-fix spacings and styles... цвета в theme
-//      -ПОСЛЕ users - комментим console.log. return в цепочках. const/let
-//      -clean-up
-//      -autoprefix
 
 export default MainPage;

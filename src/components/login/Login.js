@@ -4,9 +4,10 @@ import axios from "axios";
 import {
     Box,
     Container,
-    createTheme,
     CssBaseline,
-    Grid, IconButton, InputAdornment,
+    Grid,
+    IconButton,
+    InputAdornment,
     styled,
     TextField,
     ThemeProvider,
@@ -14,49 +15,18 @@ import {
 } from "@mui/material";
 
 import LogoSVG from "../../LogoSVG";
-
-import "./Login.scss";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 
-export const theme = createTheme({
-    typography: {
-        fontFamily: [
-            'Geometria Light'
-        ].join(','),
-        h4: {
-            fontFamily: [
-                'Geometria Medium'
-            ].join(','),
-        },
-    },
-    palette: {
-        primary: {
-            main: '#8613E0',
-            // darker: '#FF7A00',
-        },
-        secondary: {
-            main: '#FF7A00',
-        },
-        // neutral: {
-        //     main: '#8613E0',
-        //     contrastText: '#fff',
-        // },
-    },
-    shape: {
-        borderRadius: '20px'
-    },
-    shadow: {
-        boxShadowCard: '4px 6px 8px 0 rgba(0, 0, 0, 0.05)'
-    },
-});
+import "./Login.scss";
+import {theme} from "../../theme";
 
-export const CustomizedTextField = styled(TextField)`
-  fieldset {
-    border-radius: 50px;
-  }
-`;
+export const CustomizedTextField = styled(TextField)(({theme}) => ({
+    fieldset: {
+        borderRadius: theme.shape.roundedBorderRadius,
+    }
+}));
 
-const Login = (props) => {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
@@ -85,6 +55,7 @@ const Login = (props) => {
             email: email,
             password: password
         };
+
         axios
             .post('/login', userData)
             .then((response) => {
@@ -93,7 +64,7 @@ const Login = (props) => {
                 navigate('/home');
             })
             .catch((error) => {
-                console.log(error);
+                // console.log(error);
                 setErrors(error.response.data);
                 setLoading(false);
             });
@@ -102,11 +73,6 @@ const Login = (props) => {
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
     };
-
-    // const handleMouseDownPassword = (evt) => {
-    //     setShowPassword(!showPassword);
-    //     // evt.preventDefault();
-    // };
 
     return (
         <ThemeProvider theme={theme}>
@@ -130,8 +96,8 @@ const Login = (props) => {
                           justifyContent="space-evenly"
                           marginBottom="10px"
                     >
-                        <Link to="/login" className="sign-switch checked-switch">sign in</Link>
-                        <Link to="/signup" className="sign-switch">sign up</Link>
+                        <Link to="/login" className="sign-in-up-switch sign-in-up-switch_checked">sign in</Link>
+                        <Link to="/signup" className="sign-in-up-switch">sign up</Link>
                     </Grid>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
                         <CustomizedTextField
@@ -154,7 +120,6 @@ const Login = (props) => {
                             fullWidth
                             name="password"
                             label="Password"
-                            // type="password"
                             type={showPassword ? 'text' : 'password'}
                             id="password"
                             autoComplete="current-password"
@@ -166,9 +131,7 @@ const Login = (props) => {
                                 endAdornment:
                                     <InputAdornment position="end" sx={{marginRight: 1}}>
                                         <IconButton
-                                            aria-label="toggle password visibility"
                                             onClick={handleClickShowPassword}
-                                            // onMouseDown={handleMouseDownPassword}
                                             edge="end"
                                         >
                                             {showPassword ? <VisibilityOff/> : <Visibility/>}
@@ -176,10 +139,6 @@ const Login = (props) => {
                                     </InputAdornment>
                             }}
                         />
-                        {/*<FormControlLabel*/}
-                        {/*    control={<Checkbox value="remember" color="primary" />}*/}
-                        {/*    label="Remember me"*/}
-                        {/*/>*/}
                         <Grid container
                               spacing={0}
                               direction="column"
@@ -187,7 +146,7 @@ const Login = (props) => {
                               justifyContent="center"
                         >
                             <button
-                                className="sign-button_login-signup"
+                                className="sign-in-up-button"
                                 type="submit"
                                 onClick={handleSubmit}
                                 disabled={loading || !email || !password}

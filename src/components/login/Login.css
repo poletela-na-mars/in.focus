@@ -19,21 +19,21 @@
   color: #8613E0;
 }
 
-.icon-active {
+.icon_active {
   color: #FF7A00;
 }
 
-.icon-gray {
+.icon_gray {
   color: #D9D9D9;
 }
 
-.sign-button_login-signup {
+.sign-in-up-button {
   font-size: 18px;
   width: 130px;
   height: 40px;
   margin: 20px;
 }
-.sign-button_login-signup {
+.sign-in-up-button {
   font-family: "Geometria Medium", sans-serif;
   border-radius: 50px;
   border: none;
@@ -45,27 +45,27 @@
   background-color: #8613E0;
   transition: background-color 0.5s ease;
 }
-.sign-button_login-signup:hover {
+.sign-in-up-button:hover {
   background-color: #FF7A00;
 }
-.sign-button_login-signup:disabled {
+.sign-in-up-button:disabled {
   background-color: rgb(204, 184, 219);
   cursor: default;
 }
 
-.sign-switch {
+.sign-in-up-switch {
   font-size: 18px;
   font-family: "Geometria Medium", sans-serif;
   color: #D9D9D9;
   text-decoration: none;
 }
 
-.checked-switch {
+.sign-in-up-switch_checked {
   color: #FF7A00;
 }
 
 .custom-error {
-  color: red;
+  color: #d26d6d;
   font-size: 0.8rem;
   margin-top: 10px;
 }

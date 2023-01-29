@@ -1,5 +1,4 @@
 // colors
-
 $orange-color: #FF7A00;
 $violet-color: #8613E0;
 $black-color: #252525;
@@ -54,7 +53,7 @@ $button-box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.1);
 $medium-font-family: "Geometria Medium", sans-serif;
 $light-font-family: "Geometria Light", sans-serif;
 
-// others
+// other
 $transition: background-color 0.5s ease;
 $app-bar-height: 55px;
 $drawer-width: 60px;
@@ -82,10 +81,10 @@ $light-rounded-border-radius: 20px;
   color: $violet-color;
 }
 
-.icon-active {
+.icon_active {
   color: $orange-color;
 }
 
-.icon-gray {
+.icon_gray {
   color: $gray-text-color;
 }
