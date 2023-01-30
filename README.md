@@ -6,8 +6,8 @@
 
 ### Demo
 
-[in-focus_1-part.webm](https://user-images.githubusercontent.com/70761083/215469902-02067a02-7ce5-417d-985e-9e410e71689b.webm)
+[Welcome page.webm](https://user-images.githubusercontent.com/70761083/215471987-3b8135c4-177d-43e4-8ddf-4d92090788e3.webm)
 
-https://user-images.githubusercontent.com/70761083/215470152-3f36f353-6b02-4bbb-b591-474e20033614.mp4
+https://user-images.githubusercontent.com/70761083/215472034-9cd8e7a0-0a7e-42a9-87bc-2b036bedf9fd.mp4
 
-[in-focus_3-part.webm](https://user-images.githubusercontent.com/70761083/215470342-9673b44b-ffbf-4e80-8783-398f104cfa69.webm)
+[Account settings.webm](https://user-images.githubusercontent.com/70761083/215472081-510932ce-78fc-41d3-8c65-01b0da27d46c.webm)
